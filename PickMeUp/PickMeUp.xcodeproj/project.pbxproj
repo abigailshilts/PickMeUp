@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
+		48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */; };
+		48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D02874A6D0000EA3B6 /* Main.storyboard */; };
+		48ACE4D42874A6D1000EA3B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D32874A6D1000EA3B6 /* Assets.xcassets */; };
+		48ACE4D72874A6D1000EA3B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */; };
+		48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4D92874A6D1000EA3B6 /* main.m */; };
+		48ACE4E42874A6D1000EA3B6 /* PickMeUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */; };
+		48ACE4EE2874A6D1000EA3B6 /* PickMeUpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */; };
+		48ACE4F02874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */; };
+		48ACE5022874AFA4000EA3B6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5012874AFA4000EA3B6 /* LoginViewController.m */; };
+		48ACE5062874B223000EA3B6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5052874B223000EA3B6 /* SignUpViewController.m */; };
+		48ACE5092874B92C000EA3B6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5082874B92C000EA3B6 /* SearchViewController.m */; };
+		48ACE50C2874C195000EA3B6 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE50B2874C195000EA3B6 /* ResultsViewController.m */; };
+		48ACE50E2874D278000EA3B6 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE50D2874D278000EA3B6 /* keys.plist */; };
+		48ACE5112874FBC9000EA3B6 /* MyPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */; };
+		891D4331953D557EDC588957 /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE31163F8484136E35AB54C /* Pods_PickMeUpTests.framework */; };
+		8C74E5E8E3E5E0967F558917 /* Pods_PickMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */; };
+		A7139BFD440EC3A67F1303FA /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		48ACE4E02874A6D1000EA3B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48ACE4BC2874A6D0000EA3B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48ACE4C32874A6D0000EA3B6;
+			remoteInfo = PickMeUp;
+		};
+		48ACE4EA2874A6D1000EA3B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48ACE4BC2874A6D0000EA3B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48ACE4C32874A6D0000EA3B6;
+			remoteInfo = PickMeUp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1CCA389795D205E77F92966F /* Pods-PickMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.debug.xcconfig"; sourceTree = "<group>"; };
+		204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		48ACE4CA2874A6D0000EA3B6 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		48ACE4D12874A6D0000EA3B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		48ACE4D32874A6D1000EA3B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48ACE4D62874A6D1000EA3B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48ACE4D82874A6D1000EA3B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48ACE4D92874A6D1000EA3B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		48ACE4DF2874A6D1000EA3B6 /* PickMeUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickMeUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpTests.m; sourceTree = "<group>"; };
+		48ACE4E92874A6D1000EA3B6 /* PickMeUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickMeUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITests.m; sourceTree = "<group>"; };
+		48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITestsLaunchTests.m; sourceTree = "<group>"; };
+		48ACE5002874AFA4000EA3B6 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = PickMeUp/LoginViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5012874AFA4000EA3B6 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = PickMeUp/LoginViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE5032874B188000EA3B6 /* StringsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringsList.h; sourceTree = "<group>"; };
+		48ACE5042874B223000EA3B6 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = PickMeUp/SignUpViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5052874B223000EA3B6 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = PickMeUp/SignUpViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE5072874B92C000EA3B6 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = PickMeUp/SearchViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5082874B92C000EA3B6 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = PickMeUp/SearchViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE50A2874C195000EA3B6 /* ResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ResultsViewController.h; path = PickMeUp/ResultsViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE50B2874C195000EA3B6 /* ResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsViewController.m; path = PickMeUp/ResultsViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE50D2874D278000EA3B6 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		48ACE50F2874FBC9000EA3B6 /* MyPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyPostsViewController.h; path = PickMeUp/MyPostsViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyPostsViewController.m; path = PickMeUp/MyPostsViewController.m; sourceTree = SOURCE_ROOT; };
+		4AB88EC9B642C95221DF3CBE /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5128616390D5A5F50C27624B /* Pods-PickMeUp-PickMeUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7B99770954B9D01519CC4CC3 /* Pods-PickMeUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUpTests/Pods-PickMeUpTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A10B181036F6101E982FA09 /* Pods-PickMeUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickMeUpTests/Pods-PickMeUpTests.release.xcconfig"; sourceTree = "<group>"; };
+		96385C5F995E4B243AC812DD /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
+		EEE31163F8484136E35AB54C /* Pods_PickMeUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48ACE4C12874A6D0000EA3B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C74E5E8E3E5E0967F558917 /* Pods_PickMeUp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4DC2874A6D1000EA3B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				891D4331953D557EDC588957 /* Pods_PickMeUpTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4E62874A6D1000EA3B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7139BFD440EC3A67F1303FA /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48ACE4BB2874A6D0000EA3B6 = {
+			isa = PBXGroup;
+			children = (
+				48ACE4C62874A6D0000EA3B6 /* PickMeUp */,
+				48ACE4E22874A6D1000EA3B6 /* PickMeUpTests */,
+				48ACE4EC2874A6D1000EA3B6 /* PickMeUpUITests */,
+				48ACE4C52874A6D0000EA3B6 /* Products */,
+				9EDDD409CA5C897257DBE9DF /* Pods */,
+				BF3CE61A14481BFC3D8FC04B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		48ACE4C52874A6D0000EA3B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */,
+				48ACE4DF2874A6D1000EA3B6 /* PickMeUpTests.xctest */,
+				48ACE4E92874A6D1000EA3B6 /* PickMeUpUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48ACE4C62874A6D0000EA3B6 /* PickMeUp */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE4FD2874A71B000EA3B6 /* viewControllers */,
+				48ACE4FC2874A705000EA3B6 /* delegates */,
+				48ACE4D02874A6D0000EA3B6 /* Main.storyboard */,
+				48ACE4D32874A6D1000EA3B6 /* Assets.xcassets */,
+				48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */,
+				48ACE4D82874A6D1000EA3B6 /* Info.plist */,
+				48ACE4D92874A6D1000EA3B6 /* main.m */,
+				48ACE5032874B188000EA3B6 /* StringsList.h */,
+				48ACE50D2874D278000EA3B6 /* keys.plist */,
+			);
+			path = PickMeUp;
+			sourceTree = "<group>";
+		};
+		48ACE4E22874A6D1000EA3B6 /* PickMeUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */,
+			);
+			path = PickMeUpTests;
+			sourceTree = "<group>";
+		};
+		48ACE4EC2874A6D1000EA3B6 /* PickMeUpUITests */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */,
+				48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */,
+			);
+			path = PickMeUpUITests;
+			sourceTree = "<group>";
+		};
+		48ACE4FC2874A705000EA3B6 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */,
+				48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */,
+				48ACE4CA2874A6D0000EA3B6 /* SceneDelegate.h */,
+				48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		48ACE4FD2874A71B000EA3B6 /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE5002874AFA4000EA3B6 /* LoginViewController.h */,
+				48ACE5012874AFA4000EA3B6 /* LoginViewController.m */,
+				48ACE5042874B223000EA3B6 /* SignUpViewController.h */,
+				48ACE5052874B223000EA3B6 /* SignUpViewController.m */,
+				48ACE5072874B92C000EA3B6 /* SearchViewController.h */,
+				48ACE5082874B92C000EA3B6 /* SearchViewController.m */,
+				48ACE50A2874C195000EA3B6 /* ResultsViewController.h */,
+				48ACE50B2874C195000EA3B6 /* ResultsViewController.m */,
+				48ACE50F2874FBC9000EA3B6 /* MyPostsViewController.h */,
+				48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		9EDDD409CA5C897257DBE9DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1CCA389795D205E77F92966F /* Pods-PickMeUp.debug.xcconfig */,
+				96385C5F995E4B243AC812DD /* Pods-PickMeUp.release.xcconfig */,
+				4AB88EC9B642C95221DF3CBE /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */,
+				5128616390D5A5F50C27624B /* Pods-PickMeUp-PickMeUpUITests.release.xcconfig */,
+				7B99770954B9D01519CC4CC3 /* Pods-PickMeUpTests.debug.xcconfig */,
+				8A10B181036F6101E982FA09 /* Pods-PickMeUpTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF3CE61A14481BFC3D8FC04B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */,
+				204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */,
+				EEE31163F8484136E35AB54C /* Pods_PickMeUpTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48ACE4C32874A6D0000EA3B6 /* PickMeUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48ACE4F32874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUp" */;
+			buildPhases = (
+				FC5BF319DB11DA3359B6D756 /* [CP] Check Pods Manifest.lock */,
+				48ACE4C02874A6D0000EA3B6 /* Sources */,
+				48ACE4C12874A6D0000EA3B6 /* Frameworks */,
+				48ACE4C22874A6D0000EA3B6 /* Resources */,
+				B5BAD7EB443F89A81F329FDF /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PickMeUp;
+			productName = PickMeUp;
+			productReference = 48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		48ACE4DE2874A6D1000EA3B6 /* PickMeUpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48ACE4F62874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUpTests" */;
+			buildPhases = (
+				C0148979EC204FE8ACC4012A /* [CP] Check Pods Manifest.lock */,
+				48ACE4DB2874A6D1000EA3B6 /* Sources */,
+				48ACE4DC2874A6D1000EA3B6 /* Frameworks */,
+				48ACE4DD2874A6D1000EA3B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48ACE4E12874A6D1000EA3B6 /* PBXTargetDependency */,
+			);
+			name = PickMeUpTests;
+			productName = PickMeUpTests;
+			productReference = 48ACE4DF2874A6D1000EA3B6 /* PickMeUpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		48ACE4E82874A6D1000EA3B6 /* PickMeUpUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48ACE4F92874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUpUITests" */;
+			buildPhases = (
+				5B52B94088268917BC55B028 /* [CP] Check Pods Manifest.lock */,
+				48ACE4E52874A6D1000EA3B6 /* Sources */,
+				48ACE4E62874A6D1000EA3B6 /* Frameworks */,
+				48ACE4E72874A6D1000EA3B6 /* Resources */,
+				F2A30FF57906A30D0E33D610 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48ACE4EB2874A6D1000EA3B6 /* PBXTargetDependency */,
+			);
+			name = PickMeUpUITests;
+			productName = PickMeUpUITests;
+			productReference = 48ACE4E92874A6D1000EA3B6 /* PickMeUpUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48ACE4BC2874A6D0000EA3B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					48ACE4C32874A6D0000EA3B6 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					48ACE4DE2874A6D1000EA3B6 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 48ACE4C32874A6D0000EA3B6;
+					};
+					48ACE4E82874A6D1000EA3B6 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 48ACE4C32874A6D0000EA3B6;
+					};
+				};
+			};
+			buildConfigurationList = 48ACE4BF2874A6D0000EA3B6 /* Build configuration list for PBXProject "PickMeUp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48ACE4BB2874A6D0000EA3B6;
+			productRefGroup = 48ACE4C52874A6D0000EA3B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48ACE4C32874A6D0000EA3B6 /* PickMeUp */,
+				48ACE4DE2874A6D1000EA3B6 /* PickMeUpTests */,
+				48ACE4E82874A6D1000EA3B6 /* PickMeUpUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48ACE4C22874A6D0000EA3B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48ACE50E2874D278000EA3B6 /* keys.plist in Resources */,
+				48ACE4D72874A6D1000EA3B6 /* LaunchScreen.storyboard in Resources */,
+				48ACE4D42874A6D1000EA3B6 /* Assets.xcassets in Resources */,
+				48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4DD2874A6D1000EA3B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4E72874A6D1000EA3B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B52B94088268917BC55B028 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PickMeUp-PickMeUpUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5BAD7EB443F89A81F329FDF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickMeUp/Pods-PickMeUp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickMeUp/Pods-PickMeUp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PickMeUp/Pods-PickMeUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0148979EC204FE8ACC4012A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PickMeUpTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2A30FF57906A30D0E33D610 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC5BF319DB11DA3359B6D756 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PickMeUp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48ACE4C02874A6D0000EA3B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48ACE5112874FBC9000EA3B6 /* MyPostsViewController.m in Sources */,
+				48ACE5022874AFA4000EA3B6 /* LoginViewController.m in Sources */,
+				48ACE50C2874C195000EA3B6 /* ResultsViewController.m in Sources */,
+				48ACE5062874B223000EA3B6 /* SignUpViewController.m in Sources */,
+				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
+				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
+				48ACE5092874B92C000EA3B6 /* SearchViewController.m in Sources */,
+				48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4DB2874A6D1000EA3B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48ACE4E42874A6D1000EA3B6 /* PickMeUpTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		48ACE4E52874A6D1000EA3B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48ACE4F02874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m in Sources */,
+				48ACE4EE2874A6D1000EA3B6 /* PickMeUpUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		48ACE4E12874A6D1000EA3B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48ACE4C32874A6D0000EA3B6 /* PickMeUp */;
+			targetProxy = 48ACE4E02874A6D1000EA3B6 /* PBXContainerItemProxy */;
+		};
+		48ACE4EB2874A6D1000EA3B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48ACE4C32874A6D0000EA3B6 /* PickMeUp */;
+			targetProxy = 48ACE4EA2874A6D1000EA3B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		48ACE4D02874A6D0000EA3B6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48ACE4D12874A6D0000EA3B6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48ACE4D62874A6D1000EA3B6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48ACE4F12874A6D1000EA3B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		48ACE4F22874A6D1000EA3B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48ACE4F42874A6D1000EA3B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CCA389795D205E77F92966F /* Pods-PickMeUp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PickMeUp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		48ACE4F52874A6D1000EA3B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96385C5F995E4B243AC812DD /* Pods-PickMeUp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PickMeUp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		48ACE4F72874A6D1000EA3B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B99770954B9D01519CC4CC3 /* Pods-PickMeUpTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PickMeUp.app/PickMeUp";
+			};
+			name = Debug;
+		};
+		48ACE4F82874A6D1000EA3B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A10B181036F6101E982FA09 /* Pods-PickMeUpTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PickMeUp.app/PickMeUp";
+			};
+			name = Release;
+		};
+		48ACE4FA2874A6D1000EA3B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AB88EC9B642C95221DF3CBE /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUpUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PickMeUp;
+			};
+			name = Debug;
+		};
+		48ACE4FB2874A6D1000EA3B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5128616390D5A5F50C27624B /* Pods-PickMeUp-PickMeUpUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SLG5K9YM57;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = meta.PickMeUpUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PickMeUp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48ACE4BF2874A6D0000EA3B6 /* Build configuration list for PBXProject "PickMeUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48ACE4F12874A6D1000EA3B6 /* Debug */,
+				48ACE4F22874A6D1000EA3B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48ACE4F32874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48ACE4F42874A6D1000EA3B6 /* Debug */,
+				48ACE4F52874A6D1000EA3B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48ACE4F62874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48ACE4F72874A6D1000EA3B6 /* Debug */,
+				48ACE4F82874A6D1000EA3B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48ACE4F92874A6D1000EA3B6 /* Build configuration list for PBXNativeTarget "PickMeUpUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48ACE4FA2874A6D1000EA3B6 /* Debug */,
+				48ACE4FB2874A6D1000EA3B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 48ACE4BC2874A6D0000EA3B6 /* Project object */;
+}
