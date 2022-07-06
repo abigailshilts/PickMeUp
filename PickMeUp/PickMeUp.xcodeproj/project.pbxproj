@@ -22,6 +22,7 @@
 		48ACE50C2874C195000EA3B6 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE50B2874C195000EA3B6 /* ResultsViewController.m */; };
 		48ACE50E2874D278000EA3B6 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE50D2874D278000EA3B6 /* keys.plist */; };
 		48ACE5112874FBC9000EA3B6 /* MyPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */; };
+		48ACE514287609C7000EA3B6 /* CreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE513287609C7000EA3B6 /* CreatePostViewController.m */; };
 		891D4331953D557EDC588957 /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEE31163F8484136E35AB54C /* Pods_PickMeUpTests.framework */; };
 		8C74E5E8E3E5E0967F558917 /* Pods_PickMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */; };
 		A7139BFD440EC3A67F1303FA /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
@@ -74,6 +75,8 @@
 		48ACE50D2874D278000EA3B6 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		48ACE50F2874FBC9000EA3B6 /* MyPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyPostsViewController.h; path = PickMeUp/MyPostsViewController.h; sourceTree = SOURCE_ROOT; };
 		48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyPostsViewController.m; path = PickMeUp/MyPostsViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE512287609C7000EA3B6 /* CreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CreatePostViewController.h; path = PickMeUp/CreatePostViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE513287609C7000EA3B6 /* CreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CreatePostViewController.m; path = PickMeUp/CreatePostViewController.m; sourceTree = SOURCE_ROOT; };
 		4AB88EC9B642C95221DF3CBE /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5128616390D5A5F50C27624B /* Pods-PickMeUp-PickMeUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				48ACE50B2874C195000EA3B6 /* ResultsViewController.m */,
 				48ACE50F2874FBC9000EA3B6 /* MyPostsViewController.h */,
 				48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */,
+				48ACE512287609C7000EA3B6 /* CreatePostViewController.h */,
+				48ACE513287609C7000EA3B6 /* CreatePostViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				48ACE5062874B223000EA3B6 /* SignUpViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
+				48ACE514287609C7000EA3B6 /* CreatePostViewController.m in Sources */,
 				48ACE5092874B92C000EA3B6 /* SearchViewController.m in Sources */,
 				48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */,
 			);

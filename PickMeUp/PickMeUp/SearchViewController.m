@@ -34,6 +34,15 @@
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
 }
 
+//- (IBAction)didTapButton:(id)sender {
+//    NSPopUpButton *btn = (NSPopUpButton*)sender;
+//
+//    int index = [btn indexOfSelectedItem];
+//    student *std = [studentArray objectAtIndex:index];
+//
+//    NSLog(@"%@ => %@", [std name], [std date]);
+//}
+
 /*
 #pragma mark - Navigation
 
