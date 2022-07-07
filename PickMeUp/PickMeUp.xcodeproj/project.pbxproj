@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
 		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
 		48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */; };
 		48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D02874A6D0000EA3B6 /* Main.storyboard */; };
@@ -48,6 +49,8 @@
 /* Begin PBXFileReference section */
 		1CCA389795D205E77F92966F /* Pods-PickMeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.debug.xcconfig"; sourceTree = "<group>"; };
 		204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4882CF71287656720099EE62 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		4882CF72287656720099EE62 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				48ACE4D92874A6D1000EA3B6 /* main.m */,
 				48ACE5032874B188000EA3B6 /* StringsList.h */,
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
+				4882CF71287656720099EE62 /* Post.h */,
+				4882CF72287656720099EE62 /* Post.m */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				48ACE50C2874C195000EA3B6 /* ResultsViewController.m in Sources */,
 				48ACE5062874B223000EA3B6 /* SignUpViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
+				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				48ACE514287609C7000EA3B6 /* CreatePostViewController.m in Sources */,
 				48ACE5092874B92C000EA3B6 /* SearchViewController.m in Sources */,

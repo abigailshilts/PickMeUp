@@ -24,6 +24,8 @@ static const NSString *const signingupRequiresAll = @"Signing up requires all fi
 static const NSString *const goToMakePost = @"goToMakePost";
 static const NSString *const mainStr = @"Main";
 static const NSString *const logViewController = @"LoginViewController";
+static const NSString *const ipng = @"image.png";
+static const NSString *const postedSuccess = @"posted photo!";
 
 
 

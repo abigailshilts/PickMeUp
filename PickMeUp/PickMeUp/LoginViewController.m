@@ -19,8 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
 }
+
+
 
 - (void)loginUser {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:logginginNeedsAll preferredStyle:(UIAlertControllerStyleAlert)];
@@ -51,6 +54,9 @@
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];
     [self performSegueWithIdentifier:loginToSearch sender:nil];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//
+//    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
 }
 
 /*
