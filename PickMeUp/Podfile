@@ -7,7 +7,7 @@ target 'PickMeUp' do
 
   # Pods for PickMeUp
   pod 'Parse'
-  pod 'CoreLocationDemo', '~> 0.20'
+  pod 'AFNetworking'
 
   target 'PickMeUpTests' do
     inherit! :search_paths

@@ -6,10 +6,10 @@
 //
 
 #import "ResultsViewController.h"
+#import "PostCell.h"
 
 @interface ResultsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (nonatomic, strong) NSArray<Post *> *arrayOfPosts;
 @end
 
 @implementation ResultsViewController
@@ -18,22 +18,28 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self query];
     // Do any additional setup after loading the view.
 }
 
--(void)query {
-    
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"postCell" forIndexPath:indexPath];
+    Post *post = self.arrayOfPosts[indexPath.row];
+    
+    cell.post = post;
+    [cell setPost];
+    
+    return cell;
+}
 
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-// //   return self.arrayOfPosts.count;
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.arrayOfPosts.count;
+}
 
 /*
 #pragma mark - Navigation

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
+		4882CF7628777CFB0099EE62 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7528777CFB0099EE62 /* PostCell.m */; };
+		4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF7728777DF70099EE62 /* CoreLocation.framework */; };
 		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
 		48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */; };
 		48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D02874A6D0000EA3B6 /* Main.storyboard */; };
@@ -51,6 +53,9 @@
 		204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4882CF71287656720099EE62 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		4882CF72287656720099EE62 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		4882CF7428777CFB0099EE62 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		4882CF7528777CFB0099EE62 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		4882CF7728777DF70099EE62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */,
 				8C74E5E8E3E5E0967F558917 /* Pods_PickMeUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +159,8 @@
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
 				4882CF71287656720099EE62 /* Post.h */,
 				4882CF72287656720099EE62 /* Post.m */,
+				4882CF7428777CFB0099EE62 /* PostCell.h */,
+				4882CF7528777CFB0099EE62 /* PostCell.m */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 		BF3CE61A14481BFC3D8FC04B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4882CF7728777DF70099EE62 /* CoreLocation.framework */,
 				4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */,
 				204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */,
 				EEE31163F8484136E35AB54C /* Pods_PickMeUpTests.framework */,
@@ -473,6 +482,7 @@
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
+				4882CF7628777CFB0099EE62 /* PostCell.m in Sources */,
 				48ACE514287609C7000EA3B6 /* CreatePostViewController.m in Sources */,
 				48ACE5092874B92C000EA3B6 /* SearchViewController.m in Sources */,
 				48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */,

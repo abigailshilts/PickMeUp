@@ -20,6 +20,8 @@
 @property (strong, nonatomic) UIImage *imgToPost;
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
+@property (strong, nonatomic) NSArray *intensity;
+@property (strong, nonatomic) NSArray *sport;
 
 
 
@@ -37,6 +39,8 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tapRecognizer.numberOfTapsRequired = 1;
     [self.imgOpt addGestureRecognizer:tapRecognizer];
+    self.intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", @"any", nil];
+    self.sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball", @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
 
 }
 
@@ -93,19 +97,23 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title = nil;
-    NSArray *intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", nil];
-    NSArray *sport = [NSArray arrayWithObjects: @"Soccer", @"Hockey", @"Football", @"Baseball/Softball", @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
     if ([pickerView isEqual:self.intensityPicker]){
-        title = intensity[row];
+        title = self.intensity[row];
         self.groupIntensity = title;
     } else {
-        title = sport[row];
+        title = self.sport[row];
         self.groupSport = title;
     }
 
-
-    
     return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if ([pickerView isEqual:self.intensityPicker]){
+        self.groupIntensity = self.intensity[row];
+    } else {
+        self.groupSport = self.sport[row];
+    }
 }
 
 - (IBAction)didTapPost:(id)sender {
@@ -119,6 +127,7 @@
     [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         NSLog(postedSuccess);
     }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
