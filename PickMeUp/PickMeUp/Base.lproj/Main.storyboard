@@ -367,7 +367,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="D57-x5-htf">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="eRM-pI-4Nv">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lA5-Id-PQX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="lA5-Id-PQX">
                                 <rect key="frame" x="302" y="12.5" width="92" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
