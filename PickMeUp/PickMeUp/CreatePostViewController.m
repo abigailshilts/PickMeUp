@@ -99,10 +99,8 @@
     NSString *title = nil;
     if ([pickerView isEqual:self.intensityPicker]){
         title = self.intensity[row];
-        self.groupIntensity = title;
     } else {
         title = self.sport[row];
-        self.groupSport = title;
     }
 
     return title;

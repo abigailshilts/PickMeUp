@@ -66,14 +66,10 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title = nil;
-//    NSArray *intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", @"any", nil];
-//    NSArray *sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball", @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
     if ([pickerView isEqual:self.intensityPicker]){
         title = self.intensity[row];
-        //self.groupIntensity = title;
     } else {
         title = self.sport[row];
-        //self.groupSport = title;
     }
     return title;
 }
@@ -88,11 +84,7 @@
 
 - (IBAction)didTapGo:(id)sender {
     self.distance = self.distanceChoice.text;
-    NSLog(@"%@", self.distance);
-    NSLog(@"%@", self.groupSport);
-    NSLog(@"%@", self.groupIntensity);
     [self query];
-    //[self performSegueWithIdentifier:@"goToFeed" sender:nil];
 }
 
 - (void)query {

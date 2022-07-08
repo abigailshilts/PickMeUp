@@ -7,6 +7,7 @@
 
 #import "ResultsViewController.h"
 #import "PostCell.h"
+#import "DetailsViewController.h"
 
 @interface ResultsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -41,14 +42,19 @@
     return self.arrayOfPosts.count;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"goToDetails"]){
+        NSIndexPath *senderIndex = [self.tableView indexPathForCell: sender];
+        UINavigationController *navigationVC = [segue destinationViewController];
+        DetailsViewController *displayVC = navigationVC.topViewController;
+        Post *post = self.arrayOfPosts[senderIndex.row];
+        displayVC.post = post;
+        
+    }
 }
-*/
 
 @end

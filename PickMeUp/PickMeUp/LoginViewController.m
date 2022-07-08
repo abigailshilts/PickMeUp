@@ -43,6 +43,7 @@
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");
+            [self performSegueWithIdentifier:loginToSearch sender:nil];
         }
     }];
 }
@@ -53,7 +54,6 @@
 
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];
-    [self performSegueWithIdentifier:loginToSearch sender:nil];
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //
 //    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];

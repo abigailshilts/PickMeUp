@@ -10,6 +10,7 @@
 		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
 		4882CF7628777CFB0099EE62 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7528777CFB0099EE62 /* PostCell.m */; };
 		4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF7728777DF70099EE62 /* CoreLocation.framework */; };
+		4882CF7B2877A5D80099EE62 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7A2877A5D80099EE62 /* DetailsViewController.m */; };
 		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
 		48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */; };
 		48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D02874A6D0000EA3B6 /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		4882CF7428777CFB0099EE62 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		4882CF7528777CFB0099EE62 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		4882CF7728777DF70099EE62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		4882CF792877A5D80099EE62 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetailsViewController.h; path = PickMeUp/DetailsViewController.h; sourceTree = SOURCE_ROOT; };
+		4882CF7A2877A5D80099EE62 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DetailsViewController.m; path = PickMeUp/DetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				48ACE5102874FBC9000EA3B6 /* MyPostsViewController.m */,
 				48ACE512287609C7000EA3B6 /* CreatePostViewController.h */,
 				48ACE513287609C7000EA3B6 /* CreatePostViewController.m */,
+				4882CF792877A5D80099EE62 /* DetailsViewController.h */,
+				4882CF7A2877A5D80099EE62 /* DetailsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				48ACE50C2874C195000EA3B6 /* ResultsViewController.m in Sources */,
 				48ACE5062874B223000EA3B6 /* SignUpViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
+				4882CF7B2877A5D80099EE62 /* DetailsViewController.m in Sources */,
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				4882CF7628777CFB0099EE62 /* PostCell.m in Sources */,
