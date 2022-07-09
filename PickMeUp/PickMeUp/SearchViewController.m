@@ -11,18 +11,20 @@
 #import "StringsList.h"
 #import "Post.h"
 #import "ResultsViewController.h"
+#import "PickerViewController.h"
 
 
-@interface SearchViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
-@property (weak, nonatomic) IBOutlet UIPickerView *intensityPicker;
-@property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
+@interface SearchViewController () <PickerViewControllerDelegate>
+//@property (weak, nonatomic) IBOutlet UIPickerView *intensityPicker;
+//@property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (weak, nonatomic) IBOutlet UITextField *distanceChoice;
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSString *distance;
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
-@property (strong, nonatomic) NSArray *intensity;
-@property (strong, nonatomic) NSArray *sport;
+@property (weak, nonatomic) IBOutlet UIView *sportContainer;
+//@property (strong, nonatomic) NSArray *intensity;
+//@property (strong, nonatomic) NSArray *sport;
 
 @end
 
@@ -30,15 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.intensityPicker.delegate = self;
-    self.intensityPicker.dataSource = self;
-    self.sportPicker.delegate = self;
-    self.sportPicker.dataSource = self;
-    self.intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", @"any", nil];
-    self.sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball", @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
-    
-    
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapLogout:(id)sender {
@@ -51,39 +44,17 @@
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {}];
 }
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+-(void)recieveSport:(NSString *)sport {
+    self.groupSport = sport;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if([pickerView isEqual:self.intensityPicker]){
-        return 4;
-    } else {
-        return 9;
-    }
-    
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    NSString *title = nil;
-    if ([pickerView isEqual:self.intensityPicker]){
-        title = self.intensity[row];
-    } else {
-        title = self.sport[row];
-    }
-    return title;
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if ([pickerView isEqual:self.intensityPicker]){
-        self.groupIntensity = self.intensity[row];
-    } else {
-        self.groupSport = self.sport[row];
-    }
+-(void)recieveIntensity:(NSString *)intensity {
+    self.groupIntensity = intensity;
 }
 
 - (IBAction)didTapGo:(id)sender {
     self.distance = self.distanceChoice.text;
+    NSLog(@"%@", self.groupIntensity);
     [self query];
 }
 
@@ -104,15 +75,6 @@
     }];
 }
 
-//- (IBAction)didTapButton:(id)sender {
-//    NSPopUpButton *btn = (NSPopUpButton*)sender;
-//
-//    int index = [btn indexOfSelectedItem];
-//    student *std = [studentArray objectAtIndex:index];
-//
-//    NSLog(@"%@ => %@", [std name], [std date]);
-//}
-
 
 #pragma mark - Navigation
 
@@ -125,6 +87,18 @@
         ResultsViewController *tableVC = navigationVC.topViewController;
         tableVC.arrayOfPosts = self.arrayOfPosts;
         NSLog(@"%@", self.distance);
+    }
+    
+    if ([segue.identifier isEqualToString:@"sportView"]) {
+        PickerViewController *childViewController = (PickerViewController *) [segue destinationViewController];
+        childViewController.isSport = 1;
+        childViewController.delegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"intensityView"]) {
+        PickerViewController *childViewController = (PickerViewController *) [segue destinationViewController];
+        childViewController.isSport = 0;
+        childViewController.delegate = self;
     }
 }
 

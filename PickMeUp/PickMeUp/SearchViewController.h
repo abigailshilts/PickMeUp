@@ -10,7 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SearchViewController : UIViewController
-
+-(void)recieveInfo:(NSString *)sport;
+-(void)recieveIntensity:(NSString *)intensity;
 @end
 
 NS_ASSUME_NONNULL_END
