@@ -13,6 +13,7 @@
 		4882CF7B2877A5D80099EE62 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7A2877A5D80099EE62 /* DetailsViewController.m */; };
 		4882CF7E2878D68B0099EE62 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7D2878D68B0099EE62 /* PickerViewController.m */; };
 		4882CF812878ECF00099EE62 /* EmbedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF802878ECF00099EE62 /* EmbedTableViewController.m */; };
+		4882CF83287C91120099EE62 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF82287C91120099EE62 /* MapKit.framework */; };
 		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
 		48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */; };
 		48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D02874A6D0000EA3B6 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		4882CF7D2878D68B0099EE62 /* PickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PickerViewController.m; path = PickMeUp/PickerViewController.m; sourceTree = SOURCE_ROOT; };
 		4882CF7F2878ECF00099EE62 /* EmbedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = EmbedTableViewController.h; path = PickMeUp/EmbedTableViewController.h; sourceTree = SOURCE_ROOT; };
 		4882CF802878ECF00099EE62 /* EmbedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = EmbedTableViewController.m; path = PickMeUp/EmbedTableViewController.m; sourceTree = SOURCE_ROOT; };
+		4882CF82287C91120099EE62 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */,
+				4882CF83287C91120099EE62 /* MapKit.framework in Frameworks */,
 				8C74E5E8E3E5E0967F558917 /* Pods_PickMeUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +246,7 @@
 		BF3CE61A14481BFC3D8FC04B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4882CF82287C91120099EE62 /* MapKit.framework */,
 				4882CF7728777DF70099EE62 /* CoreLocation.framework */,
 				4BFF2D6C0613257A408F0DFB /* Pods_PickMeUp.framework */,
 				204940C62B18FB091A178828 /* Pods_PickMeUp_PickMeUpUITests.framework */,
@@ -680,6 +684,10 @@
 				DEVELOPMENT_TEAM = SLG5K9YM57;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PickMeUp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access to take pictures";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need library access to upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -708,6 +716,10 @@
 				DEVELOPMENT_TEAM = SLG5K9YM57;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PickMeUp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need camera access to take pictures";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Application wants to use your location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Need library access to upload images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

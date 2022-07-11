@@ -16,18 +16,15 @@
 @property (weak, nonatomic) IBOutlet UIPickerView *intensityPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgOpt;
-@property (weak, nonatomic) IBOutlet UITextView *groupWhere;
-@property (weak, nonatomic) IBOutlet UITextView *groupWhen;
+@property (weak, nonatomic) IBOutlet UITextField *groupWhere;
+@property (weak, nonatomic) IBOutlet UITextField *groupWhen;
 @property (weak, nonatomic) IBOutlet UITextView *groupBio;
 @property (strong, nonatomic) UIImage *imgToPost;
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSArray *intensity;
 @property (strong, nonatomic) NSArray *sport;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLLocation *pointToSet;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
-//@property (strong, nonatomic) CLLocationManager *locationManager;
 
 
 
@@ -41,16 +38,7 @@
     tapRecognizer.numberOfTapsRequired = 1;
     [self.imgOpt addGestureRecognizer:tapRecognizer];
     self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager startUpdatingLocation];
     
-}
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-   self.pointToSet = [locations lastObject];
 }
 
 -(void)recieveSport:(NSString *)sport {
@@ -70,18 +58,14 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
+
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     originalImage = [self resizeImage:originalImage withSize:CGSizeMake(580,580)];
 
-    // Do something with the images (based on your use case)
     [self.imgOpt setImage:originalImage];
     self.imgToPost = originalImage;
     
-    // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -100,19 +84,39 @@
 }
 
 - (IBAction)didTapPost:(id)sender {
-    [self.locationManager stopUpdatingLocation];
     Post *toPost = [Post new];
     toPost.bio = self.groupBio.text;
     toPost.sport = self.groupSport;
     toPost.intensity = self.groupIntensity;
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
-    self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
-    toPost.curLoc = self.curLoc;
     
-    [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        NSLog(postedSuccess);
+    CLGeocoder *geocoder = [CLGeocoder new];
+    [geocoder geocodeAddressString:self.groupWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error) {
+            //TODO: add error for invlaid address
+            NSLog(@"Error: %@", [error localizedDescription]);
+            return;
+        }
+        
+        // A location was generated, hooray!
+        if (placemarks && [placemarks count] > 0) {
+            CLPlacemark *placemark = placemarks[0]; // Our placemark
+            
+            self.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
+            toPost.curLoc = self.curLoc;
+            
+            [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                NSLog(postedSuccess);
+            }];
+            //self.pointToSet = [[CLLocation alloc] initWithLatitude:-43.242534 longitude:-54.93662];
+            //NSLog(@"Lat: %f, Long: %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
+        }
     }];
+    
+
+    //self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

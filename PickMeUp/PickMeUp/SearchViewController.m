@@ -73,6 +73,10 @@
     [self query];
 }
 
+//-(CLLocationDistance)howFar:(PFGeoPoint *)arrayLoc {
+//
+//}
+
 - (void)query {
 // TODO: add allert for not filled in fields
     self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
