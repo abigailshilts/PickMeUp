@@ -34,15 +34,5 @@
     [self.groupImg setImageWithURL:url];
 }
 
--(void) setMyPost {
-    self.myGroupIntensity.text = self.post.intensity;
-    self.myGroupSport.text = self.post.sport;
-    self.myGroupLocation.text = self.post.groupWhere;
-    self.myGroupTime.text = self.post.groupWhen;
-    
-    NSString *link = self.post.image.url;
-    NSURL *url = [NSURL URLWithString:link];
-    [self.myGroupImg setImageWithURL:url];
-}
 
 @end

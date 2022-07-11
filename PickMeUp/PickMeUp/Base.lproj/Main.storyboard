@@ -73,11 +73,11 @@
             <objects>
                 <viewController id="Nk6-7B-xoN" customClass="PickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J6g-SB-UUa">
-                        <rect key="frame" x="0.0" y="0.0" width="172" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="111"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7n-0Y-hvV">
-                                <rect key="frame" x="0.0" y="0.0" width="172" height="90"/>
+                                <rect key="frame" x="0.0" y="0.0" width="164" height="111"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J7G-z8-lsd"/>
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzm-Ts-8sr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4459" y="1844"/>
+            <point key="canvasLocation" x="3862" y="627"/>
         </scene>
         <!--goToFeed-->
         <scene sceneID="BxV-zf-lUK">
@@ -162,7 +162,7 @@
                     <navigationItem key="navigationItem" id="tYN-nA-GCn">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="DoR-PB-zE3">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4Dl-z9-oY7">
-                                <rect key="frame" x="20" y="6" width="94" height="44"/>
+                                <rect key="frame" x="20" y="6" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <state key="normal" title="Button"/>
@@ -811,7 +811,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="acN-Rm-RMb"/>
         <segue reference="Isf-EX-B6d"/>
-        <segue reference="0ad-Um-VpP"/>
+        <segue reference="VC9-ds-W6z"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>

@@ -22,14 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tableView.dataSource = self;
-//    self.tableView.delegate = self;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
-
-
-//    self.refreshControl = [[UIRefreshControl alloc] init];
-//    [self.refreshControl addTarget:self action:@selector(query) forControlEvents:UIControlEventValueChanged];
-//    [self.tableView addSubview:self.refreshControl];
 }
 
 -(void)query {
@@ -41,20 +33,6 @@
 - (IBAction)didTapMakePost:(id)sender {
     [self performSegueWithIdentifier:goToMakePost sender:nil];
 }
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"postCell" forIndexPath:indexPath];
-//    Post *post = self.arrayOfPosts[indexPath.row];
-//
-//    cell.post = post;
-//    [cell setMyPost];
-//
-//    return cell;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.arrayOfPosts.count;
-//}
 
 #pragma mark - Navigation
 

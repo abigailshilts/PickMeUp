@@ -9,9 +9,10 @@
 #import "Post.h"
 #import "StringsList.h"
 #import "PickerViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface CreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+@interface CreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *intensityPicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
 @property (weak, nonatomic) IBOutlet UIImageView *imgOpt;
@@ -23,7 +24,10 @@
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSArray *intensity;
 @property (strong, nonatomic) NSArray *sport;
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *pointToSet;
+@property (strong, nonatomic) PFGeoPoint *curLoc;
+//@property (strong, nonatomic) CLLocationManager *locationManager;
 
 
 
@@ -36,7 +40,17 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tapRecognizer.numberOfTapsRequired = 1;
     [self.imgOpt addGestureRecognizer:tapRecognizer];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    
+}
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+   self.pointToSet = [locations lastObject];
 }
 
 -(void)recieveSport:(NSString *)sport {
@@ -86,12 +100,15 @@
 }
 
 - (IBAction)didTapPost:(id)sender {
+    [self.locationManager stopUpdatingLocation];
     Post *toPost = [Post new];
     toPost.bio = self.groupBio.text;
     toPost.sport = self.groupSport;
     toPost.intensity = self.groupIntensity;
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
+    self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
+    toPost.curLoc = self.curLoc;
     
     [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         NSLog(postedSuccess);

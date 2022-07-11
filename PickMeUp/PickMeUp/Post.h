@@ -20,16 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *groupWhen;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) PFUser *author;
+@property (strong, nonatomic) PFGeoPoint *curLoc;
 
 - (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-//@property (nonatomic, strong) PFUser *author;
-//
-//+ (void) postUserImage: ( UIImage * _Nullable )image withBio:
-//    ( NSString * _Nullable )bio withSport:
-//( NSString * _Nullable )sport withIntensity:
-//( NSString * _Nullable )intensity withgroupWhere:
-//( NSString * _Nullable )groupWhere withGroupWhen:
-//( NSString * _Nullable )groupWhen withCompletion: (PFBooleanResultBlock  _Nullable)completion;
+
 
 @end
 
