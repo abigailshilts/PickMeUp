@@ -5,15 +5,15 @@
 //  Created by Abigail Shilts on 7/8/22.
 //
 
-#import "PickerViewController.h"
+#import "PMPickerViewController.h"
 
-@interface PickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface PMPickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property (strong, nonatomic) NSArray *intensity;
 @property (strong, nonatomic) NSArray *sport;
 @end
 
-@implementation PickerViewController
+@implementation PMPickerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,15 +54,5 @@
     }
 
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -5,24 +5,20 @@
 //  Created by Abigail Shilts on 7/7/22.
 //
 
-#import "PostCell.h"
+#import "PMPostCell.h"
 #import "Post.h"
 #import "UIImageView+AFNetworking.h"
 
-@implementation PostCell
+@implementation PMPostCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-// find way to combine these two
 -(void) setPost {
     self.groupIntensity.text = self.post.intensity;
     self.groupSport.text = self.post.sport;

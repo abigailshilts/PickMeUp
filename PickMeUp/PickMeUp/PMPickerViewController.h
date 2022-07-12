@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SearchViewController.h"
+#import "PMSearchViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)recieveIntensity:(NSString *)intensity;
 @end
 
-@interface PickerViewController : UIViewController
+@interface PMPickerViewController : UIViewController
 @property (nonatomic, weak) id<PickerViewControllerDelegate> delegate;
 @property int isSport;
 @end

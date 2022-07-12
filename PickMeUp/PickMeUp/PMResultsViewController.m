@@ -5,15 +5,17 @@
 //  Created by Abigail Shilts on 7/5/22.
 //
 
+#import <CoreLocation/CoreLocation.h>
+#import "PMDetailsViewController.h"
+#import "PMEmbedTableViewController.h"
+#import "PMPostCell.h"
 #import "ResultsViewController.h"
-#import "PostCell.h"
-#import "DetailsViewController.h"
-#import "EmbedTableViewController.h"
+#import "StringsList.h"
 
-@interface ResultsViewController ()
+@interface PMResultsViewController ()
 @end
 
-@implementation ResultsViewController
+@implementation PMResultsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,10 +27,9 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"getResults"]) {
-        EmbedTableViewController *childViewController = (EmbedTableViewController *) [segue destinationViewController];
+    if ([segue.identifier isEqualToString:getResults]) {
+        PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
     }
 }

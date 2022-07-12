@@ -5,20 +5,18 @@
 //  Created by Abigail Shilts on 7/6/22.
 //
 
-#import "CreatePostViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "PMCreatePostViewController.h"
+#import "PMPickerViewController.h"
 #import "Post.h"
 #import "StringsList.h"
-#import "PickerViewController.h"
-#import <CoreLocation/CoreLocation.h>
 
-
-@interface CreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
-@property (weak, nonatomic) IBOutlet UIPickerView *intensityPicker;
-@property (weak, nonatomic) IBOutlet UIPickerView *sportPicker;
+@interface PMCreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imgOpt;
 @property (weak, nonatomic) IBOutlet UITextField *groupWhere;
 @property (weak, nonatomic) IBOutlet UITextField *groupWhen;
 @property (weak, nonatomic) IBOutlet UITextView *groupBio;
+@property (weak, nonatomic) IBOutlet UIButton *myButton;
 @property (strong, nonatomic) UIImage *imgToPost;
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
@@ -30,17 +28,18 @@
 
 @end
 
-@implementation CreatePostViewController
+@implementation PMCreatePostViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // gesture so tapping img photo pulls up library
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tapRecognizer.numberOfTapsRequired = 1;
     [self.imgOpt addGestureRecognizer:tapRecognizer];
-    self.locationManager = [[CLLocationManager alloc] init];
     
 }
 
+// delegate methods for recieving picker info
 -(void)recieveSport:(NSString *)sport {
     self.groupSport = sport;
 }
@@ -49,6 +48,7 @@
     self.groupIntensity = intensity;
 }
 
+// pulls up library when img is tapped
 - (void)tapAction:(UITapGestureRecognizer *)tap {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -60,12 +60,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-
     originalImage = [self resizeImage:originalImage withSize:CGSizeMake(580,580)];
-
-    [self.imgOpt setImage:originalImage];
     self.imgToPost = originalImage;
     
+    // changes img on view controller to one seleted
+    [self.imgOpt setImage:originalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -84,6 +83,7 @@
 }
 
 - (IBAction)didTapPost:(id)sender {
+    self.myButton.enabled = NO;
     Post *toPost = [Post new];
     toPost.bio = self.groupBio.text;
     toPost.sport = self.groupSport;
@@ -91,31 +91,32 @@
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
     
+    // turns street adress into coordinates
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.groupWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             //TODO: add error for invlaid address
-            NSLog(@"Error: %@", [error localizedDescription]);
+            NSLog(errMsg, [error localizedDescription]);
             return;
         }
         
-        // A location was generated, hooray!
+        // A location was generated
         if (placemarks && [placemarks count] > 0) {
             CLPlacemark *placemark = placemarks[0]; // Our placemark
             
+            // creates geoPoint (for parse) from CLLocation
             self.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
             toPost.curLoc = self.curLoc;
             
             [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                NSLog(postedSuccess);
+                if (error != nil){
+                    //TODO: add popup
+                } else {
+                    NSLog(postedSuccess);
+                }
             }];
-            //self.pointToSet = [[CLLocation alloc] initWithLatitude:-43.242534 longitude:-54.93662];
-            //NSLog(@"Lat: %f, Long: %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
         }
     }];
-    
-
-    //self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
 
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -126,16 +127,15 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"chooseSportView"]) {
-        PickerViewController *childViewController = (PickerViewController *) [segue destinationViewController];
+    if ([segue.identifier isEqualToString:chooseSportView]) {
+        PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = 1;
         childViewController.delegate = self;
     }
     
-    if ([segue.identifier isEqualToString:@"chooseIntensityView"]) {
-        PickerViewController *childViewController = (PickerViewController *) [segue destinationViewController];
+    if ([segue.identifier isEqualToString:chooseIntensityView]) {
+        PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = 0;
         childViewController.delegate = self;
     }

@@ -5,27 +5,28 @@
 //  Created by Abigail Shilts on 7/5/22.
 //
 
-#import "LoginViewController.h"
-#import "StringsList.h"
+#import "PMLoginViewController.h"
 #import "Parse/Parse.h"
+#import "StringsList.h"
 
-@interface LoginViewController ()
+
+@interface PMLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *insertedUsername;
 @property (weak, nonatomic) IBOutlet UITextField *insertedPassword;
 
 @end
 
-@implementation LoginViewController
+@implementation PMLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Do any additional setup after loading the view.
 }
 
 
 
 - (void)loginUser {
+    // Pop up alert to ensure user enters all fields
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:logginginNeedsAll preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {}];
@@ -40,9 +41,10 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
+            // TODO: Add alert w/ message about user doesn't exist
+            NSLog(failedLogIn, error.localizedDescription);
         } else {
-            NSLog(@"User logged in successfully");
+            NSLog(userLogInSuccess);
             [self performSegueWithIdentifier:loginToSearch sender:nil];
         }
     }];
@@ -54,19 +56,7 @@
 
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//    self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -5,28 +5,29 @@
 //  Created by Abigail Shilts on 7/8/22.
 //
 
-#import "EmbedTableViewController.h"
-#import "PostCell.h"
-#import "DetailsViewController.h"
+#import "PMDetailsViewController.h"
+#import "PMEmbedTableViewController.h"
+#import "PMPostCell.h"
+#import "StringsList.h"
 
-@interface EmbedTableViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@interface PMEmbedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
-@implementation EmbedTableViewController
+@implementation PMEmbedTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    // Do any additional setup after loading the view.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"postCell" forIndexPath:indexPath];
+    PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:postCell forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
-    
+
     cell.post = post;
     [cell setPost];
     
@@ -41,14 +42,11 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"goToDetails"]){
+    if ([segue.identifier isEqualToString:goToDetails]){
         NSIndexPath *senderIndex = [self.tableView indexPathForCell: sender];
         UINavigationController *navigationVC = [segue destinationViewController];
-        DetailsViewController *displayVC = navigationVC.topViewController;
+        PMDetailsViewController *displayVC = navigationVC.topViewController;
         Post *post = self.arrayOfPosts[senderIndex.row];
         displayVC.post = post;
         

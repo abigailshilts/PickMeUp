@@ -11,7 +11,7 @@
         <!--LoginViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController restorationIdentifier="LoginViewController" storyboardIdentifier="LoginViewController" title="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="LoginViewController" storyboardIdentifier="LoginViewController" title="LoginViewController" id="BYZ-38-t0r" customClass="PMLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,13 +71,13 @@
         <!--Picker View Controller-->
         <scene sceneID="kt1-rB-GYg">
             <objects>
-                <viewController id="Nk6-7B-xoN" customClass="PickerViewController" sceneMemberID="viewController">
+                <viewController id="Nk6-7B-xoN" customClass="PMPickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J6g-SB-UUa">
-                        <rect key="frame" x="0.0" y="0.0" width="164" height="111"/>
+                        <rect key="frame" x="0.0" y="0.0" width="147" height="84"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7n-0Y-hvV">
-                                <rect key="frame" x="0.0" y="0.0" width="181" height="111"/>
+                                <rect key="frame" x="0.0" y="0.0" width="147" height="84"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J7G-z8-lsd"/>
@@ -100,7 +100,7 @@
         <!--goToFeed-->
         <scene sceneID="BxV-zf-lUK">
             <objects>
-                <viewController storyboardIdentifier="searchBoard" title="goToFeed" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="vJ8-66-8gE" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchBoard" title="goToFeed" wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="vJ8-66-8gE" customClass="PMSearchViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wkE-2w-lle">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,7 +186,7 @@
         <!--Embed Table View Controller-->
         <scene sceneID="tXo-WD-Ko8">
             <objects>
-                <viewController id="TPe-sB-IQd" customClass="EmbedTableViewController" sceneMemberID="viewController">
+                <viewController id="TPe-sB-IQd" customClass="PMEmbedTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifV-vx-can">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,7 +195,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="214" id="kZf-CL-MMT" customClass="PostCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="214" id="kZf-CL-MMT" customClass="PMPostCell">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="214"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kZf-CL-MMT" id="Ydy-v5-KPq">
@@ -302,7 +302,7 @@
         <!--Results View Controller-->
         <scene sceneID="qwg-A9-svw">
             <objects>
-                <viewController id="ePx-Zw-bI5" customClass="ResultsViewController" sceneMemberID="viewController">
+                <viewController id="ePx-Zw-bI5" customClass="PMResultsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p5f-fw-AEM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -339,7 +339,7 @@
         <!--Details View Controller-->
         <scene sceneID="6Er-Mv-j7T">
             <objects>
-                <viewController id="Ami-RP-7gy" customClass="DetailsViewController" sceneMemberID="viewController">
+                <viewController id="Ami-RP-7gy" customClass="PMDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qoO-t0-b7w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="546"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -473,7 +473,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="V9d-rE-P2J">
             <objects>
-                <viewController id="vuw-NP-3Ln" customClass="SignUpViewController" sceneMemberID="viewController">
+                <viewController id="vuw-NP-3Ln" customClass="PMSignUpViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="56V-hs-rTH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,7 +543,7 @@
         <!--My Posts View Controller-->
         <scene sceneID="mWx-TK-rHz">
             <objects>
-                <viewController id="d55-TI-tkQ" customClass="MyPostsViewController" sceneMemberID="viewController">
+                <viewController id="d55-TI-tkQ" customClass="PMMyPostsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EOK-Hk-I9o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -586,7 +586,7 @@
         <!--Create Post View Controller-->
         <scene sceneID="GOE-CI-bxb">
             <objects>
-                <viewController id="WBw-YE-txr" customClass="CreatePostViewController" sceneMemberID="viewController">
+                <viewController id="WBw-YE-txr" customClass="PMCreatePostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AcX-J9-Mt1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -666,6 +666,7 @@
                         <outlet property="groupWhen" destination="7sN-wJ-LGO" id="BZ2-XT-sPH"/>
                         <outlet property="groupWhere" destination="3v3-ld-gj1" id="M6c-Um-6D6"/>
                         <outlet property="imgOpt" destination="kgz-xW-WJc" id="fqU-9y-mL9"/>
+                        <outlet property="myButton" destination="lA5-Id-PQX" id="gs1-TC-pjm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K4H-8M-0Ac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -806,7 +807,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="5zE-ts-kFo"/>
         <segue reference="Isf-EX-B6d"/>
-        <segue reference="VC9-ds-W6z"/>
+        <segue reference="tTg-FI-gJr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>

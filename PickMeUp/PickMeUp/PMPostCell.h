@@ -10,16 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PostCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *myGroupImg;
+@interface PMPostCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *groupImg;
-@property (weak, nonatomic) IBOutlet UILabel *myGroupIntensity;
 @property (weak, nonatomic) IBOutlet UILabel *groupIntensity;
-@property (weak, nonatomic) IBOutlet UILabel *myGroupSport;
 @property (weak, nonatomic) IBOutlet UILabel *groupSport;
-@property (weak, nonatomic) IBOutlet UILabel *myGroupLocation;
 @property (weak, nonatomic) IBOutlet UILabel *groupLocation;
-@property (weak, nonatomic) IBOutlet UILabel *myGroupTime;
 @property (weak, nonatomic) IBOutlet UILabel *groupTime;
 @property Post *post;
 -(void) setPost;

@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MyPostsViewController : UIViewController
+@interface PMMyPostsViewController : UIViewController
 
 @end
 

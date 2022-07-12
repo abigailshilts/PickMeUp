@@ -5,26 +5,25 @@
 //  Created by Abigail Shilts on 7/5/22.
 //
 
-#import "SignUpViewController.h"
-#import "StringsList.h"
 #import "Parse/Parse.h"
+#import "PMSignUpViewController.h"
+#import "StringsList.h"
 
-
-@interface SignUpViewController ()
+@interface PMSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *insertedEmail;
 @property (weak, nonatomic) IBOutlet UITextField *insertedUsername;
 @property (weak, nonatomic) IBOutlet UITextField *insertedPassword;
 
 @end
 
-@implementation SignUpViewController
+@implementation PMSignUpViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)registerUser {
+    // Pop up alert to ensure user enters all fields
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:signingupRequiresAll preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {}];
@@ -42,11 +41,11 @@
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
+            NSLog(errMsg, error.localizedDescription);
+            // TODO: add alert probs user already exists
         } else {
-            NSLog(@"User registered successfully");
-            
-            // manually segue to logged in view
+            NSLog(userRegSuccess);
+            [self performSegueWithIdentifier:signUpToSearch sender:nil];
         }
     }];
 }
@@ -57,7 +56,6 @@
 
 - (IBAction)didTapSignUp:(id)sender {
     [self registerUser];
-    [self performSegueWithIdentifier:signUpToSearch sender:nil];
 }
 
 /*

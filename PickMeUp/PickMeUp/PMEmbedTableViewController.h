@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EmbedTableViewController : UIViewController
+@interface PMEmbedTableViewController : UIViewController
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
 @end
 

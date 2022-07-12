@@ -7,6 +7,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "Parse/Parse.h"
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) PFUser *author;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
+@property CLLocationDistance distToCurUser;
 
 - (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

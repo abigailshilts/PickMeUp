@@ -22,7 +22,7 @@
 @dynamic curLoc;
 
 + (nonnull NSString *)parseClassName {
-    return @"Post";
+    return classPost;
 }
 
 - (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
