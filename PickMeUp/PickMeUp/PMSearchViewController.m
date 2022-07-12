@@ -88,7 +88,7 @@
     if (![self.groupIntensity isEqualToString:keyLowAny]){
         [query whereKey:keyIntensity equalTo:self.groupIntensity];
     }
-
+    [query orderByDescending:@"curLoc"];
     query.limit = 20;
     // TODO: infinite scroll
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
