@@ -8,7 +8,7 @@
 #import "AppDelegate.h"
 #import "StringsList.h"
 #import "Parse/Parse.h"
-
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -18,18 +18,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(  NSDictionary *)launchOptions {
+    NSString *path = [[NSBundle mainBundle] pathForResource:keys ofType:plist];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
+    NSString *key = [dict objectForKey:appID];
+    NSString *secret = [dict objectForKey:clientKey];
+    NSString *maps = [dict objectForKey:@"mapsKey"];
 
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-
-        NSString *path = [[NSBundle mainBundle] pathForResource:keys ofType:plist];
-        NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
-        NSString *key = [dict objectForKey:appID];
-        NSString *secret = [dict objectForKey:clientKey];
         
         configuration.applicationId = key;
         configuration.clientKey = secret;
         configuration.server = serverLink;
     }];
+    
+    [GMSServices provideAPIKey:maps];
 
     [Parse initializeWithConfiguration:config];
 

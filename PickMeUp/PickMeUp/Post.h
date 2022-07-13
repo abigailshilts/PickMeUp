@@ -8,6 +8,7 @@
 #import <Parse/Parse.h>
 #import "Parse/Parse.h"
 #import <CoreLocation/CoreLocation.h>
+@import GoogleMaps;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *intensity;
 @property (nonatomic, strong) NSString *groupWhere;
 @property (nonatomic, strong) NSString *groupWhen;
+@property float latitude;
+@property float longitude;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) PFUser *author;
 @property (strong, nonatomic) PFGeoPoint *curLoc;

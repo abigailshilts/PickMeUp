@@ -20,6 +20,8 @@
 @dynamic groupWhere;
 @dynamic groupWhen;
 @dynamic curLoc;
+@dynamic latitude;
+@dynamic longitude;
 
 + (nonnull NSString *)parseClassName {
     return classPost;

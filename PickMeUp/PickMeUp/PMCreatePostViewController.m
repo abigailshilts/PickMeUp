@@ -36,7 +36,17 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tapRecognizer.numberOfTapsRequired = 1;
     [self.imgOpt addGestureRecognizer:tapRecognizer];
-    
+    self.groupBio.delegate = self;
+    self.groupWhen.delegate = self;
+    self.groupWhere.delegate = self;
+
+
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+   [textField resignFirstResponder];
+   return true;
 }
 
 // delegate methods for recieving picker info
@@ -91,6 +101,7 @@
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
     
+    
     // turns street adress into coordinates
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.groupWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -107,6 +118,8 @@
             // creates geoPoint (for parse) from CLLocation
             self.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
             toPost.curLoc = self.curLoc;
+            toPost.latitude = placemark.location.coordinate.latitude;
+            toPost.longitude = placemark.location.coordinate.longitude;
             
             [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error != nil){

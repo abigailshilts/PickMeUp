@@ -38,6 +38,12 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
+    self.distanceChoice.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+   [textField resignFirstResponder];
+   return true;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
@@ -88,7 +94,7 @@
     if (![self.groupIntensity isEqualToString:keyLowAny]){
         [query whereKey:keyIntensity equalTo:self.groupIntensity];
     }
-    [query orderByDescending:@"curLoc"];
+    [query orderByDescending:keyCurLoc];
     query.limit = 20;
     // TODO: infinite scroll
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -110,6 +116,8 @@
         UINavigationController *navigationVC = [segue destinationViewController];
         PMResultsViewController *tableVC = navigationVC.topViewController;
         tableVC.arrayOfPosts = self.arrayOfPosts;
+        tableVC.distance = [self.distance intValue];
+        tableVC.pointToSet = self.pointToSet;
         NSLog(strInput, self.distance);
     }
     

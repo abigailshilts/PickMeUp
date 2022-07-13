@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMResultsViewController : UIViewController
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
+@property int distance;
+@property (strong, nonatomic) CLLocation *pointToSet;
 @end
 
 NS_ASSUME_NONNULL_END

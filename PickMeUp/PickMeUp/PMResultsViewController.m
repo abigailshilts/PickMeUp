@@ -8,8 +8,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PMDetailsViewController.h"
 #import "PMEmbedTableViewController.h"
+#import "MapViewController.h"
 #import "PMPostCell.h"
-#import "ResultsViewController.h"
+#import "PMResultsViewController.h"
 #import "StringsList.h"
 
 @interface PMResultsViewController ()
@@ -19,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (IBAction)didTapMap:(id)sender {
+    [self performSegueWithIdentifier:goToMap sender:nil];
 }
 
 - (IBAction)didTapBack:(id)sender {
@@ -31,6 +36,14 @@
     if ([segue.identifier isEqualToString:getResults]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
+    }
+    
+    if ([segue.identifier isEqualToString:goToMap]) {
+        UINavigationController *navigationVC = [segue destinationViewController];
+        MapViewController *mapVC = navigationVC.topViewController;
+        mapVC.distance = self.distance;
+        mapVC.pointToSet = self.pointToSet;
+        mapVC.arrayOfPosts = self.arrayOfPosts;
     }
 }
 
