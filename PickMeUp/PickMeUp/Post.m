@@ -22,12 +22,14 @@
 @dynamic curLoc;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic convoId;
+@dynamic convoRecipients;
 
 + (nonnull NSString *)parseClassName {
     return classPost;
 }
 
-- (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+- (void)postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     self.image = [self getPFFileFromImage:image];
     self.author = [PFUser currentUser];
     [self saveInBackgroundWithBlock: completion];

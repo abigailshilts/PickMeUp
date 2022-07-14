@@ -19,13 +19,13 @@
     [super setSelected:selected animated:animated];
 }
 
--(void) setPost {
-    self.groupIntensity.text = self.post.intensity;
-    self.groupSport.text = self.post.sport;
-    self.groupLocation.text = self.post.groupWhere;
-    self.groupTime.text = self.post.groupWhen;
+-(void) setPost:(Post *)post {
+    self.groupIntensity.text = post.intensity;
+    self.groupSport.text = post.sport;
+    self.groupLocation.text = post.groupWhere;
+    self.groupTime.text = post.groupWhen;
     
-    NSString *link = self.post.image.url;
+    NSString *link = post.image.url;
     NSURL *url = [NSURL URLWithString:link];
     [self.groupImg setImageWithURL:url];
 }

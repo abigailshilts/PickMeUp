@@ -18,12 +18,15 @@
 
 @implementation PMResultsViewController
 
+static const NSString *const kGoToMapSegue = @"goToMap";
+static const NSString *const getResults = @"getResults";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
 - (IBAction)didTapMap:(id)sender {
-    [self performSegueWithIdentifier:goToMap sender:nil];
+    [self performSegueWithIdentifier:kGoToMapSegue sender:nil];
 }
 
 - (IBAction)didTapBack:(id)sender {
@@ -38,7 +41,7 @@
         childViewController.arrayOfPosts = self.arrayOfPosts;
     }
     
-    if ([segue.identifier isEqualToString:goToMap]) {
+    if ([segue.identifier isEqualToString:kGoToMapSegue]) {
         UINavigationController *navigationVC = [segue destinationViewController];
         MapViewController *mapVC = navigationVC.topViewController;
         mapVC.distance = self.distance;

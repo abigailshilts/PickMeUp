@@ -18,6 +18,8 @@
     GMSMapView *_mapView;
 }
 
+static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
+
 - (void)loadView {
     [super loadView];
     // creates mapview
@@ -51,7 +53,7 @@
     //segues to details view when marler is selected
     [_mapView animateToLocation:marker.position];
     self.tappedPost = marker.userData;
-    [self performSegueWithIdentifier:showMarker sender:nil];
+    [self performSegueWithIdentifier:kShowMarkerSegue sender:nil];
     return NO;
 }
 

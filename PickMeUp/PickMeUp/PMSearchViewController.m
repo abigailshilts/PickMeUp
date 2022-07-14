@@ -30,6 +30,10 @@
 
 @implementation PMSearchViewController
 
+static const NSString *const kGoToFeedSegue = @"goToFeed";
+static const NSString *const sportView = @"sportView";
+static const NSString *const intensityView = @"intensityView";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.locationManager = [[CLLocationManager alloc] init];
@@ -77,30 +81,30 @@
 - (IBAction)didTapGo:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.distance = self.distanceChoice.text;
-    [self query];
+    [self runQuery];
 }
 
-- (void)query {
+- (void)runQuery {
 // TODO: add alert for not filled in distance
     self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
     
-    PFQuery *query = [PFQuery queryWithClassName:classPost];
+    PFQuery *getQuery = [PFQuery queryWithClassName:classPost];
     
     // builds query
-    [query whereKey:keyCurLoc nearGeoPoint:self.curLoc withinMiles:[self.distance intValue]];
+    [getQuery whereKey:keyCurLoc nearGeoPoint:self.curLoc withinMiles:[self.distance intValue]];
     if (![self.groupSport isEqualToString:upAny]){
-        [query whereKey:keySport equalTo:self.groupSport];
+        [getQuery whereKey:keySport equalTo:self.groupSport];
     }
     if (![self.groupIntensity isEqualToString:keyLowAny]){
-        [query whereKey:keyIntensity equalTo:self.groupIntensity];
+        [getQuery whereKey:keyIntensity equalTo:self.groupIntensity];
     }
-    [query orderByDescending:keyCurLoc];
-    query.limit = 20;
+    [getQuery orderByDescending:keyCurLoc];
+    getQuery.limit = 20;
     // TODO: infinite scroll
-    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+    [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
-            [self performSegueWithIdentifier:goToFeed sender:nil];
+            [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
             NSLog(strInput, error.localizedDescription);
             //TODO: add user popup
@@ -112,7 +116,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:goToFeed]){
+    if ([segue.identifier isEqualToString:kGoToFeedSegue]){
         UINavigationController *navigationVC = [segue destinationViewController];
         PMResultsViewController *tableVC = navigationVC.topViewController;
         tableVC.arrayOfPosts = self.arrayOfPosts;
@@ -123,13 +127,13 @@
     
     if ([segue.identifier isEqualToString:sportView]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
-        childViewController.isSport = 1;
+        childViewController.isSport = YES;
         childViewController.delegate = self;
     }
     
     if ([segue.identifier isEqualToString:intensityView]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
-        childViewController.isSport = 0;
+        childViewController.isSport = NO;
         childViewController.delegate = self;
     }
 }

@@ -8,7 +8,7 @@
 #import <Parse/Parse.h>
 #import "Parse/Parse.h"
 #import <CoreLocation/CoreLocation.h>
-@import GoogleMaps;
+//@import GoogleMaps;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,6 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
 @property CLLocationDistance distToCurUser;
+@property (nonatomic, strong) NSArray *convoId;
+@property (nonatomic, strong) NSArray<PFUser *> *convoRecipients;
+
 
 - (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

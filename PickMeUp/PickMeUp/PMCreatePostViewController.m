@@ -30,6 +30,9 @@
 
 @implementation PMCreatePostViewController
 
+static const NSString *const chooseIntensityView = @"chooseIntensityView";
+static const NSString *const chooseSportView = @"chooseSportView";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // gesture so tapping img photo pulls up library
@@ -50,11 +53,11 @@
 }
 
 // delegate methods for recieving picker info
--(void)recieveSport:(NSString *)sport {
+-(void)didRecieveSport:(NSString *)sport {
     self.groupSport = sport;
 }
 
--(void)recieveIntensity:(NSString *)intensity {
+-(void)didRecieveIntensity:(NSString *)intensity {
     self.groupIntensity = intensity;
 }
 
@@ -143,13 +146,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:chooseSportView]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
-        childViewController.isSport = 1;
+        childViewController.isSport = YES;
         childViewController.delegate = self;
     }
     
     if ([segue.identifier isEqualToString:chooseIntensityView]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
-        childViewController.isSport = 0;
+        childViewController.isSport = NO;
         childViewController.delegate = self;
     }
 }

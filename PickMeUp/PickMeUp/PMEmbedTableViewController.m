@@ -28,8 +28,8 @@
     PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:postCell forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
 
-    cell.post = post;
-    [cell setPost];
+//    cell.post = post;
+    [cell setPost:post];
     
     return cell;
 }

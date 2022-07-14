@@ -19,26 +19,29 @@
 
 @implementation PMMyPostsViewController
 
+static const NSString *const kGoToMakePostSegue = @"goToMakePost";
+static const NSString *const kGetMyPostsSegue = @"getMyPosts";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
--(void)query {
-    PFQuery *query = [PFQuery queryWithClassName:classPost];
-    [query whereKey:keyAuthor equalTo:PFUser.currentUser];
-    self.arrayOfPosts = [query findObjects];
+-(void)runQuery {
+    PFQuery *getQuery = [PFQuery queryWithClassName:classPost];
+    [getQuery whereKey:keyAuthor equalTo:PFUser.currentUser];
+    self.arrayOfPosts = [getQuery findObjects];
 }
 
 - (IBAction)didTapMakePost:(id)sender {
-    [self performSegueWithIdentifier:goToMakePost sender:nil];
+    [self performSegueWithIdentifier:kGoToMakePostSegue sender:nil];
 }
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [self query];
-    if ([segue.identifier isEqualToString:getMyPosts]) {
+    [self runQuery];
+    if ([segue.identifier isEqualToString:kGetMyPostsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
     }

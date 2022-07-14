@@ -9,8 +9,8 @@
 
 @interface PMPickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) NSArray *intensity;
-@property (strong, nonatomic) NSArray *sport;
+@property (strong, nonatomic) NSArray<String *> *intensity;
+@property (strong, nonatomic) NSArray<String *> *sport;
 @end
 
 @implementation PMPickerViewController
@@ -28,17 +28,17 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if(self.isSport == 0){
-        return 4;
+    if(self.isSport == NO){
+        return self.intensity.count;
     } else {
-        return 9;
+        return self.sport.count;
     }
     
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title = nil;
-    if (self.isSport == 0){
+    if (self.isSport == NO){
         title = self.intensity[row];
     } else {
         title = self.sport[row];
@@ -48,9 +48,9 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (self.isSport == 0){
-        [self.delegate recieveIntensity:self.intensity[row]];
+        [self.delegate didRecieveIntensity:self.intensity[row]];
     } else {
-        [self.delegate recieveSport:self.sport[row]];
+        [self.delegate didRecieveSport:self.sport[row]];
     }
 
 }

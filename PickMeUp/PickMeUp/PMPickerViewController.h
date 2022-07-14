@@ -11,13 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol PickerViewControllerDelegate
--(void)recieveSport:(NSString *)sport;
--(void)recieveIntensity:(NSString *)intensity;
+-(void)didRecieveSport:(NSString *)sport;
+-(void)didRecieveIntensity:(NSString *)intensity;
 @end
 
 @interface PMPickerViewController : UIViewController
 @property (nonatomic, weak) id<PickerViewControllerDelegate> delegate;
-@property int isSport;
+@property BOOL isSport;
 @end
 
 NS_ASSUME_NONNULL_END

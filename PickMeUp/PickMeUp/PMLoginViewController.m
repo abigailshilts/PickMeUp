@@ -18,6 +18,12 @@
 
 @implementation PMLoginViewController
 
+static const NSString *const kLoginToSearchSegue  = @"loginToSearch";
+static const NSString *const logginginNeedsAll = @"Logging in requires all fields to be filled";
+static const NSString *const failedLogIn = @"User log in failed: %@";
+static const NSString *const userLogInSuccess = @"User logged in successfully";
+static const NSString *const kGoToSignUpSegue = @"goToSignUp";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -27,11 +33,12 @@
 
 - (void)loginUser {
     // Pop up alert to ensure user enters all fields
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:logginginNeedsAll preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
+
     if ([self.insertedUsername.text isEqual:empt] || [self.insertedPassword.text isEqual:empt]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:logginginNeedsAll preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
+            handler:^(UIAlertAction * _Nonnull action) {}];
+        [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:^{}];
         return;
     }
@@ -45,13 +52,13 @@
             NSLog(failedLogIn, error.localizedDescription);
         } else {
             NSLog(userLogInSuccess);
-            [self performSegueWithIdentifier:loginToSearch sender:nil];
+            [self performSegueWithIdentifier:kLoginToSearchSegue sender:nil];
         }
     }];
 }
 
 - (IBAction)didTapSignUp:(id)sender {
-    [self performSegueWithIdentifier:goToSignUp sender:nil];
+    [self performSegueWithIdentifier:kGoToSignUpSegue sender:nil];
 }
 
 - (IBAction)didTapLogin:(id)sender {

@@ -18,17 +18,16 @@
 
 @implementation PMSignUpViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
+static const NSString *const signingupRequiresAll = @"Signing up requires all fields to be filled";
+static const NSString *const kSignUpToSearchSegue = @"signUpToSearch";
 
 - (void)registerUser {
     // Pop up alert to ensure user enters all fields
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:signingupRequiresAll preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
     if ([self.insertedUsername.text isEqual:empt] || [self.insertedPassword.text isEqual:empt] || [self.insertedEmail.text isEqual:empt]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:signingupRequiresAll preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
+            handler:^(UIAlertAction * _Nonnull action) {}];
+        [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:^{}];
         return;
     }
@@ -45,7 +44,7 @@
             // TODO: add alert probs user already exists
         } else {
             NSLog(userRegSuccess);
-            [self performSegueWithIdentifier:signUpToSearch sender:nil];
+            [self performSegueWithIdentifier:kSignUpToSearchSegue sender:nil];
         }
     }];
 }
@@ -57,15 +56,5 @@
 - (IBAction)didTapSignUp:(id)sender {
     [self registerUser];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

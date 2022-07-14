@@ -16,9 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *groupSport;
 @property (weak, nonatomic) IBOutlet UILabel *groupLocation;
 @property (weak, nonatomic) IBOutlet UILabel *groupTime;
-@property Post *post;
--(void) setPost;
--(void) setMyPost;
+//@property Post *post;
+-(void) setPost:(Post *)post;
 @end
 
 NS_ASSUME_NONNULL_END
