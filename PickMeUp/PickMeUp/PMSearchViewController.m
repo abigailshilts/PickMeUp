@@ -70,11 +70,11 @@ static const NSString *const intensityView = @"intensityView";
 }
 
 // delegate methods for recieving pickerview user input
--(void)recieveSport:(NSString *)sport {
+-(void)didRecieveSport:(NSString *)sport {
     self.groupSport = sport;
 }
 
--(void)recieveIntensity:(NSString *)intensity {
+-(void)didRecieveIntensity:(NSString *)intensity {
     self.groupIntensity = intensity;
 }
 

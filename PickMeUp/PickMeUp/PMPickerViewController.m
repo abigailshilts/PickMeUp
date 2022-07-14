@@ -9,8 +9,8 @@
 
 @interface PMPickerViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-@property (strong, nonatomic) NSArray<String *> *intensity;
-@property (strong, nonatomic) NSArray<String *> *sport;
+@property (strong, nonatomic) NSArray<NSString *> *intensity;
+@property (strong, nonatomic) NSArray<NSString *> *sport;
 @end
 
 @implementation PMPickerViewController
@@ -47,7 +47,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (self.isSport == 0){
+    if (self.isSport == NO){
         [self.delegate didRecieveIntensity:self.intensity[row]];
     } else {
         [self.delegate didRecieveSport:self.sport[row]];
