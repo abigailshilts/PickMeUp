@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *pointToSet;
-@property (strong, nonatomic) CLLocation *pointRecieved;
+@property (strong, nonatomic) CLLocation *pointReceived;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
 
 @end
@@ -70,11 +70,11 @@ static const NSString *const intensityView = @"intensityView";
 }
 
 // delegate methods for recieving pickerview user input
--(void)didRecieveSport:(NSString *)sport {
+-(void)didReceiveSport:(NSString *)sport {
     self.groupSport = sport;
 }
 
--(void)didRecieveIntensity:(NSString *)intensity {
+-(void)didReceiveIntensity:(NSString *)intensity {
     self.groupIntensity = intensity;
 }
 
@@ -85,7 +85,7 @@ static const NSString *const intensityView = @"intensityView";
 }
 
 - (void)runQuery {
-// TODO: add alert for not filled in distance
+    // TODO: add alert for not filled in distance
     self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
     
     PFQuery *getQuery = [PFQuery queryWithClassName:classPost];

@@ -8,7 +8,7 @@
 #import <Parse/Parse.h>
 #import "Parse/Parse.h"
 #import <CoreLocation/CoreLocation.h>
-//@import GoogleMaps;
+@import GoogleMaps;
 
 NS_ASSUME_NONNULL_BEGIN
 

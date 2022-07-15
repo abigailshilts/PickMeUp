@@ -17,6 +17,8 @@
 
 @implementation PMEmbedTableViewController
 
+static const NSString *const kGoToDetailsSegue = @"goToDetails";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
@@ -27,8 +29,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:postCell forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
-
-//    cell.post = post;
     [cell setPost:post];
     
     return cell;
@@ -43,7 +43,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:goToDetails]){
+    if ([segue.identifier isEqualToString:kGoToDetailsSegue]){
         NSIndexPath *senderIndex = [self.tableView indexPathForCell: sender];
         UINavigationController *navigationVC = [segue destinationViewController];
         PMDetailsViewController *displayVC = navigationVC.topViewController;

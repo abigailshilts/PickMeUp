@@ -13,7 +13,6 @@ static const NSString *const classPost = @"Post";
 static const NSString *const clientKey = @"clientKey";
 static const NSString *const empt = @"";
 static const NSString *const errMsg = @"Error: %@";
-static const NSString *const goToDetails = @"goToDetails";
 static const NSString *const ipng = @"image.png";
 static const NSString *const keyAuthor = @"author";
 static const NSString *const keyCurLoc = @"curLoc";

@@ -48,9 +48,9 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (self.isSport == NO){
-        [self.delegate didRecieveIntensity:self.intensity[row]];
+        [self.delegate didReceiveIntensity:self.intensity[row]];
     } else {
-        [self.delegate didRecieveSport:self.sport[row]];
+        [self.delegate didReceiveSport:self.sport[row]];
     }
 
 }

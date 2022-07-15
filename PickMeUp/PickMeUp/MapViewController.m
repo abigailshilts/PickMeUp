@@ -23,9 +23,9 @@ static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
 - (void)loadView {
     [super loadView];
     // creates mapview
-    float lat = self.pointToSet.coordinate.latitude;
+    float latitude = self.pointToSet.coordinate.latitude;
     float longitude = self.pointToSet.coordinate.longitude;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat longitude:longitude zoom:12];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latitude longitude:longitude zoom:12];
     _mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.view = _mapView;
     _mapView.delegate = self;
@@ -50,7 +50,7 @@ static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    //segues to details view when marler is selected
+    //segues to details view when marker is selected
     [_mapView animateToLocation:marker.position];
     self.tappedPost = marker.userData;
     [self performSegueWithIdentifier:kShowMarkerSegue sender:nil];
@@ -64,7 +64,6 @@ static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
     PMDetailsViewController *displayVC = navigationVC.topViewController;
     Post *post = self.tappedPost;
     displayVC.post = post;
-    
 }
 
 

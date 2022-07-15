@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4816D503287FA34700DC4B52 /* DirectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D502287FA34700DC4B52 /* DirectMessage.m */; };
 		4816D5062880875900DC4B52 /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D5052880875900DC4B52 /* ConversationViewController.m */; };
+		487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B2288099C10026C1E5 /* PMDMCell.m */; };
+		487D95B62880A3710026C1E5 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* Conversation.m */; };
 		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
 		4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7528777CFB0099EE62 /* PMPostCell.m */; };
 		4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF7728777DF70099EE62 /* CoreLocation.framework */; };
@@ -62,6 +64,10 @@
 		4816D502287FA34700DC4B52 /* DirectMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DirectMessage.m; sourceTree = "<group>"; };
 		4816D5042880875900DC4B52 /* ConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConversationViewController.h; path = PickMeUp/ConversationViewController.h; sourceTree = SOURCE_ROOT; };
 		4816D5052880875900DC4B52 /* ConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConversationViewController.m; path = PickMeUp/ConversationViewController.m; sourceTree = SOURCE_ROOT; };
+		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/PMDMCell.h; sourceTree = SOURCE_ROOT; };
+		487D95B2288099C10026C1E5 /* PMDMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDMCell.m; path = PickMeUp/PMDMCell.m; sourceTree = SOURCE_ROOT; };
+		487D95B42880A3710026C1E5 /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
+		487D95B52880A3710026C1E5 /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
 		4882CF71287656720099EE62 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		4882CF72287656720099EE62 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		4882CF7428777CFB0099EE62 /* PMPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPostCell.h; sourceTree = "<group>"; };
@@ -181,10 +187,14 @@
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
 				4882CF71287656720099EE62 /* Post.h */,
 				4882CF72287656720099EE62 /* Post.m */,
-				4882CF7428777CFB0099EE62 /* PMPostCell.h */,
-				4882CF7528777CFB0099EE62 /* PMPostCell.m */,
 				4816D501287FA34700DC4B52 /* DirectMessage.h */,
 				4816D502287FA34700DC4B52 /* DirectMessage.m */,
+				4882CF7428777CFB0099EE62 /* PMPostCell.h */,
+				4882CF7528777CFB0099EE62 /* PMPostCell.m */,
+				487D95B1288099C10026C1E5 /* PMDMCell.h */,
+				487D95B2288099C10026C1E5 /* PMDMCell.m */,
+				487D95B42880A3710026C1E5 /* Conversation.h */,
+				487D95B52880A3710026C1E5 /* Conversation.m */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -550,6 +560,7 @@
 				48ACE5112874FBC9000EA3B6 /* PMMyPostsViewController.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
 				48ACE50C2874C195000EA3B6 /* PMResultsViewController.m in Sources */,
+				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
 				48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
 				4882CF812878ECF00099EE62 /* PMEmbedTableViewController.m in Sources */,
@@ -558,6 +569,7 @@
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */,
 				4816D503287FA34700DC4B52 /* DirectMessage.m in Sources */,
+				487D95B62880A3710026C1E5 /* Conversation.m in Sources */,
 				4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */,
 				48ACE514287609C7000EA3B6 /* PMCreatePostViewController.m in Sources */,
 				48BB822D287F2F8E00080921 /* MapViewController.m in Sources */,

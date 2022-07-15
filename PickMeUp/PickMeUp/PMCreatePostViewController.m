@@ -42,9 +42,6 @@ static const NSString *const chooseSportView = @"chooseSportView";
     self.groupBio.delegate = self;
     self.groupWhen.delegate = self;
     self.groupWhere.delegate = self;
-
-
-
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

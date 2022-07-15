@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol PickerViewControllerDelegate
--(void)didRecieveSport:(NSString *)sport;
--(void)didRecieveIntensity:(NSString *)intensity;
+-(void)didReceiveSport:(NSString *)sport;
+-(void)didReceiveIntensity:(NSString *)intensity;
 @end
 
 @interface PMPickerViewController : UIViewController
