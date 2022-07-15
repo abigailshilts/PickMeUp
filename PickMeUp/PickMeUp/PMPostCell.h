@@ -5,8 +5,9 @@
 //  Created by Abigail Shilts on 7/7/22.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "Post.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

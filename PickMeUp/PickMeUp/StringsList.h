@@ -11,6 +11,8 @@
 static const NSString *const appID = @"appId";
 static const NSString *const classPost = @"Post";
 static const NSString *const clientKey = @"clientKey";
+static const NSString *const conversation = @"Conversation";
+static const NSString *const directMessage = @"DirectMessage";
 static const NSString *const empt = @"";
 static const NSString *const errMsg = @"Error: %@";
 static const NSString *const ipng = @"image.png";
@@ -31,5 +33,7 @@ static const NSString *const serverLink = @"https://parseapi.back4app.com";
 static const NSString *const strInput = @"%@";
 static const NSString *const upAny = @"Any";
 static const NSString *const userRegSuccess = @"User registered successfully";
+static const NSString *const user1 = @"user1";
+static const NSString *const user2 = @"user2";
 
 #endif /* StringsList_h */

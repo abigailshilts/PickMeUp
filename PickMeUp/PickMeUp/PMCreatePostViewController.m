@@ -50,11 +50,11 @@ static const NSString *const chooseSportView = @"chooseSportView";
 }
 
 // delegate methods for recieving picker info
--(void)didRecieveSport:(NSString *)sport {
+-(void)didReceiveSport:(NSString *)sport {
     self.groupSport = sport;
 }
 
--(void)didRecieveIntensity:(NSString *)intensity {
+-(void)didReceiveIntensity:(NSString *)intensity {
     self.groupIntensity = intensity;
 }
 
