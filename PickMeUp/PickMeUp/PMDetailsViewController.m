@@ -7,8 +7,8 @@
 
 #import "PMDetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "ConversationViewController.h"
-#import "Conversation.h"
+#import "PMConversationViewController.h"
+#import "PMConversation.h"
 #import "Parse/Parse.h"
 #import "StringsList.h"
 
@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bio;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (strong, nonatomic) Conversation *convo;
+@property (strong, nonatomic) PMConversation *convo;
 
 @end
 
@@ -42,18 +42,18 @@ static const NSString *const kShowDMSegue = @"showDM";
     
 }
 - (IBAction)didTapDM:(id)sender {
-    PFQuery *getQuery = [PFQuery queryWithClassName:conversation];
+    PFQuery *getQuery = [PFQuery queryWithClassName:kConversationClassName];
     PFUser *currentUser = [PFUser currentUser];
     PFUser *author = self.post.author;
     [self.post.author fetchIfNeeded];
     NSComparisonResult result = [currentUser.username compare:author.username];
     if (result == NSOrderedAscending) {
-        [getQuery whereKey:user1 equalTo:PFUser.currentUser];
-        [getQuery whereKey:user2 equalTo:self.post.author];
+        [getQuery whereKey:kUser1Key equalTo:PFUser.currentUser];
+        [getQuery whereKey:kUser2Key equalTo:self.post.author];
     }
     else {
-        [getQuery whereKey:user2 equalTo:PFUser.currentUser];
-        [getQuery whereKey:user1 equalTo:self.post.author];
+        [getQuery whereKey:kUser2Key equalTo:PFUser.currentUser];
+        [getQuery whereKey:kUser1Key equalTo:self.post.author];
     }
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
         if (convos != nil) {
@@ -65,7 +65,7 @@ static const NSString *const kShowDMSegue = @"showDM";
             }
             [self performSegueWithIdentifier:kShowDMSegue sender:nil];
         } else {
-            NSLog(strInput, error.localizedDescription);
+            NSLog(kStrInput, error.localizedDescription);
             //TODO: add user popup
         }
     }];
@@ -80,8 +80,8 @@ static const NSString *const kShowDMSegue = @"showDM";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *navigationVC = [segue destinationViewController];
-    ConversationViewController *convoVC = navigationVC.topViewController;
-    convoVC.reciever = self.post.author;
+    PMConversationViewController *convoVC = navigationVC.topViewController;
+    convoVC.receiver = self.post.author;
     convoVC.convo = self.convo;
 }
 

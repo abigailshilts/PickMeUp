@@ -30,8 +30,8 @@
 
 @implementation PMCreatePostViewController
 
-static const NSString *const chooseIntensityView = @"chooseIntensityView";
-static const NSString *const chooseSportView = @"chooseSportView";
+static const NSString *const kChooseIntensityViewSegue = @"chooseIntensityView";
+static const NSString *const kChooseSportViewSegue = @"chooseSportView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,7 +107,7 @@ static const NSString *const chooseSportView = @"chooseSportView";
     [geocoder geocodeAddressString:self.groupWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             //TODO: add error for invlaid address
-            NSLog(errMsg, [error localizedDescription]);
+            NSLog(kErrMsgString, [error localizedDescription]);
             return;
         }
         
@@ -125,7 +125,7 @@ static const NSString *const chooseSportView = @"chooseSportView";
                 if (error != nil){
                     //TODO: add popup
                 } else {
-                    NSLog(postedSuccess);
+                    NSLog(kPostedSuccessString);
                 }
             }];
         }
@@ -141,13 +141,13 @@ static const NSString *const chooseSportView = @"chooseSportView";
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:chooseSportView]) {
+    if ([segue.identifier isEqualToString:kChooseSportViewSegue]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = YES;
         childViewController.delegate = self;
     }
     
-    if ([segue.identifier isEqualToString:chooseIntensityView]) {
+    if ([segue.identifier isEqualToString:kChooseIntensityViewSegue]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = NO;
         childViewController.delegate = self;

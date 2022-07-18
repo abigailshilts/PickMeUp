@@ -18,15 +18,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSString *path = [[NSBundle mainBundle] pathForResource:keys ofType:plist];
+    NSString *path = [[NSBundle mainBundle] pathForResource:kKeysString ofType:kPlistTitle];
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
-    NSString *key = [dict objectForKey:appID];
-    NSString *secret = [dict objectForKey:clientKey];
+    NSString *key = [dict objectForKey:kAppIDString];
+    NSString *secret = [dict objectForKey:kClientKey];
     NSString *maps = [dict objectForKey:@"mapsKey"];
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
         configuration.applicationId = key;
         configuration.clientKey = secret;
-        configuration.server = serverLink;
+        configuration.server = kServerLink;
     }];
     [GMSServices provideAPIKey:maps];
     [Parse initializeWithConfiguration:config];

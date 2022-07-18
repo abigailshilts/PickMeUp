@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4816D503287FA34700DC4B52 /* DirectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D502287FA34700DC4B52 /* DirectMessage.m */; };
-		4816D5062880875900DC4B52 /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D5052880875900DC4B52 /* ConversationViewController.m */; };
+		4816D503287FA34700DC4B52 /* PMDirectMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D502287FA34700DC4B52 /* PMDirectMessage.m */; };
+		4816D5062880875900DC4B52 /* PMConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4816D5052880875900DC4B52 /* PMConversationViewController.m */; };
+		4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */; };
+		4876A984288226E800C175B8 /* PMDisplayConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */; };
 		487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B2288099C10026C1E5 /* PMDMCell.m */; };
-		487D95B62880A3710026C1E5 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* Conversation.m */; };
+		487D95B62880A3710026C1E5 /* PMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* PMConversation.m */; };
 		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
 		4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7528777CFB0099EE62 /* PMPostCell.m */; };
 		4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF7728777DF70099EE62 /* CoreLocation.framework */; };
@@ -35,7 +37,7 @@
 		48ACE50E2874D278000EA3B6 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE50D2874D278000EA3B6 /* keys.plist */; };
 		48ACE5112874FBC9000EA3B6 /* PMMyPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */; };
 		48ACE514287609C7000EA3B6 /* PMCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */; };
-		48BB822D287F2F8E00080921 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB822C287F2F8E00080921 /* MapViewController.m */; };
+		48BB822D287F2F8E00080921 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48BB822C287F2F8E00080921 /* PMMapViewController.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -60,14 +62,18 @@
 /* Begin PBXFileReference section */
 		22E4ED2B143D2657D97A8A51 /* Pods-PickMeUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUpTests.release.xcconfig"; path = "Target Support Files/Pods-PickMeUpTests/Pods-PickMeUpTests.release.xcconfig"; sourceTree = "<group>"; };
 		2BA6570351DC1D9483337B83 /* Pods-PickMeUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUpTests/Pods-PickMeUpTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4816D501287FA34700DC4B52 /* DirectMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DirectMessage.h; sourceTree = "<group>"; };
-		4816D502287FA34700DC4B52 /* DirectMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DirectMessage.m; sourceTree = "<group>"; };
-		4816D5042880875900DC4B52 /* ConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ConversationViewController.h; path = PickMeUp/ConversationViewController.h; sourceTree = SOURCE_ROOT; };
-		4816D5052880875900DC4B52 /* ConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ConversationViewController.m; path = PickMeUp/ConversationViewController.m; sourceTree = SOURCE_ROOT; };
+		4816D501287FA34700DC4B52 /* PMDirectMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDirectMessage.h; sourceTree = "<group>"; };
+		4816D502287FA34700DC4B52 /* PMDirectMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDirectMessage.m; sourceTree = "<group>"; };
+		4816D5042880875900DC4B52 /* PMConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMConversationViewController.h; path = PickMeUp/PMConversationViewController.h; sourceTree = SOURCE_ROOT; };
+		4816D5052880875900DC4B52 /* PMConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMConversationViewController.m; path = PickMeUp/PMConversationViewController.m; sourceTree = SOURCE_ROOT; };
+		4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDisplayConversationsCell.h; sourceTree = "<group>"; };
+		4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDisplayConversationsCell.m; sourceTree = "<group>"; };
+		4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDisplayConversationsViewController.h; path = PickMeUp/PMDisplayConversationsViewController.h; sourceTree = SOURCE_ROOT; };
+		4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDisplayConversationsViewController.m; path = PickMeUp/PMDisplayConversationsViewController.m; sourceTree = SOURCE_ROOT; };
 		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/PMDMCell.h; sourceTree = SOURCE_ROOT; };
 		487D95B2288099C10026C1E5 /* PMDMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDMCell.m; path = PickMeUp/PMDMCell.m; sourceTree = SOURCE_ROOT; };
-		487D95B42880A3710026C1E5 /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
-		487D95B52880A3710026C1E5 /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
+		487D95B42880A3710026C1E5 /* PMConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMConversation.h; sourceTree = "<group>"; };
+		487D95B52880A3710026C1E5 /* PMConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMConversation.m; sourceTree = "<group>"; };
 		4882CF71287656720099EE62 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		4882CF72287656720099EE62 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		4882CF7428777CFB0099EE62 /* PMPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPostCell.h; sourceTree = "<group>"; };
@@ -110,8 +116,8 @@
 		48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMyPostsViewController.m; path = PickMeUp/PMMyPostsViewController.m; sourceTree = SOURCE_ROOT; };
 		48ACE512287609C7000EA3B6 /* PMCreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMCreatePostViewController.h; path = PickMeUp/PMCreatePostViewController.h; sourceTree = SOURCE_ROOT; };
 		48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMCreatePostViewController.m; path = PickMeUp/PMCreatePostViewController.m; sourceTree = SOURCE_ROOT; };
-		48BB822B287F2F8E00080921 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = PickMeUp/MapViewController.h; sourceTree = SOURCE_ROOT; };
-		48BB822C287F2F8E00080921 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = PickMeUp/MapViewController.m; sourceTree = SOURCE_ROOT; };
+		48BB822B287F2F8E00080921 /* PMMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMMapViewController.h; path = PickMeUp/PMMapViewController.h; sourceTree = SOURCE_ROOT; };
+		48BB822C287F2F8E00080921 /* PMMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMapViewController.m; path = PickMeUp/PMMapViewController.m; sourceTree = SOURCE_ROOT; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,14 +193,16 @@
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
 				4882CF71287656720099EE62 /* Post.h */,
 				4882CF72287656720099EE62 /* Post.m */,
-				4816D501287FA34700DC4B52 /* DirectMessage.h */,
-				4816D502287FA34700DC4B52 /* DirectMessage.m */,
+				4816D501287FA34700DC4B52 /* PMDirectMessage.h */,
+				4816D502287FA34700DC4B52 /* PMDirectMessage.m */,
 				4882CF7428777CFB0099EE62 /* PMPostCell.h */,
 				4882CF7528777CFB0099EE62 /* PMPostCell.m */,
 				487D95B1288099C10026C1E5 /* PMDMCell.h */,
 				487D95B2288099C10026C1E5 /* PMDMCell.m */,
-				487D95B42880A3710026C1E5 /* Conversation.h */,
-				487D95B52880A3710026C1E5 /* Conversation.m */,
+				487D95B42880A3710026C1E5 /* PMConversation.h */,
+				487D95B52880A3710026C1E5 /* PMConversation.m */,
+				4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */,
+				4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -248,10 +256,12 @@
 				4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */,
 				4882CF7F2878ECF00099EE62 /* PMEmbedTableViewController.h */,
 				4882CF802878ECF00099EE62 /* PMEmbedTableViewController.m */,
-				48BB822B287F2F8E00080921 /* MapViewController.h */,
-				48BB822C287F2F8E00080921 /* MapViewController.m */,
-				4816D5042880875900DC4B52 /* ConversationViewController.h */,
-				4816D5052880875900DC4B52 /* ConversationViewController.m */,
+				48BB822B287F2F8E00080921 /* PMMapViewController.h */,
+				48BB822C287F2F8E00080921 /* PMMapViewController.m */,
+				4816D5042880875900DC4B52 /* PMConversationViewController.h */,
+				4816D5052880875900DC4B52 /* PMConversationViewController.m */,
+				4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */,
+				4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -568,12 +578,14 @@
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */,
-				4816D503287FA34700DC4B52 /* DirectMessage.m in Sources */,
-				487D95B62880A3710026C1E5 /* Conversation.m in Sources */,
+				4816D503287FA34700DC4B52 /* PMDirectMessage.m in Sources */,
+				487D95B62880A3710026C1E5 /* PMConversation.m in Sources */,
 				4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */,
 				48ACE514287609C7000EA3B6 /* PMCreatePostViewController.m in Sources */,
-				48BB822D287F2F8E00080921 /* MapViewController.m in Sources */,
-				4816D5062880875900DC4B52 /* ConversationViewController.m in Sources */,
+				48BB822D287F2F8E00080921 /* PMMapViewController.m in Sources */,
+				4876A984288226E800C175B8 /* PMDisplayConversationsViewController.m in Sources */,
+				4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */,
+				4816D5062880875900DC4B52 /* PMConversationViewController.m in Sources */,
 				48ACE5092874B92C000EA3B6 /* PMSearchViewController.m in Sources */,
 				48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */,
 			);

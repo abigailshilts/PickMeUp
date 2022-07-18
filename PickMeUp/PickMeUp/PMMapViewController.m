@@ -5,16 +5,16 @@
 //  Created by Abigail Shilts on 7/13/22.
 //
 
-#import "MapViewController.h"
+#import "PMMapViewController.h"
 #import "PMDetailsViewController.h"
 #import "StringsList.h"
 @import GoogleMaps;
 
-@interface MapViewController () <GMSMapViewDelegate>
+@interface PMMapViewController () <GMSMapViewDelegate>
 @property (nonatomic, strong) Post *tappedPost;
 @end
 
-@implementation MapViewController {
+@implementation PMMapViewController {
     GMSMapView *_mapView;
 }
 

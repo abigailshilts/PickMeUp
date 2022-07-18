@@ -8,32 +8,32 @@
 #ifndef StringsList_h
 #define StringsList_h
 
-static const NSString *const appID = @"appId";
-static const NSString *const classPost = @"Post";
-static const NSString *const clientKey = @"clientKey";
-static const NSString *const conversation = @"Conversation";
-static const NSString *const directMessage = @"DirectMessage";
-static const NSString *const empt = @"";
-static const NSString *const errMsg = @"Error: %@";
-static const NSString *const ipng = @"image.png";
-static const NSString *const keyAuthor = @"author";
-static const NSString *const keyCurLoc = @"curLoc";
-static const NSString *const keyIntensity = @"intensity";
-static const NSString *const keyLowAny = @"any";
-static const NSString *const keySport = @"sport";
-static const NSString *const keys = @"keys";
-static const NSString *const logViewController = @"LoginViewController";
-static const NSString *const mainStr = @"Main";
-static const NSString *const missingFields = @"Missing field(s)";
-static const NSString *const okStr = @"OK";
-static const NSString *const plist = @"plist";
-static const NSString *const postCell = @"postCell";
-static const NSString *const postedSuccess = @"posted photo!";
-static const NSString *const serverLink = @"https://parseapi.back4app.com";
-static const NSString *const strInput = @"%@";
-static const NSString *const upAny = @"Any";
-static const NSString *const userRegSuccess = @"User registered successfully";
-static const NSString *const user1 = @"user1";
-static const NSString *const user2 = @"user2";
+static const NSString *const kAppIDString = @"appId";
+static const NSString *const kPostClassName = @"Post";
+static const NSString *const kClientKey = @"clientKey";
+static const NSString *const kConversationClassName = @"Conversation";
+static const NSString *const kDirectMessageClassName = @"DirectMessage";
+static const NSString *const kEmpt = @"";
+static const NSString *const kErrMsgString = @"Error: %@";
+static const NSString *const kIpngString = @"image.png";
+static const NSString *const kAuthorKey = @"author";
+static const NSString *const kCurLocKey = @"curLoc";
+static const NSString *const kIntensityKey = @"intensity";
+static const NSString *const kLowAnyKey = @"any";
+static const NSString *const kSportKey = @"sport";
+static const NSString *const kKeysString = @"keys";
+static const NSString *const kLogViewControllerClassName = @"LoginViewController";
+static const NSString *const kMainString = @"Main";
+static const NSString *const kMissingFieldsString = @"Missing field(s)";
+static const NSString *const kOkString = @"OK";
+static const NSString *const kPlistTitle = @"plist";
+static const NSString *const kPostCellClassName = @"postCell";
+static const NSString *const kPostedSuccessString = @"posted photo!";
+static const NSString *const kServerLink = @"https://parseapi.back4app.com";
+static const NSString *const kStrInput = @"%@";
+static const NSString *const kUpAnyString = @"Any";
+static const NSString *const kUserRegSuccessString = @"User registered successfully";
+static const NSString *const kUser1Key = @"user1";
+static const NSString *const kUser2Key = @"user2";
 
 #endif /* StringsList_h */

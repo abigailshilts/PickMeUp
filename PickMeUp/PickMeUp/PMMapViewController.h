@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MapViewController : UIViewController
+@interface PMMapViewController : UIViewController
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
 @property int distance;
 @property (strong, nonatomic) CLLocation *pointToSet;

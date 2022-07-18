@@ -8,7 +8,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PMDetailsViewController.h"
 #import "PMEmbedTableViewController.h"
-#import "MapViewController.h"
+#import "PMMapViewController.h"
 #import "PMPostCell.h"
 #import "PMResultsViewController.h"
 #import "StringsList.h"
@@ -19,7 +19,7 @@
 @implementation PMResultsViewController
 
 static const NSString *const kGoToMapSegue = @"goToMap";
-static const NSString *const getResults = @"getResults";
+static const NSString *const kGetResultsSegue = @"getResults";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,14 +36,14 @@ static const NSString *const getResults = @"getResults";
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:getResults]) {
+    if ([segue.identifier isEqualToString:kGetResultsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
     }
     
     if ([segue.identifier isEqualToString:kGoToMapSegue]) {
         UINavigationController *navigationVC = [segue destinationViewController];
-        MapViewController *mapVC = navigationVC.topViewController;
+        PMMapViewController *mapVC = navigationVC.topViewController;
         mapVC.distance = self.distance;
         mapVC.pointToSet = self.pointToSet;
         mapVC.arrayOfPosts = self.arrayOfPosts;

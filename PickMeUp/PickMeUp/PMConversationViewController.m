@@ -5,33 +5,39 @@
 //  Created by Abigail Shilts on 7/14/22.
 //
 
-#import "ConversationViewController.h"
+#import "PMConversationViewController.h"
+#import "PMDirectMessage.h"
 #import "PMDMCell.h"
-#import "DirectMessage.h"
 #import "StringsList.h"
 
-@interface ConversationViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface PMConversationViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *recieverName;
 @property (strong, nonatomic) IBOutlet UITextView *messageToSend;
-@property (strong, nonatomic) NSMutableArray<DirectMessage *> *arrayOfDMs;
+@property (strong, nonatomic) IBOutlet UIButton *mybtn;
+@property (strong, nonatomic) NSMutableArray<PMDirectMessage *> *arrayOfDMs;
 @property BOOL noDMs;
 @end
 
-@implementation ConversationViewController
+@implementation PMConversationViewController
 
-static const NSString *const convoId = @"convoId";
-static const NSString *const cellIdentifier = @"DMCell";
-static const NSString *const postingErr = @"error on Post request";
+static const NSString *const kConvoIdKey = @"convoId";
+static const NSString *const kCellIdentifier = @"DMCell";
+static const NSString *const kPostingErrString = @"error on Post request";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recieverName.text = self.reciever.username;
+    self.recieverName.text = self.receiver.username;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.messageToSend.delegate = self;
-    [self getQuery];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
+    [self runGetQuery];
+}
+
+- (void)onTimer {
+    [self runGetQuery];
 }
 
 - (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -43,27 +49,27 @@ static const NSString *const postingErr = @"error on Post request";
     return NO;
 }
 
--(void)getQuery {
+-(void)runGetQuery {
     // Populates DM array
     if (self.convo == nil) {
         self.noDMs = YES;
     } else {
         self.noDMs = NO;
-        PFQuery *getQuery = [PFQuery queryWithClassName:directMessage];
-        [getQuery whereKey:convoId equalTo:self.convo.objectId];
+        PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
+        [getQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
         [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
             if (DMs != nil) {
                 self.arrayOfDMs = DMs;
                 [self.tableView reloadData];
             } else {
-                NSLog(strInput, error.localizedDescription);
+                NSLog(kStrInput, error.localizedDescription);
             }
         }];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PMDMCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    PMDMCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.content.text = self.arrayOfDMs[indexPath.row].content;
     return cell;
 }
@@ -74,28 +80,30 @@ static const NSString *const postingErr = @"error on Post request";
 
 -(void)saveDM {
     // posts DM to database and refreshes the table
-    DirectMessage *newDM = [DirectMessage new];
+    self.mybtn.enabled = NO;
+    PMDirectMessage *newDM = [PMDirectMessage new];
     newDM.content = self.messageToSend.text;
     newDM.convoId = self.convo.objectId;
     [newDM postDM:^(BOOL succeeded, NSError * _Nullable error) {
         if (error != nil){
-            NSLog(postingErr);
+            NSLog(kPostingErrString);
         } else {
-            [self getQuery];
+            [self runGetQuery];
             [self.tableView reloadData];
 
         }
-        self.messageToSend.text = empt;
+        self.messageToSend.text = kEmpt;
     }];
 }
 
 - (IBAction)didTapSend:(id)sender {
     // posts convo if needed and makes call to function to save DM
     if (self.noDMs == YES){
-        Conversation *newConvo = [Conversation new];
-        [newConvo postConvo:PFUser.currentUser otherUser:self.reciever withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        PMConversation *newConvo = [PMConversation new];
+        [newConvo postConvo:PFUser.currentUser
+                  otherUser:self.receiver withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
-                NSLog(postingErr);
+                NSLog(kPostingErrString);
             } else {
                 self.noDMs = NO;
                 self.convo = newConvo;
