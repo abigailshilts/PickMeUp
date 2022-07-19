@@ -10,6 +10,7 @@ target 'PickMeUp' do
   pod 'AFNetworking'
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
+  pod 'ParseLiveQuery'
   
   target 'PickMeUpTests' do
     inherit! :search_paths

@@ -64,14 +64,14 @@
 		2BA6570351DC1D9483337B83 /* Pods-PickMeUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUpTests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUpTests/Pods-PickMeUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4816D501287FA34700DC4B52 /* PMDirectMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDirectMessage.h; sourceTree = "<group>"; };
 		4816D502287FA34700DC4B52 /* PMDirectMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDirectMessage.m; sourceTree = "<group>"; };
-		4816D5042880875900DC4B52 /* PMConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMConversationViewController.h; path = PickMeUp/PMConversationViewController.h; sourceTree = SOURCE_ROOT; };
-		4816D5052880875900DC4B52 /* PMConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMConversationViewController.m; path = PickMeUp/PMConversationViewController.m; sourceTree = SOURCE_ROOT; };
+		4816D5042880875900DC4B52 /* PMConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMConversationViewController.h; path = "PickMeUp/viewControllers/DM Features/PMConversationViewController.h"; sourceTree = SOURCE_ROOT; };
+		4816D5052880875900DC4B52 /* PMConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMConversationViewController.m; path = "PickMeUp/viewControllers/DM Features/PMConversationViewController.m"; sourceTree = SOURCE_ROOT; };
 		4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDisplayConversationsCell.h; sourceTree = "<group>"; };
 		4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDisplayConversationsCell.m; sourceTree = "<group>"; };
-		4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDisplayConversationsViewController.h; path = PickMeUp/PMDisplayConversationsViewController.h; sourceTree = SOURCE_ROOT; };
-		4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDisplayConversationsViewController.m; path = PickMeUp/PMDisplayConversationsViewController.m; sourceTree = SOURCE_ROOT; };
-		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/PMDMCell.h; sourceTree = SOURCE_ROOT; };
-		487D95B2288099C10026C1E5 /* PMDMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDMCell.m; path = PickMeUp/PMDMCell.m; sourceTree = SOURCE_ROOT; };
+		4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDisplayConversationsViewController.h; path = "PickMeUp/viewControllers/DM Features/PMDisplayConversationsViewController.h"; sourceTree = SOURCE_ROOT; };
+		4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDisplayConversationsViewController.m; path = "PickMeUp/viewControllers/DM Features/PMDisplayConversationsViewController.m"; sourceTree = SOURCE_ROOT; };
+		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/Cells/PMDMCell.h; sourceTree = SOURCE_ROOT; };
+		487D95B2288099C10026C1E5 /* PMDMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDMCell.m; path = PickMeUp/Cells/PMDMCell.m; sourceTree = SOURCE_ROOT; };
 		487D95B42880A3710026C1E5 /* PMConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMConversation.h; sourceTree = "<group>"; };
 		487D95B52880A3710026C1E5 /* PMConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMConversation.m; sourceTree = "<group>"; };
 		4882CF71287656720099EE62 /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -79,8 +79,8 @@
 		4882CF7428777CFB0099EE62 /* PMPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPostCell.h; sourceTree = "<group>"; };
 		4882CF7528777CFB0099EE62 /* PMPostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPostCell.m; sourceTree = "<group>"; };
 		4882CF7728777DF70099EE62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4882CF792877A5D80099EE62 /* PMDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDetailsViewController.h; path = PickMeUp/PMDetailsViewController.h; sourceTree = SOURCE_ROOT; };
-		4882CF7A2877A5D80099EE62 /* PMDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDetailsViewController.m; path = PickMeUp/PMDetailsViewController.m; sourceTree = SOURCE_ROOT; };
+		4882CF792877A5D80099EE62 /* PMDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDetailsViewController.h; path = "PickMeUp/viewControllers/Search features/PMDetailsViewController.h"; sourceTree = SOURCE_ROOT; };
+		4882CF7A2877A5D80099EE62 /* PMDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMDetailsViewController.m; path = "PickMeUp/viewControllers/Search features/PMDetailsViewController.m"; sourceTree = SOURCE_ROOT; };
 		4882CF7C2878D68B0099EE62 /* PMPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMPickerViewController.h; path = PickMeUp/PMPickerViewController.h; sourceTree = SOURCE_ROOT; };
 		4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMPickerViewController.m; path = PickMeUp/PMPickerViewController.m; sourceTree = SOURCE_ROOT; };
 		4882CF7F2878ECF00099EE62 /* PMEmbedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMEmbedTableViewController.h; path = PickMeUp/PMEmbedTableViewController.h; sourceTree = SOURCE_ROOT; };
@@ -102,22 +102,22 @@
 		48ACE4E92874A6D1000EA3B6 /* PickMeUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickMeUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITests.m; sourceTree = "<group>"; };
 		48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITestsLaunchTests.m; sourceTree = "<group>"; };
-		48ACE5002874AFA4000EA3B6 /* PMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMLoginViewController.h; path = PickMeUp/PMLoginViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMLoginViewController.m; path = PickMeUp/PMLoginViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE5002874AFA4000EA3B6 /* PMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMLoginViewController.h; path = PickMeUp/viewControllers/UserAuth/PMLoginViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMLoginViewController.m; path = PickMeUp/viewControllers/UserAuth/PMLoginViewController.m; sourceTree = SOURCE_ROOT; };
 		48ACE5032874B188000EA3B6 /* StringsList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringsList.h; sourceTree = "<group>"; };
-		48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSignUpViewController.h; path = PickMeUp/PMSignUpViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSignUpViewController.m; path = PickMeUp/PMSignUpViewController.m; sourceTree = SOURCE_ROOT; };
-		48ACE5072874B92C000EA3B6 /* PMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSearchViewController.h; path = PickMeUp/PMSearchViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE5082874B92C000EA3B6 /* PMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSearchViewController.m; path = PickMeUp/PMSearchViewController.m; sourceTree = SOURCE_ROOT; };
-		48ACE50A2874C195000EA3B6 /* PMResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMResultsViewController.h; path = PickMeUp/PMResultsViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE50B2874C195000EA3B6 /* PMResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMResultsViewController.m; path = PickMeUp/PMResultsViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSignUpViewController.h; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.h; sourceTree = SOURCE_ROOT; };
+		48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSignUpViewController.m; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE5072874B92C000EA3B6 /* PMSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSearchViewController.h; path = "PickMeUp/viewControllers/Search features/PMSearchViewController.h"; sourceTree = SOURCE_ROOT; };
+		48ACE5082874B92C000EA3B6 /* PMSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSearchViewController.m; path = "PickMeUp/viewControllers/Search features/PMSearchViewController.m"; sourceTree = SOURCE_ROOT; };
+		48ACE50A2874C195000EA3B6 /* PMResultsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMResultsViewController.h; path = "PickMeUp/viewControllers/Search features/PMResultsViewController.h"; sourceTree = SOURCE_ROOT; };
+		48ACE50B2874C195000EA3B6 /* PMResultsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMResultsViewController.m; path = "PickMeUp/viewControllers/Search features/PMResultsViewController.m"; sourceTree = SOURCE_ROOT; };
 		48ACE50D2874D278000EA3B6 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
-		48ACE50F2874FBC9000EA3B6 /* PMMyPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMMyPostsViewController.h; path = PickMeUp/PMMyPostsViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMyPostsViewController.m; path = PickMeUp/PMMyPostsViewController.m; sourceTree = SOURCE_ROOT; };
-		48ACE512287609C7000EA3B6 /* PMCreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMCreatePostViewController.h; path = PickMeUp/PMCreatePostViewController.h; sourceTree = SOURCE_ROOT; };
-		48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMCreatePostViewController.m; path = PickMeUp/PMCreatePostViewController.m; sourceTree = SOURCE_ROOT; };
-		48BB822B287F2F8E00080921 /* PMMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMMapViewController.h; path = PickMeUp/PMMapViewController.h; sourceTree = SOURCE_ROOT; };
-		48BB822C287F2F8E00080921 /* PMMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMapViewController.m; path = PickMeUp/PMMapViewController.m; sourceTree = SOURCE_ROOT; };
+		48ACE50F2874FBC9000EA3B6 /* PMMyPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMMyPostsViewController.h; path = "PickMeUp/viewControllers/Posting features/PMMyPostsViewController.h"; sourceTree = SOURCE_ROOT; };
+		48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMyPostsViewController.m; path = "PickMeUp/viewControllers/Posting features/PMMyPostsViewController.m"; sourceTree = SOURCE_ROOT; };
+		48ACE512287609C7000EA3B6 /* PMCreatePostViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMCreatePostViewController.h; path = "PickMeUp/viewControllers/Posting features/PMCreatePostViewController.h"; sourceTree = SOURCE_ROOT; };
+		48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMCreatePostViewController.m; path = "PickMeUp/viewControllers/Posting features/PMCreatePostViewController.m"; sourceTree = SOURCE_ROOT; };
+		48BB822B287F2F8E00080921 /* PMMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMMapViewController.h; path = "PickMeUp/viewControllers/Search features/PMMapViewController.h"; sourceTree = SOURCE_ROOT; };
+		48BB822C287F2F8E00080921 /* PMMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMMapViewController.m; path = "PickMeUp/viewControllers/Search features/PMMapViewController.m"; sourceTree = SOURCE_ROOT; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +157,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4876A985288627F900C175B8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4882CF7428777CFB0099EE62 /* PMPostCell.h */,
+				4882CF7528777CFB0099EE62 /* PMPostCell.m */,
+				487D95B1288099C10026C1E5 /* PMDMCell.h */,
+				487D95B2288099C10026C1E5 /* PMDMCell.m */,
+				4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */,
+				4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4876A9862886284100C175B8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4882CF71287656720099EE62 /* Post.h */,
+				4882CF72287656720099EE62 /* Post.m */,
+				4816D501287FA34700DC4B52 /* PMDirectMessage.h */,
+				4816D502287FA34700DC4B52 /* PMDirectMessage.m */,
+				487D95B42880A3710026C1E5 /* PMConversation.h */,
+				487D95B52880A3710026C1E5 /* PMConversation.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4876A9872886288000C175B8 /* UserAuth */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE5002874AFA4000EA3B6 /* PMLoginViewController.h */,
+				48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */,
+				48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */,
+				48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */,
+			);
+			path = UserAuth;
+			sourceTree = "<group>";
+		};
+		4876A9882886289D00C175B8 /* Search features */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE5072874B92C000EA3B6 /* PMSearchViewController.h */,
+				48ACE5082874B92C000EA3B6 /* PMSearchViewController.m */,
+				48ACE50A2874C195000EA3B6 /* PMResultsViewController.h */,
+				48ACE50B2874C195000EA3B6 /* PMResultsViewController.m */,
+				4882CF792877A5D80099EE62 /* PMDetailsViewController.h */,
+				4882CF7A2877A5D80099EE62 /* PMDetailsViewController.m */,
+				48BB822B287F2F8E00080921 /* PMMapViewController.h */,
+				48BB822C287F2F8E00080921 /* PMMapViewController.m */,
+			);
+			path = "Search features";
+			sourceTree = "<group>";
+		};
+		4876A989288628D000C175B8 /* Posting features */ = {
+			isa = PBXGroup;
+			children = (
+				48ACE50F2874FBC9000EA3B6 /* PMMyPostsViewController.h */,
+				48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */,
+				48ACE512287609C7000EA3B6 /* PMCreatePostViewController.h */,
+				48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */,
+			);
+			path = "Posting features";
+			sourceTree = "<group>";
+		};
+		4876A98A288628F400C175B8 /* DM Features */ = {
+			isa = PBXGroup;
+			children = (
+				4816D5042880875900DC4B52 /* PMConversationViewController.h */,
+				4816D5052880875900DC4B52 /* PMConversationViewController.m */,
+				4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */,
+				4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */,
+			);
+			path = "DM Features";
+			sourceTree = "<group>";
+		};
 		48ACE4BB2874A6D0000EA3B6 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +256,8 @@
 		48ACE4C62874A6D0000EA3B6 /* PickMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				4876A9862886284100C175B8 /* Model */,
+				4876A985288627F900C175B8 /* Cells */,
 				48ACE4FD2874A71B000EA3B6 /* viewControllers */,
 				48ACE4FC2874A705000EA3B6 /* delegates */,
 				48ACE4D02874A6D0000EA3B6 /* Main.storyboard */,
@@ -189,20 +265,8 @@
 				48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */,
 				48ACE4D82874A6D1000EA3B6 /* Info.plist */,
 				48ACE4D92874A6D1000EA3B6 /* main.m */,
-				48ACE5032874B188000EA3B6 /* StringsList.h */,
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
-				4882CF71287656720099EE62 /* Post.h */,
-				4882CF72287656720099EE62 /* Post.m */,
-				4816D501287FA34700DC4B52 /* PMDirectMessage.h */,
-				4816D502287FA34700DC4B52 /* PMDirectMessage.m */,
-				4882CF7428777CFB0099EE62 /* PMPostCell.h */,
-				4882CF7528777CFB0099EE62 /* PMPostCell.m */,
-				487D95B1288099C10026C1E5 /* PMDMCell.h */,
-				487D95B2288099C10026C1E5 /* PMDMCell.m */,
-				487D95B42880A3710026C1E5 /* PMConversation.h */,
-				487D95B52880A3710026C1E5 /* PMConversation.m */,
-				4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */,
-				4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */,
+				48ACE5032874B188000EA3B6 /* StringsList.h */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -238,30 +302,14 @@
 		48ACE4FD2874A71B000EA3B6 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				48ACE5002874AFA4000EA3B6 /* PMLoginViewController.h */,
-				48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */,
-				48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */,
-				48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */,
-				48ACE5072874B92C000EA3B6 /* PMSearchViewController.h */,
-				48ACE5082874B92C000EA3B6 /* PMSearchViewController.m */,
-				48ACE50A2874C195000EA3B6 /* PMResultsViewController.h */,
-				48ACE50B2874C195000EA3B6 /* PMResultsViewController.m */,
-				48ACE50F2874FBC9000EA3B6 /* PMMyPostsViewController.h */,
-				48ACE5102874FBC9000EA3B6 /* PMMyPostsViewController.m */,
-				48ACE512287609C7000EA3B6 /* PMCreatePostViewController.h */,
-				48ACE513287609C7000EA3B6 /* PMCreatePostViewController.m */,
-				4882CF792877A5D80099EE62 /* PMDetailsViewController.h */,
-				4882CF7A2877A5D80099EE62 /* PMDetailsViewController.m */,
+				4876A98A288628F400C175B8 /* DM Features */,
+				4876A989288628D000C175B8 /* Posting features */,
+				4876A9872886288000C175B8 /* UserAuth */,
+				4876A9882886289D00C175B8 /* Search features */,
 				4882CF7C2878D68B0099EE62 /* PMPickerViewController.h */,
 				4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */,
 				4882CF7F2878ECF00099EE62 /* PMEmbedTableViewController.h */,
 				4882CF802878ECF00099EE62 /* PMEmbedTableViewController.m */,
-				48BB822B287F2F8E00080921 /* PMMapViewController.h */,
-				48BB822C287F2F8E00080921 /* PMMapViewController.m */,
-				4816D5042880875900DC4B52 /* PMConversationViewController.h */,
-				4816D5052880875900DC4B52 /* PMConversationViewController.m */,
-				4876A982288226E800C175B8 /* PMDisplayConversationsViewController.h */,
-				4876A983288226E800C175B8 /* PMDisplayConversationsViewController.m */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";

@@ -461,8 +461,8 @@
                     <navigationItem key="navigationItem" id="aHZ-1L-D0I"/>
                     <connections>
                         <outlet property="messageToSend" destination="TDG-fh-bWC" id="Pwl-sr-hh0"/>
-                        <outlet property="mybtn" destination="qLb-El-ejf" id="u4n-97-YzZ"/>
-                        <outlet property="recieverName" destination="16Q-aP-1qa" id="e05-T0-Fga"/>
+                        <outlet property="receiverName" destination="16Q-aP-1qa" id="e05-T0-Fga"/>
+                        <outlet property="sendBtn" destination="qLb-El-ejf" id="u4n-97-YzZ"/>
                         <outlet property="tableView" destination="ZH8-dN-zO0" id="RaB-WP-8Rq"/>
                     </connections>
                 </viewController>
