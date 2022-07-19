@@ -5,10 +5,10 @@
 //  Created by Abigail Shilts on 7/13/22.
 //
 
-#import "DirectMessage.h"
+#import "PMDirectMessage.h"
 #import "Parse/Parse.h"
 
-@implementation DirectMessage
+@implementation PMDirectMessage
 @dynamic content;
 @dynamic convoId;
 

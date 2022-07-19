@@ -1,13 +1,13 @@
 //
-//  PMDMCell.m
+//  DisplayConversationsCell.m
 //  PickMeUp
 //
-//  Created by Abigail Shilts on 7/14/22.
+//  Created by Abigail Shilts on 7/15/22.
 //
 
-#import "PMDMCell.h"
+#import "PMDisplayConversationsCell.h"
 
-@implementation PMDMCell
+@implementation PMDisplayConversationsCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

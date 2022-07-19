@@ -27,8 +27,8 @@ static const NSString *const kGetMyPostsSegue = @"getMyPosts";
 }
 
 -(void)runQuery {
-    PFQuery *getQuery = [PFQuery queryWithClassName:classPost];
-    [getQuery whereKey:keyAuthor equalTo:PFUser.currentUser];
+    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
+    [getQuery whereKey:kAuthorKey equalTo:PFUser.currentUser];
     self.arrayOfPosts = [getQuery findObjects];
 }
 

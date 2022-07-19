@@ -31,8 +31,8 @@
 @implementation PMSearchViewController
 
 static const NSString *const kGoToFeedSegue = @"goToFeed";
-static const NSString *const sportView = @"sportView";
-static const NSString *const intensityView = @"intensityView";
+static const NSString *const kSportViewSegue = @"sportView";
+static const NSString *const kIntensityViewSegue = @"intensityView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,9 +58,9 @@ static const NSString *const intensityView = @"intensityView";
     // Sends to login screen
     SceneDelegate *mySceneDelegate = (SceneDelegate * )
         UIApplication.sharedApplication.connectedScenes.allObjects.firstObject.delegate;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:mainStr bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainString bundle:nil];
     UIViewController *loginViewController =
-        [storyboard instantiateViewControllerWithIdentifier:logViewController];
+        [storyboard instantiateViewControllerWithIdentifier:kLogViewControllerClassName];
     mySceneDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil){
@@ -88,17 +88,17 @@ static const NSString *const intensityView = @"intensityView";
     // TODO: add alert for not filled in distance
     self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
     
-    PFQuery *getQuery = [PFQuery queryWithClassName:classPost];
+    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
     
     // builds query
-    [getQuery whereKey:keyCurLoc nearGeoPoint:self.curLoc withinMiles:[self.distance intValue]];
-    if (![self.groupSport isEqualToString:upAny]){
-        [getQuery whereKey:keySport equalTo:self.groupSport];
+    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:[self.distance intValue]];
+    if (![self.groupSport isEqualToString:kUpAnyString]){
+        [getQuery whereKey:kSportKey equalTo:self.groupSport];
     }
-    if (![self.groupIntensity isEqualToString:keyLowAny]){
-        [getQuery whereKey:keyIntensity equalTo:self.groupIntensity];
+    if (![self.groupIntensity isEqualToString:kLowAnyKey]){
+        [getQuery whereKey:kIntensityKey equalTo:self.groupIntensity];
     }
-    [getQuery orderByDescending:keyCurLoc];
+    [getQuery orderByDescending:kCurLocKey];
     getQuery.limit = 20;
     // TODO: infinite scroll
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -106,7 +106,7 @@ static const NSString *const intensityView = @"intensityView";
             self.arrayOfPosts = posts;
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
-            NSLog(strInput, error.localizedDescription);
+            NSLog(kStrInput, error.localizedDescription);
             //TODO: add user popup
         }
     }];
@@ -122,16 +122,16 @@ static const NSString *const intensityView = @"intensityView";
         tableVC.arrayOfPosts = self.arrayOfPosts;
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
-        NSLog(strInput, self.distance);
+        NSLog(kStrInput, self.distance);
     }
     
-    if ([segue.identifier isEqualToString:sportView]) {
+    if ([segue.identifier isEqualToString:kSportViewSegue]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = YES;
         childViewController.delegate = self;
     }
     
-    if ([segue.identifier isEqualToString:intensityView]) {
+    if ([segue.identifier isEqualToString:kIntensityViewSegue]) {
         PMPickerViewController *childViewController = (PMPickerViewController *) [segue destinationViewController];
         childViewController.isSport = NO;
         childViewController.delegate = self;

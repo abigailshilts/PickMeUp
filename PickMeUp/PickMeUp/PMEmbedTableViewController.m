@@ -27,7 +27,7 @@ static const NSString *const kGoToDetailsSegue = @"goToDetails";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:postCell forIndexPath:indexPath];
+    PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:kPostCellClassName forIndexPath:indexPath];
     Post *post = self.arrayOfPosts[indexPath.row];
     [cell setPost:post];
     

@@ -18,14 +18,14 @@
 
 @implementation PMSignUpViewController
 
-static const NSString *const signingupRequiresAll = @"Signing up requires all fields to be filled";
+static const NSString *const kSigningupRequiresAllString = @"Signing up requires all fields to be filled";
 static const NSString *const kSignUpToSearchSegue = @"signUpToSearch";
 
 - (void)registerUser {
     // Pop up alert to ensure user enters all fields
-    if ([self.insertedUsername.text isEqual:empt] || [self.insertedPassword.text isEqual:empt] || [self.insertedEmail.text isEqual:empt]){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:missingFields message:signingupRequiresAll preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:okStr style:UIAlertActionStyleDefault
+    if ([self.insertedUsername.text isEqual:kEmpt] || [self.insertedPassword.text isEqual:kEmpt] || [self.insertedEmail.text isEqual:kEmpt]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:kMissingFieldsString message:kSigningupRequiresAllString preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
             handler:^(UIAlertAction * _Nonnull action) {}];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:^{}];
@@ -40,10 +40,10 @@ static const NSString *const kSignUpToSearchSegue = @"signUpToSearch";
     
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
-            NSLog(errMsg, error.localizedDescription);
+            NSLog(kErrMsgString, error.localizedDescription);
             // TODO: add alert probs user already exists
         } else {
-            NSLog(userRegSuccess);
+            NSLog(kUserRegSuccessString);
             [self performSegueWithIdentifier:kSignUpToSearchSegue sender:nil];
         }
     }];

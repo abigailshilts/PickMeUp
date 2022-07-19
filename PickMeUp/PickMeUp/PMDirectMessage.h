@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DirectMessage : PFObject<PFSubclassing>
+@interface PMDirectMessage : PFObject<PFSubclassing>
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *convoId;
 - (void)postDM: (PFBooleanResultBlock  _Nullable)completion;

@@ -4,9 +4,8 @@
 //
 //  Created by Abigail Shilts on 7/6/22.
 //
-
-#import "Post.h"
 #import "Parse/Parse.h"
+#import "Post.h"
 #import "StringsList.h"
 
 @implementation Post
@@ -26,7 +25,7 @@
 @dynamic convoRecipients;
 
 + (nonnull NSString *)parseClassName {
-    return classPost;
+    return kPostClassName;
 }
 
 - (void)postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
@@ -48,7 +47,7 @@
         return nil;
     }
 
-    return [PFFileObject fileObjectWithName:ipng data:imageData];
+    return [PFFileObject fileObjectWithName:kIpngString data:imageData];
 }
 
 @end
