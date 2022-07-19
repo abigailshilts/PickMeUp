@@ -32,6 +32,9 @@
 
 static const NSString *const kChooseIntensityViewSegue = @"chooseIntensityView";
 static const NSString *const kChooseSportViewSegue = @"chooseSportView";
+static const NSString *const kErrPostingImgString = @"Error Posting Photo";
+static const NSString *const kErrPostingImgMessage =
+    @"There appears to be an error savin this post, check your internet and try again";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,7 +126,11 @@ static const NSString *const kChooseSportViewSegue = @"chooseSportView";
             
             [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error != nil){
-                    //TODO: add popup
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrPostingImgString message:kErrPostingImgMessage preferredStyle:(UIAlertControllerStyleAlert)];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+                        handler:^(UIAlertAction * _Nonnull action) {}];
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{}];
                 } else {
                     NSLog(kPostedSuccessString);
                 }

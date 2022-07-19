@@ -4,7 +4,7 @@
 //
 //  Created by Abigail Shilts on 7/14/22.
 //
-
+#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import "Parse/Parse.h"
 #import "ParseLiveQuery/ParseLiveQuery-umbrella.h"
 #import "PMConversationViewController.h"
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *receiverName;
 @property (strong, nonatomic) IBOutlet UITextView *messageToSend;
 @property (strong, nonatomic) IBOutlet UIButton *sendBtn;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray<PMDirectMessage *> *arrayOfDMs;
 @property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
 @property (nonatomic, strong) PFQuery *msgQuery;
@@ -30,6 +31,16 @@ static const NSString *const kConvoIdKey = @"convoId";
 static const NSString *const kCellIdentifier = @"DMCell";
 static const NSString *const kPostingErrString = @"error on Post request";
 static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
+static const NSString *const kErrCreateConvoString = @"Creating Conversation Error";
+static const NSString *const kErrCreateConvoMessage =
+    @"There appears to be an error with saving this conversation, check your internet and try again";
+static const NSString *const kErrCreateDMString = @"Creating Message Error";
+static const NSString *const kErrCreateDMMessage =
+    @"There appears to be an error with saving this message, check your internet and try again";
+static const NSString *const kErrQueryForDMString = @"Error Retrieving Messages";
+static const NSString *const kErrQueryForDMMessage =
+    @"There appears to be an error retreiving this conversation, check your internet and try again";
+static const NSString *const kCreatedAtKey = @"createdAt";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +50,26 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.messageToSend.delegate = self;
     
+    if (self.convo != nil) {
+        [self _finishCreatingLiveQuery];
+    }
+    
+    [self _runGetQuery];
+    // creates bottom refresh control
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    refreshControl.triggerVerticalOffset = 100.;
+    [refreshControl addTarget:self action:@selector(_runGetQuery) forControlEvents:UIControlEventValueChanged];
+    self.tableView.bottomRefreshControl = refreshControl;}
+
+-(void)_createPopUp:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * _Nonnull action) {}];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:^{}];
+}
+
+-(void)_finishCreatingLiveQuery {
     [self _createLiveQueryObj];
     self.msgQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
     [self.msgQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
@@ -46,10 +77,20 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
     __weak typeof(self) weakSelf = self;
     [self.subscription addCreateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
         __strong typeof(self) strongSelf = weakSelf;
-        [self.arrayOfDMs addObject:(PMDirectMessage *)object];
-        dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [strongSelf.arrayOfDMs addObject:(PMDirectMessage *)object];
+            [strongSelf.tableView reloadData];
+        });
     }];
-    [self _runGetQuery];
+}
+
+-(void)_createLiveQueryObj {
+    NSString *path = [[NSBundle mainBundle] pathForResource:kKeysString ofType:kPlistTitle];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *key = [dict objectForKey:kAppIDString];
+    NSString *secret = [dict objectForKey:kClientKey];
+
+    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:kLiveQueryURL applicationId:key clientKey:secret];
 }
 
 - (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -61,15 +102,6 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
     return NO;
 }
 
--(void)_createLiveQueryObj {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kKeysString ofType:kPlistTitle];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile: path];
-    NSString *key = [dict objectForKey:kAppIDString];
-    NSString *secret = [dict objectForKey:kClientKey];
-
-    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:kLiveQueryURL applicationId:key clientKey:secret];
-}
-
 -(void)_runGetQuery {
     // Populates DM array
     if (self.convo == nil) {
@@ -78,34 +110,46 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
         self.noDMs = NO;
         PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
         [getQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
+        getQuery.limit = 30;
+        [getQuery orderByDescending:kCreatedAtKey];
+        if (self.arrayOfDMs != nil) {
+            getQuery.skip = self.arrayOfDMs.count;
+        }
         [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
             if (DMs != nil) {
-                self.arrayOfDMs = DMs;
+                if (self.arrayOfDMs == nil){
+                    self.arrayOfDMs = DMs;
+                } else {
+                    self.arrayOfDMs = [self.arrayOfDMs arrayByAddingObjectsFromArray:DMs];
+                }
                 [self.tableView reloadData];
             } else {
-                NSLog(kStrInput, error.localizedDescription);
+                [self _createPopUp:kErrQueryForDMString message:kErrQueryForDMMessage];
             }
+            [self.tableView.bottomRefreshControl endRefreshing];
         }];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMDMCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-    [cell prepareForReuse];
     PMDirectMessage *currDM = self.arrayOfDMs[indexPath.row];
     PFUser *sender = [currDM.sender fetchIfNeeded];
     cell.content.text = currDM.content;
-    if ([sender.username isEqual:PFUser.currentUser.username]){
-        cell.content.textAlignment=NSTextAlignmentRight;
-    } else {
-        cell.content.backgroundColor = [UIColor systemMintColor];
-    }
+    [cell configureWithUser:sender];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfDMs.count;
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+//    forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.row == (self.arrayOfDMs.count - 2)){
+//        [self _runGetQuery];
+//    }
+//}
 
 -(void)_saveDM {
     // posts DM to database and refreshes the table
@@ -115,10 +159,11 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
     newDM.sender = PFUser.currentUser;
     [newDM postDM:^(BOOL succeeded, NSError * _Nullable error) {
         if (error != nil){
-            NSLog(kPostingErrString);
-        } else {
-            [self _runGetQuery];
+            [self _createPopUp:kErrCreateDMString message:kErrCreateDMMessage];
         }
+//        else {
+//            [self _runGetQuery];
+//        }
         self.messageToSend.text = kEmpt;
         self.sendBtn.enabled = YES;
     }];
@@ -132,11 +177,12 @@ static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
         [newConvo postConvo:PFUser.currentUser
                   otherUser:self.receiver withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
-                NSLog(kPostingErrString);
+                [self _createPopUp:kErrCreateConvoString message:kErrCreateConvoMessage];
             } else {
                 self.noDMs = NO;
                 self.convo = newConvo;
                 [self _saveDM];
+                [self _finishCreatingLiveQuery];
             }
         }];
     } else {

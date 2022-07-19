@@ -38,12 +38,22 @@ static const NSString *const kConvoCell = @"convoCell";
     PFQuery *user2 = [PFQuery queryWithClassName:kConversationClassName];
     [user2 whereKey:kUser2Key equalTo:self.currentUser];
     PFQuery *toQuery = [PFQuery orQueryWithSubqueries:@[user1, user2]];
+    toQuery.limit = 30;
+    toQuery.skip = self.arrayOfConversations.count;
     [toQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
         if (convos != nil) {
-            self.arrayOfConversations = convos;
+            if (self.arrayOfConversations == nil) {
+                self.arrayOfConversations = convos;
+            } else {
+                [self.arrayOfConversations arrayByAddingObjectsFromArray:convos];
+            }
             [self.tableView reloadData];
         } else {
-            // TODO: add error handling
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrConvoQueryString message:kErrConvoQuerryMessage preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+                handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:^{}];
         }
     }];
 }
@@ -65,6 +75,13 @@ static const NSString *const kConvoCell = @"convoCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.arrayOfConversations.count;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == (self.arrayOfConversations.count - 2)){
+        [self _runGetQuery];
+    }
 }
 
 

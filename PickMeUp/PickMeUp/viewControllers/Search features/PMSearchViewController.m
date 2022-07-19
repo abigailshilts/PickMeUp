@@ -33,6 +33,11 @@
 static const NSString *const kGoToFeedSegue = @"goToFeed";
 static const NSString *const kSportViewSegue = @"sportView";
 static const NSString *const kIntensityViewSegue = @"intensityView";
+static const NSString *const kErrLogOutString = @"Error Loging Out";
+static const NSString *const kErrLogOutMessage = @"Please try again";
+static const NSString *const kErrQueryPostsString = @"Error Loading Posts";
+static const NSString *const kErrQueryPostsMessage =
+    @"Please check your internet and make sure all choices have been filled and try again";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +48,14 @@ static const NSString *const kIntensityViewSegue = @"intensityView";
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     self.distanceChoice.delegate = self;
+}
+
+-(void)_createPopUp:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * _Nonnull action) {}];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:^{}];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -64,7 +77,7 @@ static const NSString *const kIntensityViewSegue = @"intensityView";
     mySceneDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil){
-            // TODO: add alert
+            [self _createPopUp:kErrLogOutString message:kErrLogOutMessage];
         }
     }];
 }
@@ -81,11 +94,10 @@ static const NSString *const kIntensityViewSegue = @"intensityView";
 - (IBAction)didTapGo:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.distance = self.distanceChoice.text;
-    [self runQuery];
+    [self _runQuery];
 }
 
-- (void)runQuery {
-    // TODO: add alert for not filled in distance
+- (void)_runQuery {
     self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
     
     PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
@@ -100,14 +112,12 @@ static const NSString *const kIntensityViewSegue = @"intensityView";
     }
     [getQuery orderByDescending:kCurLocKey];
     getQuery.limit = 20;
-    // TODO: infinite scroll
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
-            NSLog(kStrInput, error.localizedDescription);
-            //TODO: add user popup
+            [self _createPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
         }
     }];
 }

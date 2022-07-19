@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PMDMCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *content;
 -(void)prepareForReuse;
+-(void)configureWithUser:(PFUser *)sender;
 @end
 
 NS_ASSUME_NONNULL_END

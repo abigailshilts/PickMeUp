@@ -64,8 +64,11 @@ static const NSString *const kShowDMSegue = @"showDM";
             }
             [self performSegueWithIdentifier:kShowDMSegue sender:nil];
         } else {
-            NSLog(kStrInput, error.localizedDescription);
-            //TODO: add user popup
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrConvoQueryString message:kErrConvoQuerryMessage preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+                handler:^(UIAlertAction * _Nonnull action) {}];
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:^{}];
         }
     }];
 
