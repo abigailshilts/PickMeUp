@@ -458,7 +458,19 @@
                         <viewLayoutGuide key="safeArea" id="Ezg-HI-99a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aHZ-1L-D0I"/>
+                    <navigationItem key="navigationItem" id="aHZ-1L-D0I">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Pgy-vT-P45">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GYF-VZ-zWB">
+                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="didTapBack:" destination="Gdd-wR-fzs" eventType="touchUpInside" id="tEJ-ZS-fd7"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="messageToSend" destination="TDG-fh-bWC" id="Pwl-sr-hh0"/>
                         <outlet property="receiverName" destination="16Q-aP-1qa" id="e05-T0-Fga"/>

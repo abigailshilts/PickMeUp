@@ -34,9 +34,9 @@ static const NSString *const kConvoCell = @"convoCell";
     // Populates conversation array
     // builds query to search for currentUser in either user1 or user2
     PFQuery *user1 = [PFQuery queryWithClassName:kConversationClassName];
-    [user1 whereKey:kUser1Key equalTo:self.currentUser];
+    [user1 whereKey:kSenderKey equalTo:self.currentUser];
     PFQuery *user2 = [PFQuery queryWithClassName:kConversationClassName];
-    [user2 whereKey:kUser2Key equalTo:self.currentUser];
+    [user2 whereKey:kReceiverKey equalTo:self.currentUser];
     PFQuery *toQuery = [PFQuery orQueryWithSubqueries:@[user1, user2]];
     toQuery.limit = 30;
     toQuery.skip = self.arrayOfConversations.count;
@@ -62,10 +62,10 @@ static const NSString *const kConvoCell = @"convoCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMDisplayConversationsCell *cell = [tableView dequeueReusableCellWithIdentifier:kConvoCell forIndexPath:indexPath];
     PMConversation *conversation = self.arrayOfConversations[indexPath.row];
-    if ([conversation.user1.objectId isEqual:self.currentUser.objectId]) {
-        self.receiver = conversation.user2;
+    if ([conversation.sender.objectId isEqual:self.currentUser.objectId]) {
+        self.receiver = conversation.receiver;
     } else {
-        self.receiver = conversation.user1;
+        self.receiver = conversation.sender;
     }
     [self.receiver fetchIfNeeded];
     cell.receiver.text = self.receiver.username;
@@ -93,11 +93,7 @@ static const NSString *const kConvoCell = @"convoCell";
     PMConversationViewController *convoVC = navigationVC.topViewController;
     PMConversation *convo = self.arrayOfConversations[senderIndex.row];
     convoVC.convo = convo;
-    if ([convo.user1.objectId isEqual:self.currentUser.objectId]) {
-        convoVC.receiver = convo.user2;
-    } else {
-        convoVC.receiver = convo.user1;
-    }
+    convoVC.receiver = self.receiver;
 }
 
 
