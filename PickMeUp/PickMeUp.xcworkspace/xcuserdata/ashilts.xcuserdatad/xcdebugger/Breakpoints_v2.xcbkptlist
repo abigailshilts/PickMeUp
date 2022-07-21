@@ -948,5 +948,194 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A479CCF1-8BDE-489D-8EBC-D8168EEFF818"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-testWhenEmpty"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-testWithOneAlphabetically"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F - 93a3571ba7cf7981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMNodeTests testWithOneAlphabetically]"
+                  moduleName = "PickMeUpTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashilts/Documents/GitHub/PickMeUp/PickMeUp/PickMeUpTests/PMNodeTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F - 93a3571ba7cf7981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMNodeTests testWithOneAlphabetically]"
+                  moduleName = "PickMeUpTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashilts/Documents/GitHub/PickMeUp/PickMeUp/PickMeUpTests/PMNodeTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F - 93a3571ba7cf7981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMNodeTests testWithOneAlphabetically]"
+                  moduleName = "PickMeUpTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashilts/Documents/GitHub/PickMeUp/PickMeUp/PickMeUpTests/PMNodeTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "936">
+               </Location>
+               <Location
+                  uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F - 93a3571ba7cf7981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMNodeTests testWithOneAlphabetically]"
+                  moduleName = "PickMeUpTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashilts/Documents/GitHub/PickMeUp/PickMeUp/PickMeUpTests/PMNodeTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1368">
+               </Location>
+               <Location
+                  uuid = "3E3978F8-1F8A-4FB6-8563-7FBCCFBA3A2F - 93a3571ba7cf7981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PMNodeTests testWithOneAlphabetically]"
+                  moduleName = "PickMeUpTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashilts/Documents/GitHub/PickMeUp/PickMeUp/PickMeUpTests/PMNodeTests.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF479A19-AA42-4204-AE7C-9B8631626017"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-testWithOneAlphabetically"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C27334EF-CD94-4BB4-AA84-AE97361A22D5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-testWithOneNonAlphabetically"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "08616A10-8AFA-46CE-B9F7-ED135CEB68AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-testWithOneNonAlphabetically"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B73FD1EA-CCCF-42DA-984A-BDF6EA5A306B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-testWithOneAlphabetically"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEE3E4B8-E4DF-4EBA-A1A5-C78A3B91A670"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PickMeUpTests/PMNodeTests.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-testWithTwoInMiddle"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
