@@ -99,7 +99,7 @@
 }
 
 // tests traverse method when the desired node is one level below
-- (void)testRetrievingOneLevelDeep {
+- (void)testRetreivingOneLevelDeep {
     PMNode *firstToFind = [self.testTree.rootNode getChildren][0];
     PMNode *secondToFind = [self.testTree.rootNode getChildren][2];
     
@@ -109,7 +109,7 @@
 }
 
 // tests traverse method when the desired node is four levels below
-- (void)testRetrievingFourLevelsDeep {
+- (void)testRetreivingFourLevelsDeep {
     PMNode *thirdLevel = [[[self.testTree.rootNode getChildren][1] getChildren][0] getChildren][1];
     PMNode *firstToFind = [thirdLevel getChildren][0];
     PMNode *secondToFind = [thirdLevel getChildren][1];
@@ -120,7 +120,7 @@
 }
 
 // tests traverse method when the desired node is leftmost node (also tests for finding the leftmost child)
-- (void)testRetrievingLeftMost {
+- (void)testRetreivingLeftMost {
     PMNode *secondLevel = [[self.testTree.rootNode getChildren][0] getChildren][0];
     PMNode *toFind = [secondLevel getChildren][0];
     
@@ -131,7 +131,7 @@
 * tests traverse method when the desired node is rightmost node
 * (also tests for finding the rightmost child and when it is the only one in array)
 */
-- (void)testRetrievingFourRightMost {
+- (void)testRetreivingFourRightMost {
     PMNode *firstLevel = [self.testTree.rootNode getChildren][3];
     PMNode *toFind = [firstLevel getChildren][0];
     
@@ -139,7 +139,7 @@
 }
 
 // tests traverse method when the desired node is in the middle of an array
-- (void)testRetrievingMiddle {
+- (void)testRetreivingMiddle {
     PMNode *firstLevel = [self.testTree.rootNode getChildren][1];
     PMNode *toFind = [firstLevel getChildren][1];
     
@@ -147,7 +147,7 @@
 }
 
 // tests traverse method when the desired node is not in tree
-- (void)testRetrievingNonExistant {
+- (void)testRetreivingNonExistant {
     PMNode *secondLevel = [[self.testTree.rootNode getChildren][0] getChildren][0];
     PMNode *toFindFirst = [secondLevel getChildren][0];
     
@@ -158,5 +158,9 @@
     XCTAssertEqualObjects([self.testTree traverseToNode:@"efghi" withstartNode:self.testTree.rootNode], toFindSecond);
 }
 
+// tests traverse method when the desired node is the tree root
+- (void)testRetreivingRoot {
+    XCTAssertEqualObjects([self.testTree traverseToNode:@"" withstartNode:self.testTree.rootNode], self.testTree.rootNode);
+}
 
 @end
