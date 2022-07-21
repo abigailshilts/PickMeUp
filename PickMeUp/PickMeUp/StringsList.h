@@ -10,6 +10,9 @@
 
 static const NSString *const kAppIDString = @"appId";
 static const NSString *const kClientKey = @"clientKey";
+static const NSString *const kErrConvoQuerryMessage =
+@"There appears to be an error retreiving your conversations, check your internet and try again";
+static const NSString *const kErrConvoQueryString = @"Error Loading Conversations";
 static const NSString *const kEmpt = @"";
 static const NSString *const kErrMsgString = @"Error: %@";
 static const NSString *const kIpngString = @"image.png";
