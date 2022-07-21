@@ -25,8 +25,7 @@
         [self.children addObject:child];
     } else {
         // adds child to place in alphabetically sorted list
-        int i;
-        for (i = 0; i < self.children.count; i++) {
+        for (int i = 0; i < self.children.count; i++) {
             NSComparisonResult result = [child.prefix compare:self.children[i].prefix];
             if (result == NSOrderedAscending) {
                 [self.children insertObject:child atIndex:i];
