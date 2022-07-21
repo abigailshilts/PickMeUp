@@ -10,24 +10,14 @@
 #import "StringsList.h"
 
 @implementation PMConversation
-@dynamic user1;
-@dynamic user2;
+@dynamic sender;
+@dynamic receiver;
 
 + (nonnull NSString *)parseClassName {
     return kConversationClassName;
 }
 
-- (void)postConvo:(PFUser *)user otherUser:(PFUser *)otherUser
-   withCompletion: (PFBooleanResultBlock  _Nullable)completion {
-    NSComparisonResult result = [user.username compare:otherUser.username];
-    if (result == NSOrderedAscending) {
-        self.user1 = user;
-        self.user2 = otherUser;
-    } else {
-        self.user1 = otherUser;
-        self.user2 = user;
-    }
-    
+- (void)postConvo:(PFBooleanResultBlock  _Nullable)completion {
     [self saveInBackgroundWithBlock: completion];
 }
 

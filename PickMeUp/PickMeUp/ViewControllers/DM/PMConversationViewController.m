@@ -23,6 +23,9 @@
 @property (nonatomic, strong) PFQuery *msgQuery;
 @property (nonatomic, strong) PFLiveQuerySubscription *subscription;
 @property BOOL noDMs;
+@property NSInteger pageCount;
+@property int totalObjects;
+@property int pageObjectNum;
 @end
 
 @implementation PMConversationViewController
@@ -30,7 +33,7 @@
 static const NSString *const kConvoIdKey = @"convoId";
 static const NSString *const kCellIdentifier = @"DMCell";
 static const NSString *const kPostingErrString = @"error on Post request";
-static const NSString *const kLiveQueryURL = @"wss://pickmeup.b4a.io";
+static const NSString *const kLiveQueryURL = @"wss://pickmeup2.b4a.io";
 static const NSString *const kErrCreateConvoString = @"Creating Conversation Error";
 static const NSString *const kErrCreateConvoMessage =
     @"There appears to be an error with saving this conversation, check your internet and try again";
@@ -54,14 +57,18 @@ static const NSString *const kCreatedAtKey = @"createdAt";
         [self _finishCreatingLiveQuery];
     }
     
+    PFQuery *countQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
+    self.pageCount = 1;
+    self.totalObjects = [countQuery countObjects];
+    self.pageObjectNum = 30;
+    
     [self _runGetQuery];
-    // creates bottom refresh control
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-    refreshControl.triggerVerticalOffset = 100.;
-    [refreshControl addTarget:self action:@selector(_runGetQuery) forControlEvents:UIControlEventValueChanged];
-    self.tableView.bottomRefreshControl = refreshControl;}
+}
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
--(void)_createPopUp:(NSString *)title message:(NSString *)message {
+-(void)_presentPopUp:(NSString *)title message:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {}];
@@ -78,7 +85,8 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     [self.subscription addCreateHandler:^(PFQuery<PFObject *> * _Nonnull query, PFObject * _Nonnull object) {
         __strong typeof(self) strongSelf = weakSelf;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [strongSelf.arrayOfDMs addObject:(PMDirectMessage *)object];
+            [strongSelf.arrayOfDMs insertObject:(PMDirectMessage *)object atIndex:0];
+            strongSelf.totalObjects++;
             [strongSelf.tableView reloadData];
         });
     }];
@@ -110,23 +118,22 @@ static const NSString *const kCreatedAtKey = @"createdAt";
         self.noDMs = NO;
         PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
         [getQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
-        getQuery.limit = 30;
+        getQuery.limit = self.pageObjectNum;
         [getQuery orderByDescending:kCreatedAtKey];
         if (self.arrayOfDMs != nil) {
-            getQuery.skip = self.arrayOfDMs.count;
+            getQuery.skip = self.pageCount*self.pageObjectNum;
         }
         [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
             if (DMs != nil) {
                 if (self.arrayOfDMs == nil){
                     self.arrayOfDMs = DMs;
                 } else {
-                    self.arrayOfDMs = [self.arrayOfDMs arrayByAddingObjectsFromArray:DMs];
+                    [self.arrayOfDMs addObjectsFromArray:DMs];
                 }
                 [self.tableView reloadData];
             } else {
-                [self _createPopUp:kErrQueryForDMString message:kErrQueryForDMMessage];
+                [self _presentPopUp:kErrQueryForDMString message:kErrQueryForDMMessage];
             }
-            [self.tableView.bottomRefreshControl endRefreshing];
         }];
     }
 }
@@ -144,12 +151,16 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     return self.arrayOfDMs.count;
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
-//    forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.row == (self.arrayOfDMs.count - 2)){
-//        [self _runGetQuery];
-//    }
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
+    forRowAtIndexPath:(NSIndexPath *)indexPath {
+    int totalPages = (self.totalObjects + self.pageObjectNum)/self.pageObjectNum;
+    if (!(self.pageCount == totalPages)){
+        if (indexPath.row == self.arrayOfDMs.count-2){
+            [self _runGetQuery];
+            self.pageCount++;
+        }
+    }
+}
 
 -(void)_saveDM {
     // posts DM to database and refreshes the table
@@ -159,11 +170,8 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     newDM.sender = PFUser.currentUser;
     [newDM postDM:^(BOOL succeeded, NSError * _Nullable error) {
         if (error != nil){
-            [self _createPopUp:kErrCreateDMString message:kErrCreateDMMessage];
+            [self _presentPopUp:kErrCreateDMString message:kErrCreateDMMessage];
         }
-//        else {
-//            [self _runGetQuery];
-//        }
         self.messageToSend.text = kEmpt;
         self.sendBtn.enabled = YES;
     }];
@@ -174,10 +182,11 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     self.sendBtn.enabled = NO;
     if (self.noDMs == YES){
         PMConversation *newConvo = [PMConversation new];
-        [newConvo postConvo:PFUser.currentUser
-                  otherUser:self.receiver withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        newConvo.sender = PFUser.currentUser;
+        newConvo.receiver = self.receiver;
+        [newConvo postConvo:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
-                [self _createPopUp:kErrCreateConvoString message:kErrCreateConvoMessage];
+                [self _presentPopUp:kErrCreateConvoString message:kErrCreateConvoMessage];
             } else {
                 self.noDMs = NO;
                 self.convo = newConvo;

@@ -43,17 +43,10 @@ static const NSString *const kShowDMSegue = @"showDM";
 - (IBAction)didTapDM:(id)sender {
     PFQuery *getQuery = [PFQuery queryWithClassName:kConversationClassName];
     PFUser *currentUser = [PFUser currentUser];
-    PFUser *author = self.post.author;
     [self.post.author fetchIfNeeded];
-    NSComparisonResult result = [currentUser.username compare:author.username];
-    if (result == NSOrderedAscending) {
-        [getQuery whereKey:kUser1Key equalTo:PFUser.currentUser];
-        [getQuery whereKey:kUser2Key equalTo:self.post.author];
-    }
-    else {
-        [getQuery whereKey:kUser2Key equalTo:PFUser.currentUser];
-        [getQuery whereKey:kUser1Key equalTo:self.post.author];
-    }
+    PFUser *author = self.post.author;
+    [getQuery whereKey:kSenderKey equalTo:currentUser];
+    [getQuery whereKey:kReceiverKey equalTo:author];
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
         if (convos != nil) {
             if (convos.count > 0) {

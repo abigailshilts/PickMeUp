@@ -50,7 +50,7 @@ static const NSString *const kErrQueryPostsMessage =
     self.distanceChoice.delegate = self;
 }
 
--(void)_createPopUp:(NSString *)title message:(NSString *)message {
+-(void)_presentPopUp:(NSString *)title message:(NSString *)message {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
         handler:^(UIAlertAction * _Nonnull action) {}];
@@ -77,7 +77,7 @@ static const NSString *const kErrQueryPostsMessage =
     mySceneDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil){
-            [self _createPopUp:kErrLogOutString message:kErrLogOutMessage];
+            [self _presentPopUp:kErrLogOutString message:kErrLogOutMessage];
         }
     }];
 }
@@ -117,7 +117,7 @@ static const NSString *const kErrQueryPostsMessage =
             self.arrayOfPosts = posts;
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
-            [self _createPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
+            [self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
         }
     }];
 }
