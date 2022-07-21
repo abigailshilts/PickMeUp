@@ -154,7 +154,7 @@ static const NSString *const kCreatedAtKey = @"createdAt";
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath {
     int totalPages = (self.totalObjects + self.pageObjectNum)/self.pageObjectNum;
-    if (!(self.pageCount == totalPages)){
+    if (self.pageCount != totalPages){
         if (indexPath.row == self.arrayOfDMs.count-2){
             [self _runGetQuery];
             self.pageCount++;

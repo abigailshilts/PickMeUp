@@ -16,6 +16,8 @@
 		4873D5692888E85B00CEC056 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5632888E85B00CEC056 /* PMDetailsViewController.m */; };
 		4873D56A2888E85B00CEC056 /* PMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5642888E85B00CEC056 /* PMResultsViewController.m */; };
 		4873D56B2888E85B00CEC056 /* PMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5662888E85B00CEC056 /* PMSearchViewController.m */; };
+		4873D56E2889B3E100CEC056 /* PMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D56D2889B3E100CEC056 /* PMNode.m */; };
+		4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5702889C11900CEC056 /* PMNodeTests.m */; };
 		4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */; };
 		487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B2288099C10026C1E5 /* PMDMCell.m */; };
 		487D95B62880A3710026C1E5 /* PMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* PMConversation.m */; };
@@ -32,7 +34,6 @@
 		48ACE4D42874A6D1000EA3B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D32874A6D1000EA3B6 /* Assets.xcassets */; };
 		48ACE4D72874A6D1000EA3B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */; };
 		48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4D92874A6D1000EA3B6 /* main.m */; };
-		48ACE4E42874A6D1000EA3B6 /* PickMeUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */; };
 		48ACE4EE2874A6D1000EA3B6 /* PickMeUpUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */; };
 		48ACE4F02874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */; };
 		48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */; };
@@ -80,6 +81,9 @@
 		4873D5652888E85B00CEC056 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMapViewController.h; path = "../../../../../../../projects/Search features/PMMapViewController.h"; sourceTree = "<group>"; };
 		4873D5662888E85B00CEC056 /* PMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchViewController.m; path = "../../../../../../../projects/Search features/PMSearchViewController.m"; sourceTree = "<group>"; };
 		4873D5672888E85B00CEC056 /* PMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSearchViewController.h; path = "../../../../../../../projects/Search features/PMSearchViewController.h"; sourceTree = "<group>"; };
+		4873D56D2889B3E100CEC056 /* PMNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNode.m; sourceTree = "<group>"; };
+		4873D56F2889B3EB00CEC056 /* PMNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNode.h; sourceTree = "<group>"; };
+		4873D5702889C11900CEC056 /* PMNodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNodeTests.m; sourceTree = "<group>"; };
 		4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDisplayConversationsCell.h; sourceTree = "<group>"; };
 		4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDisplayConversationsCell.m; sourceTree = "<group>"; };
 		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/Cells/PMDMCell.h; sourceTree = SOURCE_ROOT; };
@@ -108,7 +112,6 @@
 		48ACE4D82874A6D1000EA3B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48ACE4D92874A6D1000EA3B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		48ACE4DF2874A6D1000EA3B6 /* PickMeUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickMeUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpTests.m; sourceTree = "<group>"; };
 		48ACE4E92874A6D1000EA3B6 /* PickMeUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PickMeUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4ED2874A6D1000EA3B6 /* PickMeUpUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITests.m; sourceTree = "<group>"; };
 		48ACE4EF2874A6D1000EA3B6 /* PickMeUpUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickMeUpUITestsLaunchTests.m; sourceTree = "<group>"; };
@@ -157,6 +160,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4873D56C2889B30F00CEC056 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				4873D56F2889B3EB00CEC056 /* PMNode.h */,
+				4873D56D2889B3E100CEC056 /* PMNode.m */,
+			);
+			path = DataStructure;
+			sourceTree = "<group>";
+		};
 		4876A985288627F900C175B8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +268,7 @@
 		48ACE4C62874A6D0000EA3B6 /* PickMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				4873D56C2889B30F00CEC056 /* DataStructure */,
 				4876A9862886284100C175B8 /* Model */,
 				4876A985288627F900C175B8 /* Cells */,
 				48ACE4FD2874A71B000EA3B6 /* ViewControllers */,
@@ -267,6 +280,7 @@
 				48ACE4D92874A6D1000EA3B6 /* main.m */,
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
 				48ACE5032874B188000EA3B6 /* StringsList.h */,
+				4876A989288628D000C175B8 /* Posting */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -274,7 +288,7 @@
 		48ACE4E22874A6D1000EA3B6 /* PickMeUpTests */ = {
 			isa = PBXGroup;
 			children = (
-				48ACE4E32874A6D1000EA3B6 /* PickMeUpTests.m */,
+				4873D5702889C11900CEC056 /* PMNodeTests.m */,
 			);
 			path = PickMeUpTests;
 			sourceTree = "<group>";
@@ -303,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				4876A98A288628F400C175B8 /* DM */,
-				4876A989288628D000C175B8 /* Posting */,
 				4876A9872886288000C175B8 /* UserAuth */,
 				4876A9882886289D00C175B8 /* Search */,
 				4882CF7C2878D68B0099EE62 /* PMPickerViewController.h */,
@@ -629,6 +642,7 @@
 				4873D56B2888E85B00CEC056 /* PMSearchViewController.m in Sources */,
 				4873D5682888E85B00CEC056 /* PMMapViewController.m in Sources */,
 				487D95B62880A3710026C1E5 /* PMConversation.m in Sources */,
+				4873D56E2889B3E100CEC056 /* PMNode.m in Sources */,
 				4873D5562888E7D100CEC056 /* PMConversationViewController.m in Sources */,
 				4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */,
 				4873D5692888E85B00CEC056 /* PMDetailsViewController.m in Sources */,
@@ -643,7 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48ACE4E42874A6D1000EA3B6 /* PickMeUpTests.m in Sources */,
+				4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
