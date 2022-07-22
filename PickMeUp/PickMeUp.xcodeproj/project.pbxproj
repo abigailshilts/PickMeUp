@@ -18,6 +18,8 @@
 		4873D56B2888E85B00CEC056 /* PMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5662888E85B00CEC056 /* PMSearchViewController.m */; };
 		4873D56E2889B3E100CEC056 /* PMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D56D2889B3E100CEC056 /* PMNode.m */; };
 		4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5702889C11900CEC056 /* PMNodeTests.m */; };
+		4873D5732889F77300CEC056 /* PMTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5722889F77300CEC056 /* PMTree.m */; };
+		4873D578288A099000CEC056 /* TreeTraverseMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */; };
 		4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */; };
 		487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B2288099C10026C1E5 /* PMDMCell.m */; };
 		487D95B62880A3710026C1E5 /* PMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* PMConversation.m */; };
@@ -84,6 +86,9 @@
 		4873D56D2889B3E100CEC056 /* PMNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNode.m; sourceTree = "<group>"; };
 		4873D56F2889B3EB00CEC056 /* PMNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNode.h; sourceTree = "<group>"; };
 		4873D5702889C11900CEC056 /* PMNodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNodeTests.m; sourceTree = "<group>"; };
+		4873D5722889F77300CEC056 /* PMTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMTree.m; sourceTree = "<group>"; };
+		4873D5742889F77D00CEC056 /* PMTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMTree.h; sourceTree = "<group>"; };
+		4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeTraverseMethodTests.m; sourceTree = "<group>"; };
 		4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDisplayConversationsCell.h; sourceTree = "<group>"; };
 		4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDisplayConversationsCell.m; sourceTree = "<group>"; };
 		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/Cells/PMDMCell.h; sourceTree = SOURCE_ROOT; };
@@ -165,6 +170,8 @@
 			children = (
 				4873D56F2889B3EB00CEC056 /* PMNode.h */,
 				4873D56D2889B3E100CEC056 /* PMNode.m */,
+				4873D5742889F77D00CEC056 /* PMTree.h */,
+				4873D5722889F77300CEC056 /* PMTree.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -280,7 +287,6 @@
 				48ACE4D92874A6D1000EA3B6 /* main.m */,
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
 				48ACE5032874B188000EA3B6 /* StringsList.h */,
-				4876A989288628D000C175B8 /* Posting */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				4873D5702889C11900CEC056 /* PMNodeTests.m */,
+				4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */,
 			);
 			path = PickMeUpTests;
 			sourceTree = "<group>";
@@ -316,6 +323,7 @@
 		48ACE4FD2874A71B000EA3B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4876A989288628D000C175B8 /* Posting */,
 				4876A98A288628F400C175B8 /* DM */,
 				4876A9872886288000C175B8 /* UserAuth */,
 				4876A9882886289D00C175B8 /* Search */,
@@ -628,6 +636,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4873D5732889F77300CEC056 /* PMTree.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
 				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
 				48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */,
@@ -657,6 +666,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4873D578288A099000CEC056 /* TreeTraverseMethodTests.m in Sources */,
 				4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
