@@ -9,15 +9,10 @@
 #import "PMNode.h"
 
 @interface PMNode ()
-@property (nonatomic, strong) PMConversation *payLoad;
 @property (nonatomic, strong) NSMutableArray<PMNode *> *children;
 @end
 
 @implementation PMNode
-
--(void)setPayLoad:(PMConversation *)convo {
-    self.payLoad = convo;
-}
 
 -(void)setChild:(PMNode *)child {
     if (self.children == nil){
@@ -36,10 +31,6 @@
             }
         }
     }
-}
-
--(PMConversation *)getPayLoad {
-    return self.payLoad;
 }
 
 -(NSArray<PMNode *> *)getChildren {

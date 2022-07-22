@@ -1,19 +1,20 @@
 //
-//  TreeTraverseMethodTests.m
+//  TreeAddNodeMethodTests.m
 //  PickMeUpTests
 //
-//  Created by Abigail Shilts on 7/21/22.
+//  Created by Abigail Shilts on 7/22/22.
 //
 
 #import <XCTest/XCTest.h>
 #import "PMNode.h"
 #import "PMTree.h"
+#import "PMConversation.h"
 
-@interface TreeTraverseMethodTests : XCTestCase
+@interface TreeAddNodeMethodTests : XCTestCase
 @property (nonatomic, strong) PMTree *testTree;
 @end
 
-@implementation TreeTraverseMethodTests
+@implementation TreeAddNodeMethodTests
 
 - (void)setUp {
     self.testTree = [PMTree new];
@@ -98,69 +99,48 @@
     [self.testTree.rootNode setChild:lengthOneFourth];
 }
 
-// tests traverse method when the desired node is one level below
-- (void)testRetreivingOneLevelDeep {
-    PMNode *firstToFind = [self.testTree.rootNode getChildren][0];
-    PMNode *secondToFind = [self.testTree.rootNode getChildren][2];
+// tests when the username to display for the conversation being added is already a prefix in the tree for an empty node
+- (void)testEmptyNode {
+    PFUser *toDisplay = [PFUser new];
+    toDisplay.username = @"cab";
+    PMConversation *toAdd = [PMConversation new];
+    toAdd.sender = PFUser.currentUser;
+    toAdd.receiver = toDisplay;
+    [self.testTree addConversation:toAdd];
     
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"a" withStartNode:self.testTree.rootNode], firstToFind);
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"e" withStartNode:self.testTree.rootNode], secondToFind);
+    PMNode *testAgainst = [[[self.testTree.rootNode getChildren][1] getChildren][0] getChildren][1];
+    XCTAssertEqualObjects(toAdd, testAgainst.payLoad);
 
 }
 
-// tests traverse method when the desired node is four levels below
-- (void)testRetreivingFourLevelsDeep {
-    PMNode *thirdLevel = [[[self.testTree.rootNode getChildren][1] getChildren][0] getChildren][1];
-    PMNode *firstToFind = [thirdLevel getChildren][0];
-    PMNode *secondToFind = [thirdLevel getChildren][1];
+// tests when the proper parent node already exists
+- (void)testProperNode {
+    PFUser *toDisplay = [PFUser new];
+    toDisplay.username = @"efg";
+    PMConversation *toAdd = [PMConversation new];
+    toAdd.sender = PFUser.currentUser;
+    toAdd.receiver = toDisplay;
+    [self.testTree addConversation:toAdd];
     
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"cab*" withStartNode:self.testTree.rootNode], firstToFind);
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"cabs" withStartNode:self.testTree.rootNode], secondToFind);
-
+    PMNode *testAgainst = [[[self.testTree.rootNode getChildren][2] getChildren][0] getChildren][0];
+    XCTAssertEqualObjects(toAdd, testAgainst.payLoad);
 }
 
-// tests traverse method when the desired node is leftmost node (also tests for finding the leftmost child)
-- (void)testRetreivingLeftMost {
-    PMNode *secondLevel = [[self.testTree.rootNode getChildren][0] getChildren][0];
-    PMNode *toFind = [secondLevel getChildren][0];
+// tests when the closest prefix is significantly shorter
+- (void)testNoParentNode {
+    PFUser *toDisplay = [PFUser new];
+    toDisplay.username = @"fghij";
+    PMConversation *toAdd = [PMConversation new];
+    toAdd.sender = PFUser.currentUser;
+    toAdd.receiver = toDisplay;
+    [self.testTree addConversation:toAdd];
     
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"aa!" withStartNode:self.testTree.rootNode], toFind);
-}
-
-/*
-* tests traverse method when the desired node is rightmost node
-* (also tests for finding the rightmost child and when it is the only one in array)
-*/
-- (void)testRetreivingFourRightMost {
-    PMNode *firstLevel = [self.testTree.rootNode getChildren][3];
-    PMNode *toFind = [firstLevel getChildren][0];
-    
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"fg" withStartNode:self.testTree.rootNode], toFind);
-}
-
-// tests traverse method when the desired node is in the middle of an array
-- (void)testRetreivingMiddle {
-    PMNode *firstLevel = [self.testTree.rootNode getChildren][1];
-    PMNode *toFind = [firstLevel getChildren][1];
-    
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"cf" withStartNode:self.testTree.rootNode], toFind);
-}
-
-// tests traverse method when the desired node is not in tree
-- (void)testRetreivingNonExistant {
-    PMNode *secondLevel = [[self.testTree.rootNode getChildren][0] getChildren][0];
-    PMNode *toFindFirst = [secondLevel getChildren][0];
-    
-    PMNode *firstLevel = [self.testTree.rootNode getChildren][2];
-    PMNode *toFindSecond = [firstLevel getChildren][0];
-    
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"aa!!" withStartNode:self.testTree.rootNode], toFindFirst);
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"efghi" withStartNode:self.testTree.rootNode], toFindSecond);
-}
-
-// tests traverse method when the desired node is the tree root
-- (void)testRetreivingRoot {
-    XCTAssertEqualObjects([self.testTree _traverseToNode:@"" withStartNode:self.testTree.rootNode], self.testTree.rootNode);
+    PMNode *testAgainstFirst = [[[self.testTree.rootNode getChildren][3] getChildren][0] getChildren][0];
+    PMNode *testAgainstSecond = [testAgainstFirst getChildren][0];
+    PMNode *testAgainstThird = [testAgainstSecond getChildren][0];
+    XCTAssertEqualObjects(@"fgh", testAgainstFirst.prefix);
+    XCTAssertEqualObjects(@"fghi", testAgainstSecond.prefix);
+    XCTAssertEqual(toAdd, testAgainstThird.payLoad);
 }
 
 @end
