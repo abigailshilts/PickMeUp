@@ -13,9 +13,8 @@
 
 @interface PMNode : NSObject
 @property (nonatomic, strong) NSString *prefix;
--(void)setPayLoad:(PMConversation *)convo;
+@property (nonatomic, strong) PMConversation *payLoad;
 -(void)setChild:(PMNode *)child;
--(PMConversation *)getPayLoad;
 -(NSArray<PMNode *> *)getChildren;
 @end
 

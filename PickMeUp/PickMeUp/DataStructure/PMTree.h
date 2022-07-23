@@ -13,6 +13,7 @@
 @property (nonatomic, strong) PMNode *rootNode;
 -(PMTree *)init;
 // Ideally traverse would be private but for now for testing leaving as public
--(PMNode *)traverseToNode:(NSString *)endString withstartNode:(PMNode *)startNode;
+-(PMNode *)_traverseToNode:(NSString *)endString withStartNode:(PMNode *)startNode;
+-(void)addConversation:(PMConversation *)toAdd;
 @end
 #endif /* PMTree_h */
