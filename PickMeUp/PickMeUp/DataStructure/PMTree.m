@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "PMNode.h"
 #import "PMTree.h"
+#import "PMQueue.h"
 #import "StringsList.h"
 
 @interface PMTree ()
@@ -43,6 +44,7 @@
     } else {
         name = toAdd.sender.username;
     }
+    
     PMNode *start = [self _traverseToNode:name withStartNode:self.rootNode];
     if ([name isEqualToString:start.prefix]) {
         start.payLoad = toAdd;
@@ -56,6 +58,7 @@
 }
 
 -(void)_insertNodes:(PMNode *)toAdd username:(NSString *)username currentNode:(PMNode *)currNode {
+    
     if ([currNode.prefix length] == [username length]-1) {
         [currNode setChild:toAdd];
         return;
@@ -68,4 +71,25 @@
     }
 }
 
+-(NSArray<PMConversation *> *)retreiveSubTree:(NSString *)prefix {
+    PMNode *start = [self _traverseToNode:prefix withStartNode:self.rootNode];
+    if ([start.prefix length] != [prefix length]) {
+        return nil;
+    }
+    PMQueue *queue = [PMQueue new];
+    NSMutableArray<PMConversation *> *toReturn = [NSMutableArray new];
+    
+    [queue enqueue:start];
+    while ([queue arrayLength] != 0) {
+        PMNode *current = [queue dequeue];
+        for (PMNode *child in [current getChildren]) {
+            [queue enqueue:child];
+        }
+        if (current.payLoad != nil) {
+            [toReturn addObject:current.payLoad];
+        }
+    }
+    return toReturn;
+}
 @end
+
