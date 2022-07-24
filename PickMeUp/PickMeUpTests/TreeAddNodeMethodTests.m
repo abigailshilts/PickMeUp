@@ -12,12 +12,14 @@
 
 @interface TreeAddNodeMethodTests : XCTestCase
 @property (nonatomic, strong) PMTree *testTree;
+@property (nonatomic, strong) PMTree *testEmpt;
 @end
 
 @implementation TreeAddNodeMethodTests
 
 - (void)setUp {
     self.testTree = [PMTree new];
+    self.testEmpt = [PMTree new];
     
     PMNode *lengthOneFirst = [PMNode new];
     PMNode *lengthOneSecond = [PMNode new];
@@ -97,6 +99,20 @@
     [self.testTree.rootNode setChild:lengthOneSecond];
     [self.testTree.rootNode setChild:lengthOneThird];
     [self.testTree.rootNode setChild:lengthOneFourth];
+}
+
+// tests when convo is the first node to be added to a tree
+- (void)testEmptyTree {
+    PFUser *toDisplay = [PFUser new];
+    toDisplay.username = @"cab";
+    PMConversation *toAdd = [PMConversation new];
+    toAdd.sender = PFUser.currentUser;
+    toAdd.receiver = toDisplay;
+    [self.testEmpt addConversation:toAdd];
+    
+    PMNode *testAgainst = [[[self.testEmpt.rootNode getChildren][0] getChildren][0] getChildren][0];
+    XCTAssertEqualObjects(toAdd, testAgainst.payLoad);
+
 }
 
 // tests when the username to display for the conversation being added is already a prefix in the tree for an empty node

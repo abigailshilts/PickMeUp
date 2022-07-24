@@ -21,6 +21,8 @@
 		4873D5732889F77300CEC056 /* PMTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5722889F77300CEC056 /* PMTree.m */; };
 		4873D578288A099000CEC056 /* TreeTraverseMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */; };
 		4873D57A288B211100CEC056 /* TreeAddNodeMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D579288B211000CEC056 /* TreeAddNodeMethodTests.m */; };
+		4873D57C288B590400CEC056 /* PMQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D57B288B590400CEC056 /* PMQueue.m */; };
+		4873D57F288B628500CEC056 /* TreeRetreiveSubTreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D57E288B628500CEC056 /* TreeRetreiveSubTreeTests.m */; };
 		4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */; };
 		487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B2288099C10026C1E5 /* PMDMCell.m */; };
 		487D95B62880A3710026C1E5 /* PMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 487D95B52880A3710026C1E5 /* PMConversation.m */; };
@@ -91,6 +93,9 @@
 		4873D5742889F77D00CEC056 /* PMTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMTree.h; sourceTree = "<group>"; };
 		4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeTraverseMethodTests.m; sourceTree = "<group>"; };
 		4873D579288B211000CEC056 /* TreeAddNodeMethodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeAddNodeMethodTests.m; sourceTree = "<group>"; };
+		4873D57B288B590400CEC056 /* PMQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMQueue.m; sourceTree = "<group>"; };
+		4873D57D288B591000CEC056 /* PMQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMQueue.h; sourceTree = "<group>"; };
+		4873D57E288B628500CEC056 /* TreeRetreiveSubTreeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeRetreiveSubTreeTests.m; sourceTree = "<group>"; };
 		4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDisplayConversationsCell.h; sourceTree = "<group>"; };
 		4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDisplayConversationsCell.m; sourceTree = "<group>"; };
 		487D95B1288099C10026C1E5 /* PMDMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMDMCell.h; path = PickMeUp/Cells/PMDMCell.h; sourceTree = SOURCE_ROOT; };
@@ -174,6 +179,8 @@
 				4873D56D2889B3E100CEC056 /* PMNode.m */,
 				4873D5742889F77D00CEC056 /* PMTree.h */,
 				4873D5722889F77300CEC056 /* PMTree.m */,
+				4873D57D288B591000CEC056 /* PMQueue.h */,
+				4873D57B288B590400CEC056 /* PMQueue.m */,
 			);
 			path = DataStructure;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 				4873D5702889C11900CEC056 /* PMNodeTests.m */,
 				4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */,
 				4873D579288B211000CEC056 /* TreeAddNodeMethodTests.m */,
+				4873D57E288B628500CEC056 /* TreeRetreiveSubTreeTests.m */,
 			);
 			path = PickMeUpTests;
 			sourceTree = "<group>";
@@ -661,6 +669,7 @@
 				4873D5592888E7E600CEC056 /* PMDisplayConversationsViewController.m in Sources */,
 				4873D55F2888E82700CEC056 /* PMCreatePostViewController.m in Sources */,
 				4876A9812882262400C175B8 /* PMDisplayConversationsCell.m in Sources */,
+				4873D57C288B590400CEC056 /* PMQueue.m in Sources */,
 				48ACE4CC2874A6D0000EA3B6 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4873D57F288B628500CEC056 /* TreeRetreiveSubTreeTests.m in Sources */,
 				4873D57A288B211100CEC056 /* TreeAddNodeMethodTests.m in Sources */,
 				4873D578288A099000CEC056 /* TreeTraverseMethodTests.m in Sources */,
 				4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */,
