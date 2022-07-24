@@ -39,9 +39,12 @@
 
 -(void)addConversation:(PMConversation *)toAdd {
     NSString *name;
-    if ([toAdd.sender isEqual:PFUser.currentUser]){
+
+    if ([toAdd.sender isEqual:PFUser.currentUser]) {
+        [toAdd.receiver fetchIfNeeded];
         name = toAdd.receiver.username;
     } else {
+        [toAdd.sender fetchIfNeeded];
         name = toAdd.sender.username;
     }
     
