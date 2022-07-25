@@ -21,9 +21,13 @@
 
 static const NSString *const kGoToMakePostSegue = @"goToMakePost";
 static const NSString *const kGetMyPostsSegue = @"getMyPosts";
-
+static const NSString *const kGoToSavedSegue = @"goToSaved";
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (IBAction)didTapSaved:(id)sender {
+    [self performSegueWithIdentifier:kGoToSavedSegue sender:nil];
 }
 
 -(void)_runQuery {

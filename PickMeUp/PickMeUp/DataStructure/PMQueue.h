@@ -10,7 +10,7 @@
 
 @interface PMQueue: NSObject
 -(void)enqueue:(PMNode *)toAdd;
--(NSUInteger)arrayLength;
+-(NSUInteger)count;
 -(PMNode *)dequeue;
 @end
 #endif /* PMQueue_h */

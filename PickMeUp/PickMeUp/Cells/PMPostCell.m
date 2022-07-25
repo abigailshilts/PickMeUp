@@ -20,6 +20,7 @@
 }
 
 -(void) setPost:(Post *)post {
+    [post fetchIfNeeded];
     self.groupIntensity.text = post.intensity;
     self.groupSport.text = post.sport;
     self.groupLocation.text = post.groupWhere;

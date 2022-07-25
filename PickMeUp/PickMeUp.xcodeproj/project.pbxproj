@@ -44,6 +44,7 @@
 		48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */; };
 		48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */; };
 		48ACE50E2874D278000EA3B6 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE50D2874D278000EA3B6 /* keys.plist */; };
+		48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,8 @@
 		48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSignUpViewController.h; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.h; sourceTree = SOURCE_ROOT; };
 		48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSignUpViewController.m; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.m; sourceTree = SOURCE_ROOT; };
 		48ACE50D2874D278000EA3B6 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		48E2BE4F288F474D00D95EC4 /* SavedPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavedPostsViewController.h; sourceTree = "<group>"; };
+		48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavedPostsViewController.m; sourceTree = "<group>"; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -244,6 +247,8 @@
 				4873D55D2888E82700CEC056 /* PMCreatePostViewController.m */,
 				4873D55C2888E82700CEC056 /* PMMyPostsViewController.h */,
 				4873D55B2888E82700CEC056 /* PMMyPostsViewController.m */,
+				48E2BE4F288F474D00D95EC4 /* SavedPostsViewController.h */,
+				48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */,
 				4873D5732889F77300CEC056 /* PMTree.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
 				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
