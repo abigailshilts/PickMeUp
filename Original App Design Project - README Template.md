@@ -33,16 +33,16 @@ This App should be reasonable to complete by the end of the designated time, the
 **Required Must-have Stories**
 
 * Groups can post essential info (bio, intensity, sport, location, time)
-* App fill filter groups on selected attributes
-* DM feature
+* App will filter groups on selected attributes
+* Be able to see a details veiw about groups
 * Log in/logout
 
 **Optional Nice-to-have Stories**
 
+* DM feature
 * Map display of locations of groups
 * Favoriting or saving groups
 * Calendar view of times groups play
-* Notifications for wither DMS or if a group is starting soon
 
 ### 2. Screen Archetypes
 
@@ -56,10 +56,12 @@ This App should be reasonable to complete by the end of the designated time, the
     * User can scroll through list of groups that fit their filters
 * Details page
     * Has more indepth description about the group
+* Page displaying your own posts
+    * Shows a feed of only posts the current user has created
 * Page for posting a group
     * Allows for posting details of a new group
 * Page for displaying different DMS
-    * Displays similar to different social media apps for most recent DMs
+    * Displays similar to different social media apps for current conversations
 * Individual DMs
     * Shows chat between users
 
@@ -70,7 +72,7 @@ This App should be reasonable to complete by the end of the designated time, the
 * login button (login -> search)
 * Search button (search -> feed)
 * register (login -> register, register -> search)
-* Back button (details -> feed, DM display -> feed, DMs -> DM display)
+* Back button (details -> feed, DM display -> details or conversation, DMs -> DM display)
 * DM button (feed -> DM display)
 * Post button (feed -> create post, create post -> feed)
 * Search bar (feed -> search)
@@ -86,15 +88,35 @@ This App should be reasonable to complete by the end of the designated time, the
 [Add picture of your hand sketched wireframes in this section]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+User
+* User id
+* Username
+* Password
+* email
+Post
+* Img
+* Description
+* Intensity
+* Sport
+* Location
+* When
+Conversation
+* Sender
+* Receiver
+DM
+* Convo Id
+* Content
+* Timestamp
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+- Login screen: Does a log in request
+- Sign up: does a post request to create a new user
+- Search screen: get request based on inputed search paramaters
+- Details view: get request for conversation related to post
+- My Posts: get request for current user posts
+- Make Posts: post request to make new convo object
+- Conversations: get request for all current conversations
+- DMs: Get request for all current DMs and live query for new ones, post requests for new conversations and DMs
