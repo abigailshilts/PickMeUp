@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>endPoints</key>
+	<array>
+		<string>{33, 13}</string>
+		<string>{33, 60}</string>
+		<string>{0, 60}</string>
+		<string>{25, 115}</string>
+		<string>{25,75}</string>
+		<string>{60, 75}</string>
+	</array>
+	<key>startPoints</key>
+	<array>
+		<string>{60, 75}</string>
+		<string>{33, 13}</string>
+		<string>{33, 60}</string>
+		<string>{0, 60}</string>
+		<string>{25, 115}</string>
+		<string>{25, 75}</string>
+	</array>
+</dict>
+</plist>
