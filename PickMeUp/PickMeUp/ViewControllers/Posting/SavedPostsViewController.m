@@ -16,10 +16,6 @@
 
 static const NSString *const kSavedPostsKey = @"savedPosts";
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 -(NSArray<Post *> *)refreshData {
     PFUser *currentUser = PFUser.currentUser;
     return currentUser[kSavedPostsKey];
