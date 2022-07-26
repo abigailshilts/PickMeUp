@@ -12,6 +12,7 @@ target 'PickMeUp' do
   pod 'Google-Maps-iOS-Utils'
   pod 'ParseLiveQuery'
   pod 'CCBottomRefreshControl'
+  pod 'CBStoreHouseRefreshControl'
   
   target 'PickMeUpTests' do
     inherit! :search_paths

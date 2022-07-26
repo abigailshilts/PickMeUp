@@ -11,7 +11,7 @@
 #import "Post.h"
 #import "StringsList.h";
 
-@interface PMMyPostsViewController ()
+@interface PMMyPostsViewController () <PMEmbedTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
 @property (strong, nonatomic) UIRefreshControl*refreshControl;
@@ -24,6 +24,11 @@ static const NSString *const kGetMyPostsSegue = @"getMyPosts";
 static const NSString *const kGoToSavedSegue = @"goToSaved";
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+-(NSArray<Post *> *)refreshData {
+    [self _runQuery];
+    return self.arrayOfPosts;
 }
 
 - (IBAction)didTapSaved:(id)sender {
@@ -46,6 +51,7 @@ static const NSString *const kGoToSavedSegue = @"goToSaved";
     if ([segue.identifier isEqualToString:kGetMyPostsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
+        childViewController.delegate = self;
     }
 }
 

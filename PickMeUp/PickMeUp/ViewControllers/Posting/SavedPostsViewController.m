@@ -8,7 +8,7 @@
 #import "SavedPostsViewController.h"
 #import "PMEmbedTableViewController.h"
 
-@interface SavedPostsViewController ()
+@interface SavedPostsViewController () <PMEmbedTableViewControllerDelegate>
 
 @end
 
@@ -16,8 +16,9 @@
 
 static const NSString *const kSavedPostsKey = @"savedPosts";
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(NSArray<Post *> *)refreshData {
+    PFUser *currentUser = PFUser.currentUser;
+    return currentUser[kSavedPostsKey];
 }
 
 - (IBAction)didTapBack:(id)sender {
@@ -32,6 +33,7 @@ static const NSString *const kSavedPostsKey = @"savedPosts";
     PFUser *currentUser = PFUser.currentUser;
     [currentUser fetchIfNeeded];
     childViewController.arrayOfPosts = currentUser[kSavedPostsKey];
+    childViewController.delegate = self;
 }
 
 
