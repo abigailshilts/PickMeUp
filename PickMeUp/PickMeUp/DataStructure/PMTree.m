@@ -83,7 +83,7 @@
     NSMutableArray<PMConversation *> *toReturn = [NSMutableArray new];
     
     [queue enqueue:start];
-    while ([queue arrayLength] != 0) {
+    while ([queue count] != 0) {
         PMNode *current = [queue dequeue];
         for (PMNode *child in [current getChildren]) {
             [queue enqueue:child];

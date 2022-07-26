@@ -30,7 +30,7 @@
     return toReturn;
 }
 
--(NSUInteger)arrayLength {
+-(NSUInteger)count {
     return self.baseArr.count;
 }
 @end
