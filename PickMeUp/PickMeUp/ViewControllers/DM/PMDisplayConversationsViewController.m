@@ -28,7 +28,7 @@ static const NSString *const kConvoCell = @"convoCell";
     self.convoTree = [PMTree new];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 80; // needs to be changed later to make row height responsive to content
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.currentUser = [PFUser currentUser];
     [self.searchField addTarget:self
                   action:@selector(_textFieldDidChange)
