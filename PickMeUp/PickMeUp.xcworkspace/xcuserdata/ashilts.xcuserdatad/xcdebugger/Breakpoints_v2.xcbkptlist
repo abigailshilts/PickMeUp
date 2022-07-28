@@ -30,8 +30,8 @@
             filePath = "PickMeUp/Model/PMDataManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "-fillConversations:"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "PickMeUp/Model/PMDataManager.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-_runGetQuery"
             landmarkType = "7">
          </BreakpointContent>
@@ -81,22 +81,6 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B19FB5EF-53FF-432D-A820-5A57BCB99AAF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PickMeUp/Model/PMDataManager.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-_runGetQuery"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

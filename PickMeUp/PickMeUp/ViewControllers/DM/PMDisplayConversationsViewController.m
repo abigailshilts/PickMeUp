@@ -37,7 +37,7 @@ static const NSString *const kConvoCell = @"convoCell";
                   action:@selector(_textFieldDidChange)
         forControlEvents:UIControlEventEditingChanged];
     
-    self.manager = [PMDataManager new];
+    self.manager = [PMDataManager dataManager];
     [self.manager fillConversations:^(NSArray<PMConversation *> *convos){
         for (PMConversation *conversation in convos) {
             [self.convoTree addConversation:conversation];

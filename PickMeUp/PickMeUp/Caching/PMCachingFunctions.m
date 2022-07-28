@@ -34,7 +34,7 @@ static const NSString *const kDMCache = @"DMCache";
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kConversationCache ofType:kPlistTitle];
         [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
         if (error != nil){
-            NSLog(@"%@", error);
+            NSLog(@"Couldn't copy conversation plist: %@", error);
             return;
         }
     }
