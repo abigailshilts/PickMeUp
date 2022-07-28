@@ -15,6 +15,6 @@
 // Ideally traverse would be private but for now for testing leaving as public
 -(PMNode *)_traverseToNode:(NSString *)endString withStartNode:(PMNode *)startNode;
 -(void)addConversation:(PMConversation *)toAdd;
--(NSArray<PMConversation *> *)retreiveSubTree:(NSString *)prefix;
+-(NSArray<PMConversation *> *)retrieveSubTree:(NSString *)prefix;
 @end
 #endif /* PMTree_h */

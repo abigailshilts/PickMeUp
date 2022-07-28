@@ -7,6 +7,7 @@
 #import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 #import "Parse/Parse.h"
 #import "ParseLiveQuery/ParseLiveQuery-umbrella.h"
+#import "PMCachingFunctions.h"
 #import "PMConversationViewController.h"
 #import "PMDirectMessage.h"
 #import "PMDMCell.h"
@@ -62,9 +63,25 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     self.totalObjects = [countQuery countObjects];
     self.pageObjectNum = 30;
     
+    if (self.convo != nil) {
+        self.arrayOfDMs = [PMCachingFunctions translateDMs:self.convo];
+    }
+    if (self.arrayOfDMs != nil) {
+        [self.tableView reloadData];
+    }
     [self _runGetQuery];
 }
 - (IBAction)didTapBack:(id)sender {
+    NSArray<PMDirectMessage *> *toCache;
+    if (self.arrayOfDMs.count > 30) {
+        NSRange range;
+        range.location = 0;
+        range.length = self.pageObjectNum;
+        toCache = [self.arrayOfDMs subarrayWithRange:range];
+    } else {
+        toCache = self.arrayOfDMs;
+    }
+    [PMCachingFunctions updateDMCache:toCache conversation:self.convo];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -120,13 +137,19 @@ static const NSString *const kCreatedAtKey = @"createdAt";
         [getQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
         getQuery.limit = self.pageObjectNum;
         [getQuery orderByDescending:kCreatedAtKey];
-        if (self.arrayOfDMs != nil) {
+        if (self.arrayOfDMs.count != nil) {
             getQuery.skip = self.pageCount*self.pageObjectNum;
         }
         [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
+            // Checking query ran properly
             if (DMs != nil) {
-                if (self.arrayOfDMs == nil){
-                    self.arrayOfDMs = DMs;
+                // Checking that only the first page is being displayed
+                if (self.arrayOfDMs.count == self.pageObjectNum){
+                    PMDirectMessage *dm = DMs[0];
+                    //Checking if there are newer DMs that haven't been cached
+                    if ([self.arrayOfDMs[0].objectId isEqualToString:dm.objectId] == NO) {
+                        self.arrayOfDMs = DMs;
+                    }
                 } else {
                     [self.arrayOfDMs addObjectsFromArray:DMs];
                 }

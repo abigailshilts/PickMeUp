@@ -12,10 +12,6 @@
 		4873D5592888E7E600CEC056 /* PMDisplayConversationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5582888E7E600CEC056 /* PMDisplayConversationsViewController.m */; };
 		4873D55E2888E82700CEC056 /* PMMyPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D55B2888E82700CEC056 /* PMMyPostsViewController.m */; };
 		4873D55F2888E82700CEC056 /* PMCreatePostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D55D2888E82700CEC056 /* PMCreatePostViewController.m */; };
-		4873D5682888E85B00CEC056 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5612888E85B00CEC056 /* PMMapViewController.m */; };
-		4873D5692888E85B00CEC056 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5632888E85B00CEC056 /* PMDetailsViewController.m */; };
-		4873D56A2888E85B00CEC056 /* PMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5642888E85B00CEC056 /* PMResultsViewController.m */; };
-		4873D56B2888E85B00CEC056 /* PMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5662888E85B00CEC056 /* PMSearchViewController.m */; };
 		4873D56E2889B3E100CEC056 /* PMNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D56D2889B3E100CEC056 /* PMNode.m */; };
 		4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5702889C11900CEC056 /* PMNodeTests.m */; };
 		4873D5732889F77300CEC056 /* PMTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 4873D5722889F77300CEC056 /* PMTree.m */; };
@@ -48,6 +44,12 @@
 		48E2BE53288F57DA00D95EC4 /* storeHouse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48E2BE52288F57DA00D95EC4 /* storeHouse.plist */; };
 		48E2BE562890A0E900D95EC4 /* PMCachingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE552890A0E900D95EC4 /* PMCachingFunctions.m */; };
 		48E2BE592890B5E300D95EC4 /* ConversationCache.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48E2BE582890B5E300D95EC4 /* ConversationCache.plist */; };
+		48E2BE5B2891DEB700D95EC4 /* DMCache.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48E2BE5A2891DEB700D95EC4 /* DMCache.plist */; };
+		48E2BE5E2892137B00D95EC4 /* PMDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE5D2892137B00D95EC4 /* PMDataManager.m */; };
+		48E2BE6728930F7000D95EC4 /* PMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6028930F7000D95EC4 /* PMSearchViewController.m */; };
+		48E2BE6828930F7000D95EC4 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6128930F7000D95EC4 /* PMMapViewController.m */; };
+		48E2BE6928930F7000D95EC4 /* PMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6228930F7000D95EC4 /* PMResultsViewController.m */; };
+		48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -82,14 +84,6 @@
 		4873D55B2888E82700CEC056 /* PMMyPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMyPostsViewController.m; sourceTree = "<group>"; };
 		4873D55C2888E82700CEC056 /* PMMyPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMyPostsViewController.h; sourceTree = "<group>"; };
 		4873D55D2888E82700CEC056 /* PMCreatePostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCreatePostViewController.m; sourceTree = "<group>"; };
-		4873D5602888E85B00CEC056 /* PMDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMDetailsViewController.h; path = "../../../../../../../projects/Search features/PMDetailsViewController.h"; sourceTree = "<group>"; };
-		4873D5612888E85B00CEC056 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMMapViewController.m; path = "../../../../../../../projects/Search features/PMMapViewController.m"; sourceTree = "<group>"; };
-		4873D5622888E85B00CEC056 /* PMResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMResultsViewController.h; path = "../../../../../../../projects/Search features/PMResultsViewController.h"; sourceTree = "<group>"; };
-		4873D5632888E85B00CEC056 /* PMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMDetailsViewController.m; path = "../../../../../../../projects/Search features/PMDetailsViewController.m"; sourceTree = "<group>"; };
-		4873D5642888E85B00CEC056 /* PMResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMResultsViewController.m; path = "../../../../../../../projects/Search features/PMResultsViewController.m"; sourceTree = "<group>"; };
-		4873D5652888E85B00CEC056 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMMapViewController.h; path = "../../../../../../../projects/Search features/PMMapViewController.h"; sourceTree = "<group>"; };
-		4873D5662888E85B00CEC056 /* PMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMSearchViewController.m; path = "../../../../../../../projects/Search features/PMSearchViewController.m"; sourceTree = "<group>"; };
-		4873D5672888E85B00CEC056 /* PMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMSearchViewController.h; path = "../../../../../../../projects/Search features/PMSearchViewController.h"; sourceTree = "<group>"; };
 		4873D56D2889B3E100CEC056 /* PMNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNode.m; sourceTree = "<group>"; };
 		4873D56F2889B3EB00CEC056 /* PMNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMNode.h; sourceTree = "<group>"; };
 		4873D5702889C11900CEC056 /* PMNodeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMNodeTests.m; sourceTree = "<group>"; };
@@ -143,6 +137,17 @@
 		48E2BE552890A0E900D95EC4 /* PMCachingFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCachingFunctions.m; sourceTree = "<group>"; };
 		48E2BE572890A21500D95EC4 /* PMCachingFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCachingFunctions.h; sourceTree = "<group>"; };
 		48E2BE582890B5E300D95EC4 /* ConversationCache.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ConversationCache.plist; sourceTree = "<group>"; };
+		48E2BE5A2891DEB700D95EC4 /* DMCache.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DMCache.plist; sourceTree = "<group>"; };
+		48E2BE5C2892137B00D95EC4 /* PMDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMDataManager.h; sourceTree = "<group>"; };
+		48E2BE5D2892137B00D95EC4 /* PMDataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMDataManager.m; sourceTree = "<group>"; };
+		48E2BE5F28930F7000D95EC4 /* PMDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDetailsViewController.h; sourceTree = "<group>"; };
+		48E2BE6028930F7000D95EC4 /* PMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSearchViewController.m; sourceTree = "<group>"; };
+		48E2BE6128930F7000D95EC4 /* PMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMMapViewController.m; sourceTree = "<group>"; };
+		48E2BE6228930F7000D95EC4 /* PMResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMResultsViewController.m; sourceTree = "<group>"; };
+		48E2BE6328930F7000D95EC4 /* PMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSearchViewController.h; sourceTree = "<group>"; };
+		48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDetailsViewController.m; sourceTree = "<group>"; };
+		48E2BE6528930F7000D95EC4 /* PMResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMResultsViewController.h; sourceTree = "<group>"; };
+		48E2BE6628930F7000D95EC4 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -217,6 +222,8 @@
 				4816D502287FA34700DC4B52 /* PMDirectMessage.m */,
 				487D95B42880A3710026C1E5 /* PMConversation.h */,
 				487D95B52880A3710026C1E5 /* PMConversation.m */,
+				48E2BE5C2892137B00D95EC4 /* PMDataManager.h */,
+				48E2BE5D2892137B00D95EC4 /* PMDataManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,14 +242,14 @@
 		4876A9882886289D00C175B8 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				4873D5602888E85B00CEC056 /* PMDetailsViewController.h */,
-				4873D5632888E85B00CEC056 /* PMDetailsViewController.m */,
-				4873D5652888E85B00CEC056 /* PMMapViewController.h */,
-				4873D5612888E85B00CEC056 /* PMMapViewController.m */,
-				4873D5622888E85B00CEC056 /* PMResultsViewController.h */,
-				4873D5642888E85B00CEC056 /* PMResultsViewController.m */,
-				4873D5672888E85B00CEC056 /* PMSearchViewController.h */,
-				4873D5662888E85B00CEC056 /* PMSearchViewController.m */,
+				48E2BE5F28930F7000D95EC4 /* PMDetailsViewController.h */,
+				48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */,
+				48E2BE6628930F7000D95EC4 /* PMMapViewController.h */,
+				48E2BE6128930F7000D95EC4 /* PMMapViewController.m */,
+				48E2BE6528930F7000D95EC4 /* PMResultsViewController.h */,
+				48E2BE6228930F7000D95EC4 /* PMResultsViewController.m */,
+				48E2BE6328930F7000D95EC4 /* PMSearchViewController.h */,
+				48E2BE6028930F7000D95EC4 /* PMSearchViewController.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -311,6 +318,7 @@
 				48ACE5032874B188000EA3B6 /* StringsList.h */,
 				48E2BE52288F57DA00D95EC4 /* storeHouse.plist */,
 				48E2BE582890B5E300D95EC4 /* ConversationCache.plist */,
+				48E2BE5A2891DEB700D95EC4 /* DMCache.plist */,
 			);
 			path = PickMeUp;
 			sourceTree = "<group>";
@@ -508,6 +516,7 @@
 			files = (
 				48E2BE53288F57DA00D95EC4 /* storeHouse.plist in Resources */,
 				48ACE50E2874D278000EA3B6 /* keys.plist in Resources */,
+				48E2BE5B2891DEB700D95EC4 /* DMCache.plist in Resources */,
 				48ACE4D72874A6D1000EA3B6 /* LaunchScreen.storyboard in Resources */,
 				48ACE4D42874A6D1000EA3B6 /* Assets.xcassets in Resources */,
 				48ACE4D22874A6D0000EA3B6 /* Main.storyboard in Resources */,
@@ -678,21 +687,22 @@
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
 				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
 				48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */,
+				48E2BE6728930F7000D95EC4 /* PMSearchViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
 				4882CF812878ECF00099EE62 /* PMEmbedTableViewController.m in Sources */,
+				48E2BE6828930F7000D95EC4 /* PMMapViewController.m in Sources */,
 				4873D55E2888E82700CEC056 /* PMMyPostsViewController.m in Sources */,
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */,
 				4816D503287FA34700DC4B52 /* PMDirectMessage.m in Sources */,
-				4873D56A2888E85B00CEC056 /* PMResultsViewController.m in Sources */,
-				4873D56B2888E85B00CEC056 /* PMSearchViewController.m in Sources */,
-				4873D5682888E85B00CEC056 /* PMMapViewController.m in Sources */,
+				48E2BE6928930F7000D95EC4 /* PMResultsViewController.m in Sources */,
+				48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */,
+				48E2BE5E2892137B00D95EC4 /* PMDataManager.m in Sources */,
 				487D95B62880A3710026C1E5 /* PMConversation.m in Sources */,
 				4873D56E2889B3E100CEC056 /* PMNode.m in Sources */,
 				4873D5562888E7D100CEC056 /* PMConversationViewController.m in Sources */,
 				4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */,
-				4873D5692888E85B00CEC056 /* PMDetailsViewController.m in Sources */,
 				48E2BE562890A0E900D95EC4 /* PMCachingFunctions.m in Sources */,
 				4873D5592888E7E600CEC056 /* PMDisplayConversationsViewController.m in Sources */,
 				4873D55F2888E82700CEC056 /* PMCreatePostViewController.m in Sources */,

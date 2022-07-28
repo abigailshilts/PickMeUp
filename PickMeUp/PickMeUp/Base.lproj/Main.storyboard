@@ -226,7 +226,19 @@
                             <constraint firstItem="91I-VT-hZ8" firstAttribute="top" secondItem="xdu-Em-Fz6" secondAttribute="bottom" constant="43" id="sTG-TN-7jh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8se-XT-49T"/>
+                    <navigationItem key="navigationItem" id="8se-XT-49T">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="a0q-N3-mgb">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HQU-uJ-CnN">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
+                                <connections>
+                                    <action selector="didTapBack:" destination="ejy-qH-ZwZ" eventType="touchUpInside" id="9iA-xq-MlF"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchField" destination="91I-VT-hZ8" id="DD1-nG-2SD"/>
                         <outlet property="tableView" destination="3gX-w4-Q9W" id="iET-ly-IDB"/>
@@ -345,7 +357,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="animationImgView" destination="Ym4-se-nxG" id="FnO-MP-G0r"/>
                         <outlet property="distanceChoice" destination="iBg-W3-JnP" id="TwP-Xh-ikK"/>
                         <outlet property="sportContainer" destination="8if-MO-elp" id="LAe-4S-SFV"/>
                         <segue destination="TRD-MZ-a8y" kind="show" identifier="goToFeed" id="n5M-u8-zmr"/>
@@ -474,13 +485,13 @@
         <!--Conversation View Controller-->
         <scene sceneID="zJp-qq-7fp">
             <objects>
-                <viewController id="Gdd-wR-fzs" customClass="PMConversationViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="Gdd-wR-fzs" customClass="PMConversationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5km-yt-J7M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="166-Im-0qr">
-                                <rect key="frame" x="1" y="681" width="414" height="161"/>
+                                <rect key="frame" x="1" y="735" width="414" height="161"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="mC0-nu-1vN" kind="embed" id="yYq-cC-LBy"/>
@@ -536,14 +547,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9Bg-CS-ycv">
-                                <rect key="frame" x="20" y="52.5" width="85" height="82.5"/>
+                                <rect key="frame" x="20" y="84.5" width="85" height="82.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="AvC-vh-9AM"/>
                                     <constraint firstAttribute="width" constant="85" id="nrl-kb-d4R"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16Q-aP-1qa">
-                                <rect key="frame" x="117" y="51" width="200" height="56"/>
+                                <rect key="frame" x="117" y="83" width="200" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5aN-jb-2Mb"/>
                                     <constraint firstAttribute="height" constant="56" id="Wao-6o-BM5"/>
@@ -565,7 +576,7 @@
                     <navigationItem key="navigationItem" id="aHZ-1L-D0I">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Pgy-vT-P45">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="GYF-VZ-zWB">
-                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Back"/>
@@ -1270,10 +1281,10 @@
         <!--Navigation Controller-->
         <scene sceneID="YvG-sR-Rfv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MR3-mt-IUc" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="MR3-mt-IUc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIR-Z4-caA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

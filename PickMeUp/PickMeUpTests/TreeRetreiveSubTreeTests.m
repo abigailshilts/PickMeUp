@@ -203,7 +203,7 @@
     NSMutableArray<PMConversation *> *testAgainst = [NSMutableArray new];
     [testAgainst addObject:self.cabs];
     
-    NSArray<PMConversation *> *testing = [self.testTree retreiveSubTree:@"cabs"];
+    NSArray<PMConversation *> *testing = [self.testTree retrieveSubTree:@"cabs"];
     for (int i = 0; i < testAgainst.count; i++){
         XCTAssertEqualObjects(testing[i], testAgainst[i]);
     }
@@ -215,7 +215,7 @@
     [testAgainst addObject:self.f];
     [testAgainst addObject:self.fg];
     
-    NSArray<PMConversation *> *testing = [self.testTree retreiveSubTree:@"f"];
+    NSArray<PMConversation *> *testing = [self.testTree retrieveSubTree:@"f"];
     for (int i = 0; i < testAgainst.count; i++){
         XCTAssertEqualObjects(testing[i], testAgainst[i]);
     }
@@ -228,7 +228,7 @@
     [testAgainst addObject:self.cab8];
     [testAgainst addObject:self.cabs];
     
-    NSArray<PMConversation *> *testing = [self.testTree retreiveSubTree:@"cab"];
+    NSArray<PMConversation *> *testing = [self.testTree retrieveSubTree:@"cab"];
     for (int i = 0; i < testAgainst.count; i++){
         XCTAssertEqualObjects(testing[i], testAgainst[i]);
     }
@@ -243,7 +243,7 @@
     [testAgainst addObject:self.cab8];
     [testAgainst addObject:self.cabs];
     
-    NSArray<PMConversation *> *testing = [self.testTree retreiveSubTree:@"ca"];
+    NSArray<PMConversation *> *testing = [self.testTree retrieveSubTree:@"ca"];
     for (int i = 0; i < testAgainst.count; i++){
         XCTAssertEqualObjects(testing[i], testAgainst[i]);
     }
@@ -278,7 +278,7 @@
     [testAgainst addObject:self.ad123];
     [testAgainst addObject:self.fghij];
     
-    NSArray<PMConversation *> *testing = [self.testTree retreiveSubTree:@""];
+    NSArray<PMConversation *> *testing = [self.testTree retrieveSubTree:@""];
     for (int i = 0; i < testAgainst.count; i++){
         XCTAssertEqualObjects(testing[i], testAgainst[i]);
     }
