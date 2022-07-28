@@ -11,7 +11,7 @@
 #import "StringsList.h"
 
 @interface PMDataManager ()
-@property (nonatomic, copy) void (^block)(NSArray<PMConversation *> *);
+@property (nonatomic, copy) void (^completionBlock)(NSArray<PMConversation *> *);
 @end
 
 @implementation PMDataManager
@@ -25,15 +25,15 @@
     return dataManager;
 }
 
--(void)fillConversations:(void(^)(NSArray<PMConversation *> *))block {
-    if (block == nil) {
-        return;
-    }
+-(void)fillConversations:(void(^)(NSArray<PMConversation *> *))completionBlock {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-        self.block = block;
+        self.completionBlock = completionBlock;
         self.conversations = [PMCachingFunctions retreiveConversationCache];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            self.block(self.conversations);
+            if (completionBlock == nil) {
+                return;
+            }
+            self.completionBlock(self.conversations);
         });
         [self _runGetQuery];
     });
@@ -61,7 +61,10 @@
                 [PMCachingFunctions updateConversationCache:self.conversations];
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
                     // Only returning new conversations so that the tree doesn't have to be recreated or have doubles
-                    self.block(toUpdateWith);
+                    if (self.completionBlock == nil) {
+                        return;
+                    }
+                    self.completionBlock(toUpdateWith);
                 });
             }
         }

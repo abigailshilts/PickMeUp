@@ -72,8 +72,7 @@ static const NSString *const kDMCache = @"DMCache";
     if ([fileManager fileExistsAtPath:plistPath] == NO) {
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kDMCache ofType:kPlistTitle];
         [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
-        NSDictionary *forCache = @{convo.objectId:directMessages,
-        };
+        NSDictionary *forCache = @{convo.objectId:directMessages};
         [forCache writeToFile:plistPath atomically:YES];
     } else {
         NSMutableDictionary *currentCache = [self _retreiveDMCache];

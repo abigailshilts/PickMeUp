@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PMDataManager : NSObject
 @property (nonatomic, strong) NSArray<PMConversation*> *conversations;
--(void)fillConversations:(void(^)(NSArray<PMConversation *> *))block;
+-(void)fillConversations:(nullable void(^)(NSArray<PMConversation *> *))completionBlock;
 + (id)dataManager;
 @end
 
