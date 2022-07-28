@@ -1,0 +1,73 @@
+//
+//  PMCachingFunctions.m
+//  PickMeUp
+//
+//  Created by Abigail Shilts on 7/26/22.
+//
+
+#import <Foundation/Foundation.h>
+#import "Parse/Parse.h"
+#import "PMCachingFunctions.h"
+#import "PMConversation.h"
+#import "StringsList.h"
+
+@interface PMCachingFunctions ()
+@end
+
+@implementation PMCachingFunctions
+
+static const NSString *const kConversationCacheFile = @"ConversationCache.plist";
+static const NSString *const kConversationCache = @"ConversationCache";
+
++(void)updateCache:(NSArray<PMConversation *> *)convos {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCacheFile];
+
+    if ([fileManager fileExistsAtPath:plistPath] == NO) {
+        NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kConversationCache ofType:kPlistTitle];
+        [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
+    }
+    
+    NSMutableArray<NSDictionary *> *conversations = [NSMutableArray new];
+    for (PMConversation *convo in convos) {
+        NSDictionary *toAdd = @{kObjectIDKey:convo.objectId,
+                                kSenderKey:[convo.sender fetchIfNeeded].username,
+                                kReceiverKey:[convo.receiver fetchIfNeeded].username,
+        };
+        [conversations addObject:toAdd];
+    }
+
+    [conversations writeToFile:plistPath atomically:YES];
+}
+
++(NSArray<PMConversation *> *)retreiveCache {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCacheFile];
+    NSMutableArray<PMConversation *> *conversations = [NSMutableArray new];
+    if ([fileManager fileExistsAtPath:plistPath] == YES) {
+        NSMutableArray<NSDictionary *> *savedValue = [[NSMutableArray alloc] initWithContentsOfFile: plistPath];
+        for (NSDictionary *dict in savedValue){
+            PMConversation *toAdd = [PMConversation new];
+            toAdd.objectId = dict[kObjectIDKey];
+            PFUser *tempSender = [PFUser new];
+            tempSender.username = dict[kSenderKey];
+            toAdd.sender = tempSender;
+            PFUser *tempReceiver = [PFUser new];
+            tempReceiver.username = dict[kReceiverKey];
+            toAdd.receiver = tempReceiver;
+            [conversations addObject:toAdd];
+        }
+        return conversations;
+    } else {
+        return nil;
+    }
+}
+
+@end

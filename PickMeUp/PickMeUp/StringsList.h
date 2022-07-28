@@ -21,6 +21,7 @@ static const NSString *const kKeysString = @"keys";
 static const NSString *const kLogViewControllerClassName = @"LoginViewController";
 static const NSString *const kMainString = @"Main";
 static const NSString *const kMissingFieldsString = @"Missing field(s)";
+static const NSString *const kObjectIDKey = @"objectId";
 static const NSString *const kOkString = @"OK";
 static const NSString *const kPlistTitle = @"plist";
 static const NSString *const kPostedSuccessString = @"posted photo!";

@@ -4,6 +4,7 @@
 //
 //  Created by Abigail Shilts on 7/15/22.
 //
+#import "PMCachingFunctions.h"
 #import "PMConversationViewController.h"
 #import "PMDisplayConversationsCell.h"
 #import "PMDisplayConversationsViewController.h"
@@ -28,13 +29,18 @@ static const NSString *const kConvoCell = @"convoCell";
     self.convoTree = [PMTree new];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 80; // needs to be changed later to make row height responsive to content
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.currentUser = [PFUser currentUser];
     [self.searchField addTarget:self
                   action:@selector(_textFieldDidChange)
         forControlEvents:UIControlEventEditingChanged];
+    self.arrayToDisplay = [PMCachingFunctions retreiveCache];
+    for (PMConversation *convo in self.arrayToDisplay) {
+        [self.convoTree addConversation:convo];
+    }
+    self.arrayToDisplay = [self.convoTree retreiveSubTree:kEmpt];
+    [self.tableView reloadData];
     [self _runGetQuery];
-
 }
 
 -(void)_textFieldDidChange {
@@ -52,11 +58,15 @@ static const NSString *const kConvoCell = @"convoCell";
     PFQuery *toQuery = [PFQuery orQueryWithSubqueries:@[user1, user2]];
     [toQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
         if (convos != nil) {
-            for (PMConversation *convo in convos) {
-                [self.convoTree addConversation:convo];
+            if (convos.count > self.arrayToDisplay.count) {
+                for (int i = 0; i < convos.count-self.arrayToDisplay.count; i++) {
+                    [self.convoTree addConversation:convos[i]];
+                }
+                self.arrayToDisplay = convos;
+                [PMCachingFunctions updateCache:self.arrayToDisplay];
+                self.arrayToDisplay = [self.convoTree retreiveSubTree:kEmpt];
+                [self.tableView reloadData];
             }
-            self.arrayToDisplay = [self.convoTree retreiveSubTree:@""];
-            [self.tableView reloadData];
         } else {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrConvoQueryString message:kErrConvoQuerryMessage preferredStyle:(UIAlertControllerStyleAlert)];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
