@@ -50,6 +50,7 @@
 		48E2BE6828930F7000D95EC4 /* PMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6128930F7000D95EC4 /* PMMapViewController.m */; };
 		48E2BE6928930F7000D95EC4 /* PMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6228930F7000D95EC4 /* PMResultsViewController.m */; };
 		48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */; };
+		48E2BE6C289445CB00D95EC4 /* CacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6B289445CB00D95EC4 /* CacheTests.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -148,6 +149,7 @@
 		48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDetailsViewController.m; sourceTree = "<group>"; };
 		48E2BE6528930F7000D95EC4 /* PMResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMResultsViewController.h; sourceTree = "<group>"; };
 		48E2BE6628930F7000D95EC4 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
+		48E2BE6B289445CB00D95EC4 /* CacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheTests.m; sourceTree = "<group>"; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				4873D577288A099000CEC056 /* TreeTraverseMethodTests.m */,
 				4873D579288B211000CEC056 /* TreeAddNodeMethodTests.m */,
 				4873D57E288B628500CEC056 /* TreeRetreiveSubTreeTests.m */,
+				48E2BE6B289445CB00D95EC4 /* CacheTests.m */,
 			);
 			path = PickMeUpTests;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 			files = (
 				4873D57F288B628500CEC056 /* TreeRetreiveSubTreeTests.m in Sources */,
 				4873D57A288B211100CEC056 /* TreeAddNodeMethodTests.m in Sources */,
+				48E2BE6C289445CB00D95EC4 /* CacheTests.m in Sources */,
 				4873D578288A099000CEC056 /* TreeTraverseMethodTests.m in Sources */,
 				4873D5712889C11900CEC056 /* PMNodeTests.m in Sources */,
 			);

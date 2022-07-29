@@ -46,6 +46,7 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     }
 }
 
+// Completion block for following two functions could be called twice in the event that the cached data is not upto date
 -(void)fillDMs:(PMConversation *)convo withBlock:(void(^)(NSArray<PMDirectMessage *> *))completionBlock {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         self.completionBlock = completionBlock;
@@ -137,7 +138,7 @@ static const NSString *const kCreatedAtKey = @"createdAt";
         getQuery.skip = pageCount*pageObjectNum;
     }
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
-        if (DMs != nil) {
+        if (DMs != nil && completion != nil) {
             completionBlock(DMs);
         }
     }];
