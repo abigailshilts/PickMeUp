@@ -357,6 +357,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="animationImg" destination="Ym4-se-nxG" id="ccW-Jd-mbA"/>
                         <outlet property="distanceChoice" destination="iBg-W3-JnP" id="TwP-Xh-ikK"/>
                         <outlet property="sportContainer" destination="8if-MO-elp" id="LAe-4S-SFV"/>
                         <segue destination="TRD-MZ-a8y" kind="show" identifier="goToFeed" id="n5M-u8-zmr"/>
