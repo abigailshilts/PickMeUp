@@ -133,6 +133,7 @@ static const NSString *const kErrQueryPostsMessage =
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
         NSLog(kStrInput, self.distance);
+        // Todo: animation got deleted, redo it
     }
     
     if ([segue.identifier isEqualToString:kSportViewSegue]) {

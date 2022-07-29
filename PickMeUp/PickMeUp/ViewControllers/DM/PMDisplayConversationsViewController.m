@@ -6,6 +6,7 @@
 //
 #import "PMCachingFunctions.h"
 #import "PMConversationViewController.h"
+#import "PMDataManager.h"
 #import "PMDisplayConversationsCell.h"
 #import "PMDisplayConversationsViewController.h"
 #import "PMTree.h"
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UITextField *searchField;
 @property (strong, nonatomic) PMTree *convoTree;
+@property (strong, nonatomic) PMDataManager *manager;
 @property (strong, nonatomic) PFUser *currentUser;
 @property (strong, nonatomic) PFUser *receiver;
 @property (strong, nonatomic) NSArray<PMConversation *> *arrayToDisplay;
@@ -34,54 +36,26 @@ static const NSString *const kConvoCell = @"convoCell";
     [self.searchField addTarget:self
                   action:@selector(_textFieldDidChange)
         forControlEvents:UIControlEventEditingChanged];
-    self.arrayToDisplay = [PMCachingFunctions retreiveCache];
-    for (PMConversation *convo in self.arrayToDisplay) {
-        [self.convoTree addConversation:convo];
-    }
-    self.arrayToDisplay = [self.convoTree retreiveSubTree:kEmpt];
-    [self.tableView reloadData];
-    [self _runGetQuery];
-}
-
--(void)_textFieldDidChange {
-    self.arrayToDisplay = [self.convoTree retreiveSubTree:self.searchField.text];
-    [self.tableView reloadData];
-}
-
--(void)_runGetQuery {
-    // Populates conversation array
-    // builds query to search for currentUser in either user1 or user2
-    PFQuery *user1 = [PFQuery queryWithClassName:kConversationClassName];
-    [user1 whereKey:kSenderKey equalTo:self.currentUser];
-    PFQuery *user2 = [PFQuery queryWithClassName:kConversationClassName];
-    [user2 whereKey:kReceiverKey equalTo:self.currentUser];
-    PFQuery *toQuery = [PFQuery orQueryWithSubqueries:@[user1, user2]];
-    [toQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
-        if (convos != nil) {
-            if (convos.count > self.arrayToDisplay.count) {
-                for (int i = 0; i < convos.count-self.arrayToDisplay.count; i++) {
-                    [self.convoTree addConversation:convos[i]];
-                }
-                self.arrayToDisplay = convos;
-                [PMCachingFunctions updateCache:self.arrayToDisplay];
-                self.arrayToDisplay = [self.convoTree retreiveSubTree:kEmpt];
-                [self.tableView reloadData];
-            }
-        } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrConvoQueryString message:kErrConvoQuerryMessage preferredStyle:(UIAlertControllerStyleAlert)];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-                handler:^(UIAlertAction * _Nonnull action) {}];
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:^{}];
+    
+    self.manager = [PMDataManager dataManager];
+    [self.manager fillConversations:^(NSArray<PMConversation *> *convos){
+        for (PMConversation *conversation in convos) {
+            [self.convoTree addConversation:conversation];
         }
+        self.arrayToDisplay = [self.convoTree retrieveSubTree:kEmpt];
+        [self.tableView reloadData];
     }];
 }
 
+-(void)_textFieldDidChange {
+    self.arrayToDisplay = [self.convoTree retrieveSubTree:self.searchField.text];
+    [self.tableView reloadData];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMDisplayConversationsCell *cell = [tableView dequeueReusableCellWithIdentifier:kConvoCell forIndexPath:indexPath];
     PMConversation *conversation = self.arrayToDisplay[indexPath.row];
-    if ([conversation.sender.objectId isEqual:self.currentUser.objectId]) {
+    if ([conversation.sender.username isEqual:self.currentUser.username]) {
         self.receiver = conversation.receiver;
     } else {
         self.receiver = conversation.sender;
@@ -90,6 +64,10 @@ static const NSString *const kConvoCell = @"convoCell";
     cell.receiver.text = self.receiver.username;
     
     return cell;
+}
+
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -104,7 +82,11 @@ static const NSString *const kConvoCell = @"convoCell";
     PMConversationViewController *convoVC = navigationVC.topViewController;
     PMConversation *convo = self.arrayToDisplay[senderIndex.row];
     convoVC.convo = convo;
-    convoVC.receiver = self.receiver;
+    if ([PFUser.currentUser.username isEqualToString:convo.receiver.username]) {
+        convoVC.receiver = convo.sender;
+    } else {
+        convoVC.receiver = convo.receiver;
+    }
 }
 
 

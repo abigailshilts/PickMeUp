@@ -39,12 +39,12 @@
 
 -(void)addConversation:(PMConversation *)toAdd {
     NSString *name;
-
-    if ([toAdd.sender isEqual:PFUser.currentUser]) {
-        [toAdd.receiver fetchIfNeeded];
+    
+    [toAdd.sender fetchIfNeeded];
+    [toAdd.receiver fetchIfNeeded];
+    if ([toAdd.sender.username isEqual:PFUser.currentUser.username]) {
         name = toAdd.receiver.username;
     } else {
-        [toAdd.sender fetchIfNeeded];
         name = toAdd.sender.username;
     }
     
@@ -74,7 +74,7 @@
     }
 }
 
--(NSArray<PMConversation *> *)retreiveSubTree:(NSString *)prefix {
+-(NSArray<PMConversation *> *)retrieveSubTree:(NSString *)prefix {
     PMNode *start = [self _traverseToNode:prefix withStartNode:self.rootNode];
     if ([start.prefix length] != [prefix length]) {
         return nil;
