@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PMDataManager : NSObject
 @property (nonatomic, strong) NSArray<PMConversation*> *conversations;
 -(void)fillConversations:(nullable void(^)(NSArray<PMConversation *> *))completionBlock;
+-(void)fillDMs:(PMConversation *)convo withBlock:(void(^)(NSArray<PMDirectMessage *> *))block;
+-(void)saveDMs:(NSArray<PMDirectMessage *> *)toSave conversation:(PMConversation *)convo;
+-(void)loadMoreDMs:(PMConversation *)convo pageCount:(NSInteger)pageCount
+          withBlock:(void(^)(NSArray<PMDirectMessage *> *))completionBlock;
 + (id)dataManager;
 @end
 

@@ -21,6 +21,9 @@ static const NSString *const kConversationCacheFile = @"ConversationCache.plist"
 static const NSString *const kConversationCache = @"ConversationCache";
 static const NSString *const kDMCacheFile = @"DMCache.plist";
 static const NSString *const kDMCache = @"DMCache";
+static const NSString *const kDotPlist = @".plist";
+static const NSString *const kContentKey = @"content";
+static const NSString *const kConvoIdKey = @"convoId";
 
 +(void)updateConversationCache:(NSArray<PMConversation *> *)convos {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -41,9 +44,11 @@ static const NSString *const kDMCache = @"DMCache";
     
     NSMutableArray<NSDictionary *> *conversations = [NSMutableArray new];
     for (PMConversation *convo in convos) {
+        [convo.sender fetchIfNeeded];
+        [convo.receiver fetchIfNeeded];
         NSDictionary *toAdd = @{kObjectIDKey:convo.objectId,
-                                kSenderKey:[convo.sender fetchIfNeeded].username,
-                                kReceiverKey:[convo.receiver fetchIfNeeded].username,
+                                kSenderKey:convo.sender.username,
+                                kReceiverKey:convo.receiver.username,
         };
         [conversations addObject:toAdd];
     }
@@ -56,15 +61,16 @@ static const NSString *const kDMCache = @"DMCache";
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-
-    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kDMCacheFile];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kDMCache];
+    plistPath = [plistPath stringByAppendingString:PFUser.currentUser.objectId];
+    plistPath = [plistPath stringByAppendingString:kDotPlist];
 
     NSMutableArray<NSDictionary *> *directMessages = [NSMutableArray new];
     for (PMDirectMessage *DM in DMs) {
         NSDictionary *toAdd = @{kObjectIDKey:DM.objectId,
                                 kSenderKey:[DM.sender fetchIfNeeded].username,
-                                @"content":DM.content,
-                                @"convoId":DM.convoId
+                                kContentKey:DM.content,
+                                kConvoIdKey:DM.convoId
         };
         [directMessages addObject:toAdd];
     }
@@ -74,43 +80,41 @@ static const NSString *const kDMCache = @"DMCache";
         [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
         NSDictionary *forCache = @{convo.objectId:directMessages};
         [forCache writeToFile:plistPath atomically:YES];
+        NSMutableDictionary *savedValue = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
     } else {
-        NSMutableDictionary *currentCache = [self _retreiveDMCache];
+        NSMutableDictionary *currentCache = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
         currentCache[convo.objectId] = directMessages;
         [currentCache writeToFile:plistPath atomically:YES];
     }
 
 }
 
-+(NSMutableDictionary *)_retreiveDMCache {
++(NSArray<PMDirectMessage *> *)translateDMs:(PMConversation *)convo {
     NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kDMCache];
+    plistPath = [plistPath stringByAppendingString:PFUser.currentUser.objectId];
+    plistPath = [plistPath stringByAppendingString:kDotPlist];
 
-    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kDMCacheFile];
     if ([fileManager fileExistsAtPath:plistPath] == YES) {
-        NSMutableDictionary *savedValue = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
-        return savedValue;
-    } else {
-        return nil;
+        NSMutableDictionary *totalCache = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
+        NSArray<PMDirectMessage *> *messages = totalCache[convo.objectId];
+        NSMutableArray<PMDirectMessage *> *toReturn = [NSMutableArray new];
+        for (NSDictionary *dict in messages) {
+            PMDirectMessage *toAdd = [PMDirectMessage new];
+            toAdd.objectId = dict[kObjectIDKey];
+            PFUser *sender = [PFUser new];
+            sender.username = dict[kSenderKey];
+            toAdd.sender = sender;
+            toAdd.content = dict[kContentKey];
+            toAdd.convoId = dict[kConvoIdKey];
+            [toReturn addObject:toAdd];
+        }
+        return toReturn;
     }
-}
-
-+(NSArray<PMDirectMessage *> *)translateDMs:(PMConversation *)convo {
-    NSMutableDictionary *totalCache = [self _retreiveDMCache];
-    NSArray<PMDirectMessage *> *messages = totalCache[convo.objectId];
-    NSMutableArray<PMDirectMessage *> *toReturn = [NSMutableArray new];
-    for (NSDictionary *dict in messages) {
-        PMDirectMessage *toAdd = [PMDirectMessage new];
-        toAdd.objectId = dict[kObjectIDKey];
-        PFUser *sender = [PFUser new];
-        sender.username = dict[kSenderKey];
-        toAdd.sender = sender;
-        toAdd.content = dict[@"content"];
-        toAdd.convoId = dict[@"convoId"];
-        [toReturn addObject:toAdd];
-    }
-    return toReturn;
+    return nil;
 }
 
 +(NSArray<PMConversation *> *)retreiveConversationCache {

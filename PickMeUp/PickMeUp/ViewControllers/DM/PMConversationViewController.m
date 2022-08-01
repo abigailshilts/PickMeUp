@@ -9,6 +9,7 @@
 #import "ParseLiveQuery/ParseLiveQuery-umbrella.h"
 #import "PMCachingFunctions.h"
 #import "PMConversationViewController.h"
+#import "PMDataManager.h"
 #import "PMDirectMessage.h"
 #import "PMDMCell.h"
 #import "StringsList.h"
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) PFLiveQueryClient *liveQueryClient;
 @property (nonatomic, strong) PFQuery *msgQuery;
 @property (nonatomic, strong) PFLiveQuerySubscription *subscription;
+@property (strong, nonatomic) PMDataManager *manager;
 @property BOOL noDMs;
 @property NSInteger pageCount;
 @property int totalObjects;
@@ -63,25 +65,19 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     self.totalObjects = [countQuery countObjects];
     self.pageObjectNum = 30;
     
+    self.manager = [PMDataManager dataManager];
     if (self.convo != nil) {
-        self.arrayOfDMs = [PMCachingFunctions translateDMs:self.convo];
+        self.noDMs = NO;
+        [self.manager fillDMs:self.convo withBlock:^(NSArray<PMDirectMessage *> *DMs){
+            self.arrayOfDMs = DMs;
+            [self.tableView reloadData];
+        }];
+    } else {
+        self.noDMs = YES;
     }
-    if (self.arrayOfDMs != nil) {
-        [self.tableView reloadData];
-    }
-    [self _runGetQuery];
 }
 - (IBAction)didTapBack:(id)sender {
-    NSArray<PMDirectMessage *> *toCache;
-    if (self.arrayOfDMs.count > 30) {
-        NSRange range;
-        range.location = 0;
-        range.length = self.pageObjectNum;
-        toCache = [self.arrayOfDMs subarrayWithRange:range];
-    } else {
-        toCache = self.arrayOfDMs;
-    }
-    [PMCachingFunctions updateDMCache:toCache conversation:self.convo];
+    [self.manager saveDMs:self.arrayOfDMs conversation:self.convo];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -127,40 +123,6 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     return NO;
 }
 
--(void)_runGetQuery {
-    // Populates DM array
-    if (self.convo == nil) {
-        self.noDMs = YES;
-    } else {
-        self.noDMs = NO;
-        PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
-        [getQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
-        getQuery.limit = self.pageObjectNum;
-        [getQuery orderByDescending:kCreatedAtKey];
-        if (self.arrayOfDMs.count != nil) {
-            getQuery.skip = self.pageCount*self.pageObjectNum;
-        }
-        [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
-            // Checking query ran properly
-            if (DMs != nil) {
-                // Checking that only the first page is being displayed
-                if (self.arrayOfDMs.count == self.pageObjectNum){
-                    PMDirectMessage *dm = DMs[0];
-                    //Checking if there are newer DMs that haven't been cached
-                    if ([self.arrayOfDMs[0].objectId isEqualToString:dm.objectId] == NO) {
-                        self.arrayOfDMs = DMs;
-                    }
-                } else {
-                    [self.arrayOfDMs addObjectsFromArray:DMs];
-                }
-                [self.tableView reloadData];
-            } else {
-                [self _presentPopUp:kErrQueryForDMString message:kErrQueryForDMMessage];
-            }
-        }];
-    }
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMDMCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     PMDirectMessage *currDM = self.arrayOfDMs[indexPath.row];
@@ -179,7 +141,10 @@ static const NSString *const kCreatedAtKey = @"createdAt";
     int totalPages = (self.totalObjects + self.pageObjectNum)/self.pageObjectNum;
     if (self.pageCount != totalPages){
         if (indexPath.row == self.arrayOfDMs.count-2){
-            [self _runGetQuery];
+            [self.manager loadMoreDMs:self.convo pageCount:self.pageCount withBlock:^(NSArray<PMDirectMessage *> *DMs){
+                [self.arrayOfDMs addObjectsFromArray:DMs];
+                [self.tableView reloadData];
+            }];
             self.pageCount++;
         }
     }

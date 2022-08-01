@@ -17,6 +17,7 @@
 @interface PMSearchViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *distanceChoice;
 @property (weak, nonatomic) IBOutlet UIView *sportContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *animationImg;
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSString *distance;
@@ -38,6 +39,8 @@ static const NSString *const kErrLogOutMessage = @"Please try again";
 static const NSString *const kErrQueryPostsString = @"Error Loading Posts";
 static const NSString *const kErrQueryPostsMessage =
     @"Please check your internet and make sure all choices have been filled and try again";
+static const NSString *const kXPosString = @"position.x";
+static const NSString *const kBasicString = @"basic";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +51,7 @@ static const NSString *const kErrQueryPostsMessage =
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     self.distanceChoice.delegate = self;
+    self.animationImg.hidden = YES;
 }
 
 -(void)_presentPopUp:(NSString *)title message:(NSString *)message {
@@ -94,6 +98,14 @@ static const NSString *const kErrQueryPostsMessage =
 - (IBAction)didTapGo:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.distance = self.distanceChoice.text;
+    self.animationImg.image = [UIImage imageNamed:self.groupSport];
+    self.animationImg.hidden = NO;
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = kXPosString;
+    animation.fromValue = @77;
+    animation.toValue = @455;
+    animation.duration = 1;
+    [self.animationImg.layer addAnimation:animation forKey:kBasicString];
     [self _runQuery];
 }
 
@@ -133,7 +145,6 @@ static const NSString *const kErrQueryPostsMessage =
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
         NSLog(kStrInput, self.distance);
-        // Todo: animation got deleted, redo it
     }
     
     if ([segue.identifier isEqualToString:kSportViewSegue]) {
