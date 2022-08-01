@@ -372,11 +372,11 @@
             <objects>
                 <viewController id="TPe-sB-IQd" customClass="PMEmbedTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifV-vx-can">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="83J-KR-Ba3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="214" id="kZf-CL-MMT" customClass="PMPostCell">
@@ -428,7 +428,7 @@
                                                     <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l5J-FH-JK9">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l5J-FH-JK9">
                                                     <rect key="frame" x="8" y="5" width="201" height="198"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="198" id="fBx-y1-Qaw"/>
@@ -442,7 +442,7 @@
                                                 <constraint firstItem="gyf-XW-2Gh" firstAttribute="leading" secondItem="l5J-FH-JK9" secondAttribute="trailing" constant="8" id="E2x-Wv-prN"/>
                                                 <constraint firstAttribute="trailing" secondItem="Aq5-tS-j6U" secondAttribute="trailing" constant="20" symbolic="YES" id="HSA-jq-TOC"/>
                                                 <constraint firstItem="v0G-7W-dTV" firstAttribute="leading" secondItem="l5J-FH-JK9" secondAttribute="trailing" constant="8" id="HZW-CP-Iq0"/>
-                                                <constraint firstItem="l5J-FH-JK9" firstAttribute="top" secondItem="v0G-7W-dTV" secondAttribute="top" id="KIh-UV-ilg"/>
+                                                <constraint firstItem="l5J-FH-JK9" firstAttribute="top" secondItem="v0G-7W-dTV" secondAttribute="top" constant="-6" id="KIh-UV-ilg"/>
                                                 <constraint firstAttribute="trailing" secondItem="gyf-XW-2Gh" secondAttribute="trailing" constant="20" symbolic="YES" id="Lrt-OS-9Lr"/>
                                                 <constraint firstItem="l5J-FH-JK9" firstAttribute="leading" secondItem="Ydy-v5-KPq" secondAttribute="leading" constant="8" id="NV3-kJ-AFf"/>
                                                 <constraint firstItem="Aq5-tS-j6U" firstAttribute="leading" secondItem="l5J-FH-JK9" secondAttribute="trailing" constant="8" id="NmD-Ih-pBX"/>
@@ -488,11 +488,11 @@
             <objects>
                 <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="Gdd-wR-fzs" customClass="PMConversationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5km-yt-J7M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="166-Im-0qr">
-                                <rect key="frame" x="1" y="459" width="414" height="161"/>
+                                <rect key="frame" x="1" y="625" width="414" height="161"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="mC0-nu-1vN" kind="embed" id="yYq-cC-LBy"/>
@@ -606,9 +606,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xOx-IK-RUT">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOx-IK-RUT">
                                 <rect key="frame" x="0.0" y="110" width="414" height="786"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="TPe-sB-IQd" kind="embed" identifier="getResults" id="rs5-Ty-8gG"/>
                                 </connections>
@@ -616,6 +615,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I6B-xR-Fgj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xOx-IK-RUT" firstAttribute="leading" secondItem="I6B-xR-Fgj" secondAttribute="leading" id="D5z-gt-ta4"/>
+                            <constraint firstAttribute="bottom" secondItem="xOx-IK-RUT" secondAttribute="bottom" id="W8R-Sg-zc8"/>
+                            <constraint firstItem="xOx-IK-RUT" firstAttribute="top" secondItem="I6B-xR-Fgj" secondAttribute="top" constant="22" id="bj0-Qr-0mt"/>
+                            <constraint firstItem="xOx-IK-RUT" firstAttribute="trailing" secondItem="I6B-xR-Fgj" secondAttribute="trailing" id="uYm-3Y-7ld"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="a1T-nu-uEP">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Fql-Wk-d1S">
@@ -654,7 +659,7 @@
             <objects>
                 <viewController id="Ami-RP-7gy" customClass="PMDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qoO-t0-b7w">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="566"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mh6-os-owr">
@@ -1461,7 +1466,7 @@
         <segue reference="SSk-dp-IqW"/>
         <segue reference="lJA-BO-9dc"/>
         <segue reference="5zE-ts-kFo"/>
-        <segue reference="Isf-EX-B6d"/>
+        <segue reference="rs5-Ty-8gG"/>
         <segue reference="tTg-FI-gJr"/>
     </inferredMetricsTieBreakers>
     <resources>

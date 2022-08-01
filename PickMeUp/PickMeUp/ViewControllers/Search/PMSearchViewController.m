@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSString *distance;
-@property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
+@property (strong, nonatomic) NSMutableArray<Post *> *arrayOfPosts;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *pointToSet;
 @property (strong, nonatomic) CLLocation *pointReceived;
@@ -122,14 +122,33 @@ static const NSString *const kBasicString = @"basic";
     if (![self.groupIntensity isEqualToString:kLowAnyKey]){
         [getQuery whereKey:kIntensityKey equalTo:self.groupIntensity];
     }
+    [getQuery whereKey:@"isEvent" equalTo:@"no"];
     [getQuery orderByDescending:kCurLocKey];
     getQuery.limit = 20;
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
-            [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
+            [self _runEventQuery];
         } else {
             [self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
+        }
+    }];
+}
+
+-(void)_runEventQuery {
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400];
+    PFQuery *getQuery = [PFQuery queryWithClassName:@"Post"];
+    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:15];
+    [getQuery whereKey:@"createdAt" greaterThanOrEqualTo:yesterday];
+    [getQuery whereKey:@"isEvent" greaterThanOrEqualTo:@"yes"];
+    [getQuery findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
+        if (events != nil) {
+            for (Post *event in events) {
+                [self.arrayOfPosts insertObject:event atIndex:0];
+            }
+            [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
+        } else {
+            //[self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
         }
     }];
 }

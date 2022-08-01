@@ -6,7 +6,7 @@
 //
 #import <CoreLocation/CoreLocation.h>
 #import "PMCreateEventViewController.h"
-#import "PMEvent.h"
+#import "Post.h"
 #import "StringsList.h"
 
 @interface PMCreateEventViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
@@ -74,10 +74,11 @@ static const NSString *const kErrPostingImgMessage =
 }
 - (IBAction)didTapCreate:(id)sender {
     self.createButton.enabled = NO;
-    PMEvent *toCreate = [PMEvent new];
+    Post *toCreate = [Post new];
     toCreate.bio = self.eventDescription.text;
-    toCreate.eventWhen = self.eventWhen.text;
-    toCreate.eventWhere = self.eventWhere.text;
+    toCreate.groupWhen = self.eventWhen.text;
+    toCreate.groupWhere = self.eventWhere.text;
+    toCreate.isEvent = @"yes";
     
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.eventWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
@@ -93,7 +94,7 @@ static const NSString *const kErrPostingImgMessage =
             // creates geoPoint (for parse) from CLLocation
             toCreate.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
             
-            [toCreate postUserEvent:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [toCreate postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error != nil){
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrPostingImgString message:kErrPostingImgMessage preferredStyle:(UIAlertControllerStyleAlert)];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
