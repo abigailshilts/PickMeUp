@@ -51,6 +51,8 @@
 		48E2BE6928930F7000D95EC4 /* PMResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6228930F7000D95EC4 /* PMResultsViewController.m */; };
 		48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */; };
 		48E2BE6C289445CB00D95EC4 /* CacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6B289445CB00D95EC4 /* CacheTests.m */; };
+		48E2BE6F289873EA00D95EC4 /* PMEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6E289873EA00D95EC4 /* PMEvent.m */; };
+		48E2BE7228987A9500D95EC4 /* PMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -150,6 +152,10 @@
 		48E2BE6528930F7000D95EC4 /* PMResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMResultsViewController.h; sourceTree = "<group>"; };
 		48E2BE6628930F7000D95EC4 /* PMMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMMapViewController.h; sourceTree = "<group>"; };
 		48E2BE6B289445CB00D95EC4 /* CacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheTests.m; sourceTree = "<group>"; };
+		48E2BE6D289873EA00D95EC4 /* PMEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMEvent.h; sourceTree = "<group>"; };
+		48E2BE6E289873EA00D95EC4 /* PMEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMEvent.m; sourceTree = "<group>"; };
+		48E2BE7028987A9500D95EC4 /* PMCreateEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCreateEventViewController.h; sourceTree = "<group>"; };
+		48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCreateEventViewController.m; sourceTree = "<group>"; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +232,8 @@
 				487D95B52880A3710026C1E5 /* PMConversation.m */,
 				48E2BE5C2892137B00D95EC4 /* PMDataManager.h */,
 				48E2BE5D2892137B00D95EC4 /* PMDataManager.m */,
+				48E2BE6D289873EA00D95EC4 /* PMEvent.h */,
+				48E2BE6E289873EA00D95EC4 /* PMEvent.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +273,8 @@
 				4873D55B2888E82700CEC056 /* PMMyPostsViewController.m */,
 				48E2BE4F288F474D00D95EC4 /* SavedPostsViewController.h */,
 				48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */,
+				48E2BE7028987A9500D95EC4 /* PMCreateEventViewController.h */,
+				48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -688,6 +698,7 @@
 				48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */,
 				4873D5732889F77300CEC056 /* PMTree.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
+				48E2BE6F289873EA00D95EC4 /* PMEvent.m in Sources */,
 				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
 				48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */,
 				48E2BE6728930F7000D95EC4 /* PMSearchViewController.m in Sources */,
@@ -695,6 +706,7 @@
 				4882CF812878ECF00099EE62 /* PMEmbedTableViewController.m in Sources */,
 				48E2BE6828930F7000D95EC4 /* PMMapViewController.m in Sources */,
 				4873D55E2888E82700CEC056 /* PMMyPostsViewController.m in Sources */,
+				48E2BE7228987A9500D95EC4 /* PMCreateEventViewController.m in Sources */,
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
 				4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */,

@@ -24,8 +24,6 @@
 @property (strong, nonatomic) NSArray *sport;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
 
-
-
 @end
 
 @implementation PMCreatePostViewController

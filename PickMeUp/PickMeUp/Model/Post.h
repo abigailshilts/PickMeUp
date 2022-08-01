@@ -34,11 +34,7 @@ static const NSString *const kCurLocKey = @"curLoc";
 @property CLLocationDistance distToCurUser;
 @property (nonatomic, strong) NSArray *convoId;
 @property (nonatomic, strong) NSArray<PFUser *> *convoRecipients;
-
-
 - (void) postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
-
 @end
 
 NS_ASSUME_NONNULL_END
