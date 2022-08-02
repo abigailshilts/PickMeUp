@@ -40,6 +40,7 @@ static const NSString *const kShowDMSegue = @"showDM";
     [self.imgView setImageWithURL:url];
     
 }
+
 - (IBAction)didTapDM:(id)sender {
     PFQuery *getQuery = [PFQuery queryWithClassName:kConversationClassName];
     PFUser *currentUser = [PFUser currentUser];

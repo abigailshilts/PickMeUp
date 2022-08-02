@@ -21,8 +21,7 @@
 @dynamic curLoc;
 @dynamic latitude;
 @dynamic longitude;
-@dynamic convoId;
-@dynamic convoRecipients;
+@dynamic isEvent;
 
 + (nonnull NSString *)parseClassName {
     return kPostClassName;

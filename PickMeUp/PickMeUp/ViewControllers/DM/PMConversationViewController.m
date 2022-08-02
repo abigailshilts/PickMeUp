@@ -46,7 +46,6 @@ static const NSString *const kErrCreateDMMessage =
 static const NSString *const kErrQueryForDMString = @"Error Retrieving Messages";
 static const NSString *const kErrQueryForDMMessage =
     @"There appears to be an error retreiving this conversation, check your internet and try again";
-static const NSString *const kCreatedAtKey = @"createdAt";
 
 - (void)viewDidLoad {
     [super viewDidLoad];

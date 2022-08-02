@@ -18,7 +18,6 @@
 @implementation PMDataManager
 
 static const NSString *const kConvoIdKey = @"convoId";
-static const NSString *const kCreatedAtKey = @"createdAt";
 
 + (id)dataManager {
     static PMDataManager *dataManager = nil;
@@ -138,7 +137,7 @@ static const NSString *const kCreatedAtKey = @"createdAt";
         getQuery.skip = pageCount*pageObjectNum;
     }
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
-        if (DMs != nil && completion != nil) {
+        if (DMs != nil && completionBlock != nil) {
             completionBlock(DMs);
         }
     }];

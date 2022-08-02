@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSString *groupIntensity;
 @property (strong, nonatomic) NSString *groupSport;
 @property (strong, nonatomic) NSString *distance;
-@property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
+@property (strong, nonatomic) NSMutableArray<Post *> *arrayOfPosts;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *pointToSet;
 @property (strong, nonatomic) CLLocation *pointReceived;
@@ -39,6 +39,9 @@ static const NSString *const kErrLogOutMessage = @"Please try again";
 static const NSString *const kErrQueryPostsString = @"Error Loading Posts";
 static const NSString *const kErrQueryPostsMessage =
     @"Please check your internet and make sure all choices have been filled and try again";
+static const NSString *const kErrQueryEventsString = @"Error Loading Events";
+static const NSString *const kErrQueryEventsMessage =
+    @"Please check your internet and try again";
 static const NSString *const kXPosString = @"position.x";
 static const NSString *const kBasicString = @"basic";
 
@@ -122,14 +125,33 @@ static const NSString *const kBasicString = @"basic";
     if (![self.groupIntensity isEqualToString:kLowAnyKey]){
         [getQuery whereKey:kIntensityKey equalTo:self.groupIntensity];
     }
+    [getQuery whereKey:kIsEventKey equalTo:kIsntEventString];
     [getQuery orderByDescending:kCurLocKey];
     getQuery.limit = 20;
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
-            [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
+            [self _runEventQuery];
         } else {
             [self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
+        }
+    }];
+}
+
+-(void)_runEventQuery {
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400]; // Seconds in a day
+    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
+    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:15];
+    [getQuery whereKey:kCreatedAtKey greaterThanOrEqualTo:yesterday];
+    [getQuery whereKey:kIsEventKey greaterThanOrEqualTo:kIsEventString];
+    [getQuery findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
+        if (events != nil) {
+            for (Post *event in events) {
+                [self.arrayOfPosts insertObject:event atIndex:0];
+            }
+            [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
+        } else {
+            [self _presentPopUp:kErrQueryEventsString message:kErrQueryEventsMessage];
         }
     }];
 }

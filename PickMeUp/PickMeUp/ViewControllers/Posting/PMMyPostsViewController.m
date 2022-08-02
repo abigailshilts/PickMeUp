@@ -22,6 +22,7 @@
 static const NSString *const kGoToMakePostSegue = @"goToMakePost";
 static const NSString *const kGetMyPostsSegue = @"getMyPosts";
 static const NSString *const kGoToSavedSegue = @"goToSaved";
+static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -33,6 +34,10 @@ static const NSString *const kGoToSavedSegue = @"goToSaved";
 
 - (IBAction)didTapSaved:(id)sender {
     [self performSegueWithIdentifier:kGoToSavedSegue sender:nil];
+}
+
+- (IBAction)didTapMakeEvent:(id)sender {
+    [self performSegueWithIdentifier:kGoToMakeEvent sender:nil];
 }
 
 -(void)_runQuery {

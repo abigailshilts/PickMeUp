@@ -24,8 +24,6 @@
 @property (strong, nonatomic) NSArray *sport;
 @property (strong, nonatomic) PFGeoPoint *curLoc;
 
-
-
 @end
 
 @implementation PMCreatePostViewController
@@ -103,6 +101,7 @@ static const NSString *const kErrPostingImgMessage =
     toPost.intensity = self.groupIntensity;
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
+    toPost.isEvent = kIsntEventString;
     
     
     // turns street adress into coordinates
