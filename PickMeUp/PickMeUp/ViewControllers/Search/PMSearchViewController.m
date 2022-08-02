@@ -39,6 +39,9 @@ static const NSString *const kErrLogOutMessage = @"Please try again";
 static const NSString *const kErrQueryPostsString = @"Error Loading Posts";
 static const NSString *const kErrQueryPostsMessage =
     @"Please check your internet and make sure all choices have been filled and try again";
+static const NSString *const kErrQueryEventsString = @"Error Loading Events";
+static const NSString *const kErrQueryEventsMessage =
+    @"Please check your internet and try again";
 static const NSString *const kXPosString = @"position.x";
 static const NSString *const kBasicString = @"basic";
 
@@ -122,7 +125,7 @@ static const NSString *const kBasicString = @"basic";
     if (![self.groupIntensity isEqualToString:kLowAnyKey]){
         [getQuery whereKey:kIntensityKey equalTo:self.groupIntensity];
     }
-    [getQuery whereKey:@"isEvent" equalTo:@"no"];
+    [getQuery whereKey:kIsEventKey equalTo:kIsntEventString];
     [getQuery orderByDescending:kCurLocKey];
     getQuery.limit = 20;
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -136,11 +139,11 @@ static const NSString *const kBasicString = @"basic";
 }
 
 -(void)_runEventQuery {
-    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400];
-    PFQuery *getQuery = [PFQuery queryWithClassName:@"Post"];
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400]; // Seconds in a day
+    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
     [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:15];
-    [getQuery whereKey:@"createdAt" greaterThanOrEqualTo:yesterday];
-    [getQuery whereKey:@"isEvent" greaterThanOrEqualTo:@"yes"];
+    [getQuery whereKey:kCreatedAtKey greaterThanOrEqualTo:yesterday];
+    [getQuery whereKey:kIsEventKey greaterThanOrEqualTo:kIsEventString];
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
         if (events != nil) {
             for (Post *event in events) {
@@ -148,7 +151,7 @@ static const NSString *const kBasicString = @"basic";
             }
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
-            //[self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
+            [self _presentPopUp:kErrQueryEventsString message:kErrQueryEventsMessage];
         }
     }];
 }

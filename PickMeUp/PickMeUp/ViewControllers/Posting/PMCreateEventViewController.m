@@ -48,7 +48,8 @@ static const NSString *const kErrPostingImgMessage =
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+- (void)imagePickerController:(UIImagePickerController *)picker
+    didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     originalImage = [self _resizeImage:originalImage withSize:CGSizeMake(580,580)];
@@ -78,7 +79,7 @@ static const NSString *const kErrPostingImgMessage =
     toCreate.bio = self.eventDescription.text;
     toCreate.groupWhen = self.eventWhen.text;
     toCreate.groupWhere = self.eventWhere.text;
-    toCreate.isEvent = @"yes";
+    toCreate.isEvent = kIsEventString;
     
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.eventWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {

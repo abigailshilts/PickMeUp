@@ -101,7 +101,7 @@ static const NSString *const kErrPostingImgMessage =
     toPost.intensity = self.groupIntensity;
     toPost.groupWhere = self.groupWhere.text;
     toPost.groupWhen = self.groupWhen.text;
-    toPost.isEvent = @"no";
+    toPost.isEvent = kIsntEventString;
     
     
     // turns street adress into coordinates
