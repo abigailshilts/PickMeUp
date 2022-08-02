@@ -21,11 +21,17 @@
 
 -(void) setPost:(Post *)post {
     [post fetchIfNeeded];
-    self.groupIntensity.text = post.intensity;
-    self.groupSport.text = post.sport;
-    self.groupLocation.text = post.groupWhere;
-    self.groupTime.text = post.groupWhen;
-    
+    if ([post.isEvent isEqualToString:@"no"]) {
+        self.groupIntensity.text = post.intensity;
+        self.groupSport.text = post.sport;
+        self.groupLocation.text = post.groupWhere;
+        self.groupTime.text = post.groupWhen;
+    } else {
+        self.groupIntensity.text = @"Event!!!!";
+        self.groupSport.text = post.groupWhen;
+        self.groupLocation.text = post.groupWhere;
+        self.groupTime.hidden = YES;
+    }
     NSString *link = post.image.url;
     NSURL *url = [NSURL URLWithString:link];
     [self.groupImg setImageWithURL:url];
