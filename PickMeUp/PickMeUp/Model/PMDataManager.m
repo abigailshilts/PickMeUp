@@ -18,7 +18,6 @@
 @implementation PMDataManager
 
 static const NSString *const kConvoIdKey = @"convoId";
-static const NSString *const kCreatedAtKey = @"createdAt";
 
 + (id)dataManager {
     static PMDataManager *dataManager = nil;
