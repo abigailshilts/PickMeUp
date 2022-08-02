@@ -39,6 +39,7 @@ static const NSString *const kGetResultsSegue = @"getResults";
     if ([segue.identifier isEqualToString:kGetResultsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
+        childViewController.delegate = self.toSet;
     }
     
     if ([segue.identifier isEqualToString:kGoToMapSegue]) {

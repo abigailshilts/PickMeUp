@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupWhere;
 @property (weak, nonatomic) IBOutlet UILabel *bio;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) PMConversation *convo;
 
 @end
@@ -26,6 +25,8 @@
 @implementation PMDetailsViewController
 
 static const NSString *const kShowDMSegue = @"showDM";
+static const NSString *const kRemovedFromSaved = @"Removed post from saved posts";
+static const NSString *const kAddedToSaved = @"Added post to saved posts";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +40,34 @@ static const NSString *const kShowDMSegue = @"showDM";
     NSURL *url = [NSURL URLWithString:link];
     [self.imgView setImageWithURL:url];
     
+}
+
+-(void)_createPopUp:(NSString *)title message:(NSString *)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * _Nonnull action) {}];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:^{}];
+}
+
+- (IBAction)didDoubleTap:(id)sender {
+    if ([PFUser.currentUser[@"savedPosts"] containsObject:self.post]) {
+        [PFUser.currentUser[@"savedPosts"] removeObject:self.post];
+        [PFUser.currentUser saveInBackground];
+        [self _createPopUp:kRemovedFromSaved message:kEmpt];
+    } else {
+        if (PFUser.currentUser[@"savedPosts"] == nil) {
+            PFUser.currentUser[@"savedPosts"] = [NSMutableArray new];
+            [PFUser.currentUser[@"savedPosts"] addObject:self.post];
+        } else {
+            NSMutableArray<Post *> *toAdd = [NSMutableArray new];
+            [toAdd addObjectsFromArray:PFUser.currentUser[@"savedPosts"]];
+            [toAdd addObject:self.post];
+            PFUser.currentUser[@"savedPosts"] = toAdd;
+        }
+        [PFUser.currentUser saveInBackground];
+        [self _createPopUp:kAddedToSaved message:kEmpt];
+    }
 }
 
 - (IBAction)didTapDM:(id)sender {
@@ -58,11 +87,7 @@ static const NSString *const kShowDMSegue = @"showDM";
             }
             [self performSegueWithIdentifier:kShowDMSegue sender:nil];
         } else {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrConvoQueryString message:kErrConvoQuerryMessage preferredStyle:(UIAlertControllerStyleAlert)];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-                handler:^(UIAlertAction * _Nonnull action) {}];
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:^{}];
+            [self _createPopUp:kErrConvoQueryString message:kErrConvoQuerryMessage];
         }
     }];
 

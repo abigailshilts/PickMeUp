@@ -98,6 +98,10 @@ static const NSString *const kBasicString = @"basic";
     self.groupIntensity = intensity;
 }
 
+-(NSArray<Post *> *)refreshData {
+    return self.arrayOfPosts;
+}
+
 - (IBAction)didTapGo:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.distance = self.distanceChoice.text;
@@ -166,6 +170,7 @@ static const NSString *const kBasicString = @"basic";
         tableVC.arrayOfPosts = self.arrayOfPosts;
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
+        tableVC.toSet = self;
         NSLog(kStrInput, self.distance);
     }
     
