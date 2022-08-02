@@ -7,6 +7,7 @@
 
 #import "Parse/Parse.h"
 #import "PMLoginViewController.h"
+#import "PMReuseFunctions.h"
 #import "StringsList.h"
 
 
@@ -28,17 +29,10 @@ static const NSString *const kGoToSignUpSegue = @"goToSignUp";
     [super viewDidLoad];
 }
 
-
-
 - (void)_loginUser {
     // Pop up alert to ensure user enters all fields
-
     if ([self.insertedUsername.text isEqual:kEmpt] || [self.insertedPassword.text isEqual:kEmpt]){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:kMissingFieldsString message:kLogginginNeedsAllString preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-            handler:^(UIAlertAction * _Nonnull action) {}];
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:^{}];
+        [PMReuseFunctions presentPopUp:kMissingFieldsString message:kLogginginNeedsAllString viewController:self];
         return;
     }
     

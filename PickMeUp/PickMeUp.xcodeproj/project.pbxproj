@@ -25,8 +25,6 @@
 		4882CF73287656720099EE62 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF72287656720099EE62 /* Post.m */; };
 		4882CF7628777CFB0099EE62 /* PMPostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7528777CFB0099EE62 /* PMPostCell.m */; };
 		4882CF7828777DF70099EE62 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4882CF7728777DF70099EE62 /* CoreLocation.framework */; };
-		4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */; };
-		4882CF812878ECF00099EE62 /* PMEmbedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4882CF802878ECF00099EE62 /* PMEmbedTableViewController.m */; };
 		4893E2E5287F8B7700535CAE /* Pods_PickMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E77A5FC69CE5913415DF004A /* Pods_PickMeUp.framework */; };
 		4893E2E9287F8BA200535CAE /* Pods_PickMeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4893E2E8287F8BA200535CAE /* Pods_PickMeUp.framework */; };
 		48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE4C82874A6D0000EA3B6 /* AppDelegate.m */; };
@@ -52,6 +50,11 @@
 		48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6428930F7000D95EC4 /* PMDetailsViewController.m */; };
 		48E2BE6C289445CB00D95EC4 /* CacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE6B289445CB00D95EC4 /* CacheTests.m */; };
 		48E2BE7228987A9500D95EC4 /* PMCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */; };
+		48E2BE7528999A1A00D95EC4 /* PMGroupMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7428999A1A00D95EC4 /* PMGroupMessageViewController.m */; };
+		48E2BE7828999F9E00D95EC4 /* PMGMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7728999F9E00D95EC4 /* PMGMCell.m */; };
+		48E2BE7D2899B1F600D95EC4 /* PMPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7A2899B1F500D95EC4 /* PMPickerViewController.m */; };
+		48E2BE7E2899B1F600D95EC4 /* PMEmbedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE7B2899B1F500D95EC4 /* PMEmbedTableViewController.m */; };
+		48E2BE822899C43000D95EC4 /* PMReuseFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE812899C43000D95EC4 /* PMReuseFunctions.m */; };
 		889EE02CA476285214F0B75F /* Pods_PickMeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10D13E7B68224C7123485B4 /* Pods_PickMeUpTests.framework */; };
 		B128B00FA7BB615AC958543B /* Pods_PickMeUp_PickMeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */; };
 /* End PBXBuildFile section */
@@ -107,10 +110,6 @@
 		4882CF7428777CFB0099EE62 /* PMPostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMPostCell.h; sourceTree = "<group>"; };
 		4882CF7528777CFB0099EE62 /* PMPostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMPostCell.m; sourceTree = "<group>"; };
 		4882CF7728777DF70099EE62 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		4882CF7C2878D68B0099EE62 /* PMPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMPickerViewController.h; path = PickMeUp/PMPickerViewController.h; sourceTree = SOURCE_ROOT; };
-		4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMPickerViewController.m; path = PickMeUp/PMPickerViewController.m; sourceTree = SOURCE_ROOT; };
-		4882CF7F2878ECF00099EE62 /* PMEmbedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMEmbedTableViewController.h; path = PickMeUp/PMEmbedTableViewController.h; sourceTree = SOURCE_ROOT; };
-		4882CF802878ECF00099EE62 /* PMEmbedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMEmbedTableViewController.m; path = PickMeUp/PMEmbedTableViewController.m; sourceTree = SOURCE_ROOT; };
 		4882CF82287C91120099EE62 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4893E2E8287F8BA200535CAE /* Pods_PickMeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_PickMeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48ACE4C42874A6D0000EA3B6 /* PickMeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickMeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +152,16 @@
 		48E2BE6B289445CB00D95EC4 /* CacheTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CacheTests.m; sourceTree = "<group>"; };
 		48E2BE7028987A9500D95EC4 /* PMCreateEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCreateEventViewController.h; sourceTree = "<group>"; };
 		48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCreateEventViewController.m; sourceTree = "<group>"; };
+		48E2BE7328999A1A00D95EC4 /* PMGroupMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMGroupMessageViewController.h; sourceTree = "<group>"; };
+		48E2BE7428999A1A00D95EC4 /* PMGroupMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMGroupMessageViewController.m; sourceTree = "<group>"; };
+		48E2BE7628999F9E00D95EC4 /* PMGMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMGMCell.h; sourceTree = "<group>"; };
+		48E2BE7728999F9E00D95EC4 /* PMGMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMGMCell.m; sourceTree = "<group>"; };
+		48E2BE792899B1F500D95EC4 /* PMPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPickerViewController.h; sourceTree = "<group>"; };
+		48E2BE7A2899B1F500D95EC4 /* PMPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPickerViewController.m; sourceTree = "<group>"; };
+		48E2BE7B2899B1F500D95EC4 /* PMEmbedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMEmbedTableViewController.m; sourceTree = "<group>"; };
+		48E2BE7C2899B1F600D95EC4 /* PMEmbedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMEmbedTableViewController.h; sourceTree = "<group>"; };
+		48E2BE802899C43000D95EC4 /* PMReuseFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMReuseFunctions.h; sourceTree = "<group>"; };
+		48E2BE812899C43000D95EC4 /* PMReuseFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMReuseFunctions.m; sourceTree = "<group>"; };
 		56F76856AA2E9B6361153581 /* Pods-PickMeUp-PickMeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; path = "Target Support Files/Pods-PickMeUp-PickMeUpUITests/Pods-PickMeUp-PickMeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CF5165235E0305F33865230 /* Pods_PickMeUp_PickMeUpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMeUp_PickMeUpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FB73F559218DF458F9390A /* Pods-PickMeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMeUp.release.xcconfig"; path = "Target Support Files/Pods-PickMeUp/Pods-PickMeUp.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +223,8 @@
 				487D95B2288099C10026C1E5 /* PMDMCell.m */,
 				4876A97F2882262400C175B8 /* PMDisplayConversationsCell.h */,
 				4876A9802882262400C175B8 /* PMDisplayConversationsCell.m */,
+				48E2BE7628999F9E00D95EC4 /* PMGMCell.h */,
+				48E2BE7728999F9E00D95EC4 /* PMGMCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -281,6 +292,8 @@
 				4873D5552888E7D100CEC056 /* PMConversationViewController.m */,
 				4873D5572888E7E600CEC056 /* PMDisplayConversationsViewController.h */,
 				4873D5582888E7E600CEC056 /* PMDisplayConversationsViewController.m */,
+				48E2BE7328999A1A00D95EC4 /* PMGroupMessageViewController.h */,
+				48E2BE7428999A1A00D95EC4 /* PMGroupMessageViewController.m */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -310,12 +323,13 @@
 		48ACE4C62874A6D0000EA3B6 /* PickMeUp */ = {
 			isa = PBXGroup;
 			children = (
+				48E2BE7F2899C36300D95EC4 /* ReuseFunctions */,
 				48E2BE542890A0BB00D95EC4 /* Caching */,
 				4873D56C2889B30F00CEC056 /* DataStructure */,
 				4876A9862886284100C175B8 /* Model */,
 				4876A985288627F900C175B8 /* Cells */,
 				48ACE4FD2874A71B000EA3B6 /* ViewControllers */,
-				48ACE4FC2874A705000EA3B6 /* delegates */,
+				48ACE4FC2874A705000EA3B6 /* Delegates */,
 				48ACE4D02874A6D0000EA3B6 /* Main.storyboard */,
 				48ACE4D32874A6D1000EA3B6 /* Assets.xcassets */,
 				48ACE4D52874A6D1000EA3B6 /* LaunchScreen.storyboard */,
@@ -351,7 +365,7 @@
 			path = PickMeUpUITests;
 			sourceTree = "<group>";
 		};
-		48ACE4FC2874A705000EA3B6 /* delegates */ = {
+		48ACE4FC2874A705000EA3B6 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				48ACE4C72874A6D0000EA3B6 /* AppDelegate.h */,
@@ -359,20 +373,20 @@
 				48ACE4CA2874A6D0000EA3B6 /* SceneDelegate.h */,
 				48ACE4CB2874A6D0000EA3B6 /* SceneDelegate.m */,
 			);
-			path = delegates;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		48ACE4FD2874A71B000EA3B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				48E2BE7C2899B1F600D95EC4 /* PMEmbedTableViewController.h */,
+				48E2BE7B2899B1F500D95EC4 /* PMEmbedTableViewController.m */,
+				48E2BE792899B1F500D95EC4 /* PMPickerViewController.h */,
+				48E2BE7A2899B1F500D95EC4 /* PMPickerViewController.m */,
 				4876A989288628D000C175B8 /* Posting */,
 				4876A98A288628F400C175B8 /* DM */,
 				4876A9872886288000C175B8 /* UserAuth */,
 				4876A9882886289D00C175B8 /* Search */,
-				4882CF7C2878D68B0099EE62 /* PMPickerViewController.h */,
-				4882CF7D2878D68B0099EE62 /* PMPickerViewController.m */,
-				4882CF7F2878ECF00099EE62 /* PMEmbedTableViewController.h */,
-				4882CF802878ECF00099EE62 /* PMEmbedTableViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -384,6 +398,15 @@
 				48E2BE552890A0E900D95EC4 /* PMCachingFunctions.m */,
 			);
 			path = Caching;
+			sourceTree = "<group>";
+		};
+		48E2BE7F2899C36300D95EC4 /* ReuseFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				48E2BE802899C43000D95EC4 /* PMReuseFunctions.h */,
+				48E2BE812899C43000D95EC4 /* PMReuseFunctions.m */,
+			);
+			path = ReuseFunctions;
 			sourceTree = "<group>";
 		};
 		9EDDD409CA5C897257DBE9DF /* Pods */ = {
@@ -690,6 +713,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48E2BE7528999A1A00D95EC4 /* PMGroupMessageViewController.m in Sources */,
 				48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */,
 				4873D5732889F77300CEC056 /* PMTree.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
@@ -697,16 +721,18 @@
 				48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */,
 				48E2BE6728930F7000D95EC4 /* PMSearchViewController.m in Sources */,
 				48ACE4C92874A6D0000EA3B6 /* AppDelegate.m in Sources */,
-				4882CF812878ECF00099EE62 /* PMEmbedTableViewController.m in Sources */,
 				48E2BE6828930F7000D95EC4 /* PMMapViewController.m in Sources */,
 				4873D55E2888E82700CEC056 /* PMMyPostsViewController.m in Sources */,
+				48E2BE7E2899B1F600D95EC4 /* PMEmbedTableViewController.m in Sources */,
+				48E2BE7D2899B1F600D95EC4 /* PMPickerViewController.m in Sources */,
 				48E2BE7228987A9500D95EC4 /* PMCreateEventViewController.m in Sources */,
 				4882CF73287656720099EE62 /* Post.m in Sources */,
 				48ACE4DA2874A6D1000EA3B6 /* main.m in Sources */,
-				4882CF7E2878D68B0099EE62 /* PMPickerViewController.m in Sources */,
 				4816D503287FA34700DC4B52 /* PMDirectMessage.m in Sources */,
+				48E2BE822899C43000D95EC4 /* PMReuseFunctions.m in Sources */,
 				48E2BE6928930F7000D95EC4 /* PMResultsViewController.m in Sources */,
 				48E2BE6A28930F7000D95EC4 /* PMDetailsViewController.m in Sources */,
+				48E2BE7828999F9E00D95EC4 /* PMGMCell.m in Sources */,
 				48E2BE5E2892137B00D95EC4 /* PMDataManager.m in Sources */,
 				487D95B62880A3710026C1E5 /* PMConversation.m in Sources */,
 				4873D56E2889B3E100CEC056 /* PMNode.m in Sources */,

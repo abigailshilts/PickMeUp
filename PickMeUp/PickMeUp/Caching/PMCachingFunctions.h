@@ -13,8 +13,8 @@
 
 @interface PMCachingFunctions : NSObject
 +(void)updateConversationCache:(NSArray<PMConversation *> *)convos;
-+(void)updateDMCache:(NSArray<PMDirectMessage *> *)DMs conversation:(PMConversation *)convo;
-+(NSArray<PMDirectMessage *> *)translateDMs:(PMConversation *)convo;
++(void)updateDMCache:(NSArray<PMDirectMessage *> *)DMs conversation:(NSString *)idToSave;
++(NSArray<PMDirectMessage *> *)translateDMs:(NSString *)idToSearch;
 +(NSArray<PMConversation *> *)retreiveConversationCache;
 @end
 

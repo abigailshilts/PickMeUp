@@ -6,6 +6,7 @@
 //
 
 #import "Parse/Parse.h"
+#import "PMReuseFunctions.h"
 #import "PMSignUpViewController.h"
 #import "StringsList.h"
 
@@ -30,6 +31,7 @@ static const NSString *const kUserRegSuccessString = @"User registered successfu
             handler:^(UIAlertAction * _Nonnull action) {}];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:^{}];
+        [PMReuseFunctions presentPopUp:kMissingFieldsString message:kSigningupRequiresAllString viewController:self];
         return;
     }
     

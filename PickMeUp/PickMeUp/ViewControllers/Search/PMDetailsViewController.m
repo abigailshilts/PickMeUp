@@ -8,6 +8,8 @@
 #import "PMConversationViewController.h"
 #import "PMConversation.h"
 #import "PMDetailsViewController.h"
+#import "PMGroupMessageViewController.h"
+#import "PMReuseFunctions.h"
 #import "StringsList.h"
 #import "UIImageView+AFNetworking.h"
 
@@ -27,6 +29,7 @@
 static const NSString *const kShowDMSegue = @"showDM";
 static const NSString *const kRemovedFromSaved = @"Removed post from saved posts";
 static const NSString *const kAddedToSaved = @"Added post to saved posts";
+static const NSString *const kGoToGroupDM = @"goToGroupDM";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,19 +45,11 @@ static const NSString *const kAddedToSaved = @"Added post to saved posts";
     
 }
 
--(void)_createPopUp:(NSString *)title message:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:^{}];
-}
-
 - (IBAction)didDoubleTap:(id)sender {
     if ([PFUser.currentUser[@"savedPosts"] containsObject:self.post]) {
         [PFUser.currentUser[@"savedPosts"] removeObject:self.post];
         [PFUser.currentUser saveInBackground];
-        [self _createPopUp:kRemovedFromSaved message:kEmpt];
+        [PMReuseFunctions presentPopUp:kRemovedFromSaved message:kEmpt viewController:self];
     } else {
         if (PFUser.currentUser[@"savedPosts"] == nil) {
             PFUser.currentUser[@"savedPosts"] = [NSMutableArray new];
@@ -66,32 +61,35 @@ static const NSString *const kAddedToSaved = @"Added post to saved posts";
             PFUser.currentUser[@"savedPosts"] = toAdd;
         }
         [PFUser.currentUser saveInBackground];
-        [self _createPopUp:kAddedToSaved message:kEmpt];
+        [PMReuseFunctions presentPopUp:kAddedToSaved message:kEmpt viewController:self];
     }
 }
 
 - (IBAction)didTapDM:(id)sender {
-    PFQuery *getQuery = [PFQuery queryWithClassName:kConversationClassName];
-    PFUser *currentUser = [PFUser currentUser];
-    [self.post.author fetchIfNeeded];
-    PFUser *author = self.post.author;
-    [getQuery whereKey:kSenderKey equalTo:currentUser];
-    [getQuery whereKey:kReceiverKey equalTo:author];
-    [getQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
-        if (convos != nil) {
-            if (convos.count > 0) {
-                self.convo = convos[0];
+    if ([self.post.isEvent isEqualToString:kIsEventString]) {
+        [self performSegueWithIdentifier:kGoToGroupDM sender:nil];
+    } else {
+        PFQuery *getQuery = [PFQuery queryWithClassName:kConversationClassName];
+        PFUser *currentUser = [PFUser currentUser];
+        [self.post.author fetchIfNeeded];
+        PFUser *author = self.post.author;
+        [getQuery whereKey:kSenderKey equalTo:currentUser];
+        [getQuery whereKey:kReceiverKey equalTo:author];
+        [getQuery findObjectsInBackgroundWithBlock:^(NSArray *convos, NSError *error) {
+            if (convos != nil) {
+                if (convos.count > 0) {
+                    self.convo = convos[0];
+                }
+                else {
+                    self.convo = nil;
+                }
+                [self performSegueWithIdentifier:kShowDMSegue sender:nil];
+            } else {
+                [PMReuseFunctions presentPopUp:kErrConvoQueryString message:kErrConvoQuerryMessage viewController:self];
             }
-            else {
-                self.convo = nil;
-            }
-            [self performSegueWithIdentifier:kShowDMSegue sender:nil];
-        } else {
-            [self _createPopUp:kErrConvoQueryString message:kErrConvoQuerryMessage];
-        }
-    }];
+        }];
 
-    
+    }
 }
 
 - (IBAction)didTapBack:(id)sender {
@@ -100,10 +98,17 @@ static const NSString *const kAddedToSaved = @"Added post to saved posts";
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UINavigationController *navigationVC = [segue destinationViewController];
-    PMConversationViewController *convoVC = navigationVC.topViewController;
-    convoVC.receiver = self.post.author;
-    convoVC.convo = self.convo;
+    if ([segue.identifier isEqualToString:kShowDMSegue]) {
+        UINavigationController *navigationVC = [segue destinationViewController];
+        PMConversationViewController *convoVC = navigationVC.topViewController;
+        convoVC.receiver = self.post.author;
+        convoVC.convo = self.convo;
+    }
+    if ([segue.identifier isEqualToString:kGoToGroupDM]) {
+        UINavigationController *navigationVC = [segue destinationViewController];
+        PMGroupMessageViewController *GMVC = navigationVC.topViewController;
+        GMVC.event = self.post;
+    }
 }
 
 
