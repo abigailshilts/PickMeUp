@@ -42,6 +42,7 @@ PODS:
   - GoogleMaps/Base (7.0.0)
   - GoogleMaps/Maps (7.0.0):
     - GoogleMaps/Base
+  - JHUD (0.3.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - CCBottomRefreshControl
   - Google-Maps-iOS-Utils
   - GoogleMaps
+  - JHUD
   - Parse
   - ParseLiveQuery
 
@@ -70,6 +72,7 @@ SPEC REPOS:
     - CCBottomRefreshControl
     - Google-Maps-iOS-Utils
     - GoogleMaps
+    - JHUD
     - Parse
     - ParseLiveQuery
     - Starscream
@@ -82,10 +85,11 @@ SPEC CHECKSUMS:
   CCBottomRefreshControl: 389780b4488321c91d18f66a6da5ef9606df6de5
   Google-Maps-iOS-Utils: 3343332b18dfd5be8f1f44edd7d481ace3da4d9a
   GoogleMaps: 6e9c923ca035989709fcb5771544fda4cc5fa2a4
+  JHUD: 17650f65045d9843a7ad19f6a0b1eac6c78a45d2
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   ParseLiveQuery: 7bc437c3b986880ffe5f241a9921e37f45df0677
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: 178d4b3205009bf34f57e4e20716449251b05271
+PODFILE CHECKSUM: b648d3eaf301116479361e4830a84c7bc84e27a1
 
 COCOAPODS: 1.11.3

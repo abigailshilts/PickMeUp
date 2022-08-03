@@ -30,13 +30,22 @@ static const NSString *const kShowDMSegue = @"showDM";
 static const NSString *const kRemovedFromSaved = @"Removed post from saved posts";
 static const NSString *const kAddedToSaved = @"Added post to saved posts";
 static const NSString *const kGoToGroupDM = @"goToGroupDM";
+static const NSString *const kSavedPostsKey = @"savedPosts";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sport.text = self.post.sport;
-    self.intensity.text = self.post.intensity;
-    self.groupWhen.text = self.post.groupWhen;
-    self.groupWhere.text = self.post.groupWhere;
+    if ([self.post.isEvent isEqualToString:kIsEventString]) {
+        self.sport.text = self.post.groupWhen;
+        self.intensity.text = self.post.groupWhere;
+        self.groupWhen.hidden = YES;
+        self.groupWhere.hidden = YES;
+    } else {
+        self.sport.text = self.post.sport;
+        self.intensity.text = self.post.intensity;
+        self.groupWhen.text = self.post.groupWhen;
+        self.groupWhere.text = self.post.groupWhere;
+    }
+    
     self.bio.text = self.post.bio;
     
     NSString *link = self.post.image.url;
@@ -46,23 +55,26 @@ static const NSString *const kGoToGroupDM = @"goToGroupDM";
 }
 
 - (IBAction)didDoubleTap:(id)sender {
-    if ([PFUser.currentUser[@"savedPosts"] containsObject:self.post]) {
-        [PFUser.currentUser[@"savedPosts"] removeObject:self.post];
-        [PFUser.currentUser saveInBackground];
-        [PMReuseFunctions presentPopUp:kRemovedFromSaved message:kEmpt viewController:self];
-    } else {
-        if (PFUser.currentUser[@"savedPosts"] == nil) {
-            PFUser.currentUser[@"savedPosts"] = [NSMutableArray new];
-            [PFUser.currentUser[@"savedPosts"] addObject:self.post];
-        } else {
-            NSMutableArray<Post *> *toAdd = [NSMutableArray new];
-            [toAdd addObjectsFromArray:PFUser.currentUser[@"savedPosts"]];
-            [toAdd addObject:self.post];
-            PFUser.currentUser[@"savedPosts"] = toAdd;
+    for (Post *curPost in PFUser.currentUser[kSavedPostsKey]) {
+        if ([curPost.objectId isEqualToString:self.post.objectId]) {
+            [PFUser.currentUser[kSavedPostsKey] removeObject:curPost];
+            [PFUser.currentUser saveInBackground];
+            [PMReuseFunctions presentPopUp:kRemovedFromSaved message:kEmpt viewController:self];
+            return;
         }
-        [PFUser.currentUser saveInBackground];
-        [PMReuseFunctions presentPopUp:kAddedToSaved message:kEmpt viewController:self];
     }
+    if (PFUser.currentUser[kSavedPostsKey] == nil) {
+        PFUser.currentUser[kSavedPostsKey] = [NSMutableArray new];
+        [PFUser.currentUser[kSavedPostsKey] addObject:self.post];
+    } else {
+        NSMutableArray<Post *> *toAdd = [NSMutableArray new];
+        [toAdd addObjectsFromArray:PFUser.currentUser[kSavedPostsKey]];
+        [toAdd addObject:self.post];
+        PFUser.currentUser[kSavedPostsKey] = toAdd;
+    }
+    [PFUser.currentUser saveInBackground];
+    [PMReuseFunctions presentPopUp:kAddedToSaved message:kEmpt viewController:self];
+
 }
 
 - (IBAction)didTapDM:(id)sender {

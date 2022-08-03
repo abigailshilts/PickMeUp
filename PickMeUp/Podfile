@@ -13,6 +13,7 @@ target 'PickMeUp' do
   pod 'ParseLiveQuery'
   pod 'CCBottomRefreshControl'
   pod 'CBStoreHouseRefreshControl'
+  pod 'JHUD'
   
   target 'PickMeUpTests' do
     inherit! :search_paths
