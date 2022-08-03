@@ -18,6 +18,7 @@
 @implementation PMDataManager
 
 static const NSString *const kConvoIdKey = @"convoId";
+static const int kPageSize = 30;
 
 + (id)dataManager {
     static PMDataManager *dataManager = nil;
@@ -30,10 +31,10 @@ static const NSString *const kConvoIdKey = @"convoId";
 
 -(void)saveDMs:(NSArray<PMDirectMessage *> *)toSave conversation:(NSString *)idToSave {
     NSArray<PMDirectMessage *> *toCache;
-    if (toSave.count > 30) {
+    if (toSave.count > kPageSize) {
         NSRange range;
         range.location = 0;
-        range.length = 30;
+        range.length = kPageSize;
         toCache = [toSave subarrayWithRange:range];
     } else {
         toCache = toSave;
@@ -126,13 +127,12 @@ static const NSString *const kConvoIdKey = @"convoId";
 -(void)loadMoreDMs:(NSString *)idToSearch pageCount:(NSInteger)pageCount
           withBlock:(void(^)(NSArray<PMDirectMessage *> *))completionBlock {
     // Populates DM array
-    int pageObjectNum = 30;
     PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
     [getQuery whereKey:kConvoIdKey equalTo:idToSearch];
-    getQuery.limit = pageObjectNum;
+    getQuery.limit = kPageSize;
     [getQuery orderByDescending:kCreatedAtKey];
     if (self.directMessages.count > 0) {
-        getQuery.skip = pageCount*pageObjectNum;
+        getQuery.skip = pageCount*kPageSize;
     }
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *DMs, NSError *error) {
         if (DMs != nil && completionBlock != nil) {
