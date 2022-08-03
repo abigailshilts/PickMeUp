@@ -6,6 +6,7 @@
 //
 #import <CoreLocation/CoreLocation.h>
 #import "PMCreateEventViewController.h"
+#import "PMReuseFunctions.h"
 #import "Post.h"
 #import "StringsList.h"
 
@@ -84,7 +85,8 @@ static const NSString *const kErrPostingImgMessage =
     CLGeocoder *geocoder = [CLGeocoder new];
     [geocoder geocodeAddressString:self.eventWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
-            NSLog(kErrMsgString, [error localizedDescription]);
+            NSString *title = [NSString stringWithFormat:@"%@", error];
+            [PMReuseFunctions presentPopUp:title message:kEmpt viewController:self];
             return;
         }
         
@@ -97,11 +99,7 @@ static const NSString *const kErrPostingImgMessage =
             
             [toCreate postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error != nil){
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrPostingImgString message:kErrPostingImgMessage preferredStyle:(UIAlertControllerStyleAlert)];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-                        handler:^(UIAlertAction * _Nonnull action) {}];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:^{}];
+                    [PMReuseFunctions presentPopUp:kErrPostingImgString message:kErrPostingImgMessage viewController:self];
                 } else {
                     NSLog(kPostedSuccessString);
                 }

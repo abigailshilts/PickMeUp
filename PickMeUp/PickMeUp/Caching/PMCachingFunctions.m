@@ -56,7 +56,7 @@ static const NSString *const kConvoIdKey = @"convoId";
     [conversations writeToFile:plistPath atomically:YES];
 }
 
-+(void)updateDMCache:(NSArray<PMDirectMessage *> *)DMs conversation:(PMConversation *)convo {
++(void)updateDMCache:(NSArray<PMDirectMessage *> *)DMs conversation:(NSString *)idToSave {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -78,18 +78,18 @@ static const NSString *const kConvoIdKey = @"convoId";
     if ([fileManager fileExistsAtPath:plistPath] == NO) {
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kDMCache ofType:kPlistTitle];
         [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
-        NSDictionary *forCache = @{convo.objectId:directMessages};
+        NSDictionary *forCache = @{idToSave:directMessages};
         [forCache writeToFile:plistPath atomically:YES];
         NSMutableDictionary *savedValue = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
     } else {
         NSMutableDictionary *currentCache = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
-        currentCache[convo.objectId] = directMessages;
+        currentCache[idToSave] = directMessages;
         [currentCache writeToFile:plistPath atomically:YES];
     }
 
 }
 
-+(NSArray<PMDirectMessage *> *)translateDMs:(PMConversation *)convo {
++(NSArray<PMDirectMessage *> *)translateDMs:(NSString *)idToSearch {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -100,7 +100,7 @@ static const NSString *const kConvoIdKey = @"convoId";
 
     if ([fileManager fileExistsAtPath:plistPath] == YES) {
         NSMutableDictionary *totalCache = [[NSMutableDictionary alloc] initWithContentsOfFile: plistPath];
-        NSArray<PMDirectMessage *> *messages = totalCache[convo.objectId];
+        NSArray<PMDirectMessage *> *messages = totalCache[idToSearch];
         NSMutableArray<PMDirectMessage *> *toReturn = [NSMutableArray new];
         for (NSDictionary *dict in messages) {
             PMDirectMessage *toAdd = [PMDirectMessage new];

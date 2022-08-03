@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "PMPickerViewController.h"
 #import "PMResultsViewController.h"
+#import "PMReuseFunctions.h"
 #import "PMSearchViewController.h"
 #import "Post.h"
 #import "SceneDelegate.h"
@@ -57,14 +58,6 @@ static const NSString *const kBasicString = @"basic";
     self.animationImg.hidden = YES;
 }
 
--(void)_presentPopUp:(NSString *)title message:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:^{}];
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
    [textField resignFirstResponder];
    return true;
@@ -84,7 +77,7 @@ static const NSString *const kBasicString = @"basic";
     mySceneDelegate.window.rootViewController = loginViewController;
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if (error != nil){
-            [self _presentPopUp:kErrLogOutString message:kErrLogOutMessage];
+            [PMReuseFunctions presentPopUp:kErrLogOutString message:kErrLogOutMessage viewController:self];
         }
     }];
 }
@@ -96,6 +89,10 @@ static const NSString *const kBasicString = @"basic";
 
 -(void)didReceiveIntensity:(NSString *)intensity {
     self.groupIntensity = intensity;
+}
+
+-(NSArray<Post *> *)refreshData {
+    return self.arrayOfPosts;
 }
 
 - (IBAction)didTapGo:(id)sender {
@@ -133,7 +130,7 @@ static const NSString *const kBasicString = @"basic";
             self.arrayOfPosts = posts;
             [self _runEventQuery];
         } else {
-            [self _presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage];
+            [PMReuseFunctions presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage viewController:self];
         }
     }];
 }
@@ -146,12 +143,13 @@ static const NSString *const kBasicString = @"basic";
     [getQuery whereKey:kIsEventKey greaterThanOrEqualTo:kIsEventString];
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {
         if (events != nil) {
-            for (Post *event in events) {
-                [self.arrayOfPosts insertObject:event atIndex:0];
-            }
+            NSMutableArray *toSet = [[NSMutableArray alloc]init];
+            toSet = [NSMutableArray arrayWithArray:events];
+            [toSet addObjectsFromArray:self.arrayOfPosts];
+            self.arrayOfPosts = toSet;
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
-            [self _presentPopUp:kErrQueryEventsString message:kErrQueryEventsMessage];
+            [PMReuseFunctions presentPopUp:kErrQueryEventsString message:kErrQueryEventsMessage viewController:self];
         }
     }];
 }
@@ -166,6 +164,7 @@ static const NSString *const kBasicString = @"basic";
         tableVC.arrayOfPosts = self.arrayOfPosts;
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
+        tableVC.toSet = self;
         NSLog(kStrInput, self.distance);
     }
     

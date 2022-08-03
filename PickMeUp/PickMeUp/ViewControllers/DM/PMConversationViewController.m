@@ -12,6 +12,7 @@
 #import "PMDataManager.h"
 #import "PMDirectMessage.h"
 #import "PMDMCell.h"
+#import "PMReuseFunctions.h"
 #import "StringsList.h"
 
 @interface PMConversationViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
@@ -36,13 +37,9 @@
 static const NSString *const kConvoIdKey = @"convoId";
 static const NSString *const kCellIdentifier = @"DMCell";
 static const NSString *const kPostingErrString = @"error on Post request";
-static const NSString *const kLiveQueryURL = @"wss://pickmeup2.b4a.io";
 static const NSString *const kErrCreateConvoString = @"Creating Conversation Error";
 static const NSString *const kErrCreateConvoMessage =
     @"There appears to be an error with saving this conversation, check your internet and try again";
-static const NSString *const kErrCreateDMString = @"Creating Message Error";
-static const NSString *const kErrCreateDMMessage =
-    @"There appears to be an error with saving this message, check your internet and try again";
 static const NSString *const kErrQueryForDMString = @"Error Retrieving Messages";
 static const NSString *const kErrQueryForDMMessage =
     @"There appears to be an error retreiving this conversation, check your internet and try again";
@@ -56,10 +53,12 @@ static const NSString *const kErrQueryForDMMessage =
     self.messageToSend.delegate = self;
     
     if (self.convo != nil) {
+        self.liveQueryClient = [PMReuseFunctions createLiveQueryObj];
         [self _finishCreatingLiveQuery];
     }
     
     PFQuery *countQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
+    [countQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
     self.pageCount = 1;
     self.totalObjects = [countQuery countObjects];
     self.pageObjectNum = 30;
@@ -67,7 +66,7 @@ static const NSString *const kErrQueryForDMMessage =
     self.manager = [PMDataManager dataManager];
     if (self.convo != nil) {
         self.noDMs = NO;
-        [self.manager fillDMs:self.convo withBlock:^(NSArray<PMDirectMessage *> *DMs){
+        [self.manager fillDMs:self.convo.objectId withBlock:^(NSArray<PMDirectMessage *> *DMs){
             self.arrayOfDMs = DMs;
             [self.tableView reloadData];
         }];
@@ -75,21 +74,8 @@ static const NSString *const kErrQueryForDMMessage =
         self.noDMs = YES;
     }
 }
-- (IBAction)didTapBack:(id)sender {
-    [self.manager saveDMs:self.arrayOfDMs conversation:self.convo];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)_presentPopUp:(NSString *)title message:(NSString *)message {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-        handler:^(UIAlertAction * _Nonnull action) {}];
-    [alert addAction:okAction];
-    [self presentViewController:alert animated:YES completion:^{}];
-}
 
 -(void)_finishCreatingLiveQuery {
-    [self _createLiveQueryObj];
     self.msgQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
     [self.msgQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
     self.subscription = [self.liveQueryClient subscribeToQuery:self.msgQuery];
@@ -104,13 +90,11 @@ static const NSString *const kErrQueryForDMMessage =
     }];
 }
 
--(void)_createLiveQueryObj {
-    NSString *path = [[NSBundle mainBundle] pathForResource:kKeysString ofType:kPlistTitle];
-    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSString *key = [dict objectForKey:kAppIDString];
-    NSString *secret = [dict objectForKey:kClientKey];
-
-    self.liveQueryClient = [[PFLiveQueryClient alloc] initWithServer:kLiveQueryURL applicationId:key clientKey:secret];
+- (IBAction)didTapBack:(id)sender {
+    if (self.convo != nil) {
+        [self.manager saveDMs:self.arrayOfDMs conversation:self.convo.objectId];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -140,28 +124,13 @@ static const NSString *const kErrQueryForDMMessage =
     int totalPages = (self.totalObjects + self.pageObjectNum)/self.pageObjectNum;
     if (self.pageCount != totalPages){
         if (indexPath.row == self.arrayOfDMs.count-2){
-            [self.manager loadMoreDMs:self.convo pageCount:self.pageCount withBlock:^(NSArray<PMDirectMessage *> *DMs){
+            [self.manager loadMoreDMs:self.convo.objectId pageCount:self.pageCount withBlock:^(NSArray<PMDirectMessage *> *DMs){
                 [self.arrayOfDMs addObjectsFromArray:DMs];
                 [self.tableView reloadData];
             }];
             self.pageCount++;
         }
     }
-}
-
--(void)_saveDM {
-    // posts DM to database and refreshes the table
-    PMDirectMessage *newDM = [PMDirectMessage new];
-    newDM.content = self.messageToSend.text;
-    newDM.convoId = self.convo.objectId;
-    newDM.sender = PFUser.currentUser;
-    [newDM postDM:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error != nil){
-            [self _presentPopUp:kErrCreateDMString message:kErrCreateDMMessage];
-        }
-        self.messageToSend.text = kEmpt;
-        self.sendBtn.enabled = YES;
-    }];
 }
 
 - (IBAction)didTapSend:(id)sender {
@@ -173,19 +142,22 @@ static const NSString *const kErrQueryForDMMessage =
         newConvo.receiver = self.receiver;
         [newConvo postConvo:^(BOOL succeeded, NSError * _Nullable error) {
             if (error != nil){
-                [self _presentPopUp:kErrCreateConvoString message:kErrCreateConvoMessage];
+                [PMReuseFunctions presentPopUp:kErrCreateConvoString message:kErrCreateConvoMessage viewController:self];
             } else {
                 self.noDMs = NO;
                 self.convo = newConvo;
-                [self _saveDM];
+                [PMReuseFunctions saveDM:self.messageToSend.text searchById:self.convo.objectId];
+                self.messageToSend.text = kEmpt;
+                self.sendBtn.enabled = YES;
+                self.liveQueryClient = [PMReuseFunctions createLiveQueryObj];
                 [self _finishCreatingLiveQuery];
             }
         }];
     } else {
-        [self _saveDM];
+        [PMReuseFunctions saveDM:self.messageToSend.text searchById:self.convo.objectId];
+        self.messageToSend.text = kEmpt;
+        self.sendBtn.enabled = YES;
     }
-
- 
 }
 
 @end

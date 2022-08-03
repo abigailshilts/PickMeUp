@@ -8,6 +8,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PMCreatePostViewController.h"
 #import "PMPickerViewController.h"
+#import "PMReuseFunctions.h"
 #import "Post.h"
 #import "StringsList.h"
 
@@ -125,11 +126,7 @@ static const NSString *const kErrPostingImgMessage =
             
             [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (error != nil){
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:kErrPostingImgString message:kErrPostingImgMessage preferredStyle:(UIAlertControllerStyleAlert)];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:kOkString style:UIAlertActionStyleDefault
-                        handler:^(UIAlertAction * _Nonnull action) {}];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:^{}];
+                    [PMReuseFunctions presentPopUp:kErrPostingImgString message:kErrPostingImgMessage viewController:self];
                 } else {
                     NSLog(kPostedSuccessString);
                 }
