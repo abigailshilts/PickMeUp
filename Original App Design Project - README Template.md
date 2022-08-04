@@ -11,7 +11,7 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-Pickup app, groups can post a synopsis about who they are, what sport, where, when, intensity, a short bio then the app has search capabilities to filter into groups that fit someone’s preferences (possibly display locations on a map?) (Possibly a DM capability)
+Pickup app, groups can post a synopsis about who they are, what sport, where, when, intensity, a short bio then the app has search capabilities to filter into groups that fit someone’s preferences, and can display search results as pins on map. Additionally users can start conversations and DM groups for more information, save posts that they like, and create events that will appear at the top of any search within a 15 mile radious for the span of a day.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
@@ -54,6 +54,8 @@ This App should be reasonable to complete by the end of the designated time, the
     * User selects certain filters for what they are searching
 * Feed
     * User can scroll through list of groups that fit their filters
+* Map
+   *  Users can view the results of their search as pins on a map
 * Details page
     * Has more indepth description about the group
 * Page displaying your own posts
@@ -64,28 +66,37 @@ This App should be reasonable to complete by the end of the designated time, the
     * Displays similar to different social media apps for current conversations
 * Individual DMs
     * Shows chat between users
+* Events DM
+    * Displays DMs of all people with access to the post in a groupchat or forum like way
+* Make event
+   *  Allows user to make an event
+*  Saved posts
+   * Displays all posts a user has saved 
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* login button (login -> search)
-* Search button (search -> feed)
-* register (login -> register, register -> search)
-* Back button (details -> feed, DM display -> details or conversation, DMs -> DM display)
-* DM button (feed -> DM display)
-* Post button (feed -> create post, create post -> feed)
-* Search bar (feed -> search)
+* Search tab -> search screen
+* My posts tab -> my posts screen
+* DMs tab -> screen displaying converations
 
 **Flow Navigation** (Screen to Screen)
 
-* Feed
-   * Details (for specific group)
-* DM
-   * Go to specific DM after clicking a conversation
+* login button (login -> search, login -> register)
+* register (register -> search)
+* Search (search -> feed)
+* Feed/Search results (feed -> map, feed -> details view)
+* Details view (Details -> DM display)
+* Conversations (conversations screen -> DM display)
+* Your posts (your posts -> make a post, your posts -> make an event, your posts -> saved posts)
 
 ## Wireframes
+Original:
 ![289042721_709221586803849_9052767981505465934_n](https://user-images.githubusercontent.com/58635711/182743208-a8db9193-f662-43a6-b619-3b1f826869b0.jpg)
+
+Current:
+![297174470_1407562166395336_229920820450356999_n](https://user-images.githubusercontent.com/58635711/182908808-b593878e-a57e-41db-b066-f8f73ae0901f.jpg)
 
 ## Schema 
 [This section will be completed in Unit 9]
@@ -95,6 +106,7 @@ User
 * Username
 * Password
 * email
+* Array of saved posts
 Post
 * Img
 * Description
@@ -102,13 +114,14 @@ Post
 * Sport
 * Location
 * When
+* IsEvent
 Conversation
 * Sender
 * Receiver
 DM
 * Convo Id
 * Content
-* Timestamp
+* Sender
 
 ### Networking
 - Login screen: Does a log in request
@@ -116,6 +129,7 @@ DM
 - Search screen: get request based on inputed search paramaters
 - Details view: get request for conversation related to post
 - My Posts: get request for current user posts
-- Make Posts: post request to make new convo object
+- Make Posts: post request to make new post object
+- Make Events: post request to make new event object
 - Conversations: get request for all current conversations
 - DMs: Get request for all current DMs and live query for new ones, post requests for new conversations and DMs
