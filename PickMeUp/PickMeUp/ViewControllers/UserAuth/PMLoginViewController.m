@@ -5,6 +5,7 @@
 //  Created by Abigail Shilts on 7/5/22.
 //
 
+#import "JHUD.h"
 #import "Parse/Parse.h"
 #import "PMLoginViewController.h"
 #import "PMReuseFunctions.h"
@@ -14,7 +15,7 @@
 @interface PMLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *insertedUsername;
 @property (weak, nonatomic) IBOutlet UITextField *insertedPassword;
-
+@property (strong, nonatomic) JHUD *hudView;
 @end
 
 @implementation PMLoginViewController
@@ -41,12 +42,12 @@ static const NSString *const kGoToSignUpSegue = @"goToSignUp";
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
-            // TODO: Add alert w/ message about user doesn't exist
             NSLog(kFailedLogInString, error.localizedDescription);
         } else {
             NSLog(kUserLogInSuccesString);
             [self performSegueWithIdentifier:kLoginToSearchSegue sender:nil];
         }
+        [self.hudView hide];
     }];
 }
 
@@ -55,7 +56,12 @@ static const NSString *const kGoToSignUpSegue = @"goToSignUp";
 }
 
 - (IBAction)didTapLogin:(id)sender {
+    self.hudView = [[JHUD alloc]initWithFrame:self.view.bounds];
+
+    self.hudView.messageLabel.text = @"Logging user in";
+    [self.hudView showAtView:self.view hudType:JHUDLoadingTypeCircle];
     [self _loginUser];
+//    [self.hudView hide];
 }
 
 

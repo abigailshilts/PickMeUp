@@ -34,6 +34,7 @@
 
 static const NSString *const kConvoIdKey = @"convoId";
 static const NSString *const kCellReuseIdString = @"groupMessageCell";
+static const NSString *const kAtString = @"@";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,7 +101,8 @@ static const NSString *const kCellReuseIdString = @"groupMessageCell";
     PMDirectMessage *dm = self.arrayToDisplay[indexPath.row];
     [dm.sender fetchIfNeeded];
     cell.message.text = dm.content;
-    cell.username.text = dm.sender.username;
+    NSString *username = [kAtString stringByAppendingString:dm.sender.username];
+    cell.username.text = username;
     return cell;
 }
 

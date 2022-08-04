@@ -31,7 +31,9 @@ static const NSString *const kConvoIdKey = @"convoId";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
 
-    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCacheFile];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCache];
+    plistPath = [plistPath stringByAppendingString:PFUser.currentUser.objectId];
+    plistPath = [plistPath stringByAppendingString:kDotPlist];
 
     if ([fileManager fileExistsAtPath:plistPath] == NO) {
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kConversationCache ofType:kPlistTitle];
@@ -122,7 +124,9 @@ static const NSString *const kConvoIdKey = @"convoId";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
 
-    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCacheFile];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:kConversationCache];
+    plistPath = [plistPath stringByAppendingString:PFUser.currentUser.objectId];
+    plistPath = [plistPath stringByAppendingString:kDotPlist];
     NSMutableArray<PMConversation *> *conversations = [NSMutableArray new];
     if ([fileManager fileExistsAtPath:plistPath] == YES) {
         NSMutableArray<NSDictionary *> *savedValue = [[NSMutableArray alloc] initWithContentsOfFile: plistPath];

@@ -55,12 +55,14 @@ static const NSString *const kErrQueryForDMMessage =
     if (self.convo != nil) {
         self.liveQueryClient = [PMReuseFunctions createLiveQueryObj];
         [self _finishCreatingLiveQuery];
+        PFQuery *countQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
+        [countQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
+        self.totalObjects = [countQuery countObjects];
+    } else {
+        self.totalObjects = 0;
     }
     
-    PFQuery *countQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
-    [countQuery whereKey:kConvoIdKey equalTo:self.convo.objectId];
     self.pageCount = 1;
-    self.totalObjects = [countQuery countObjects];
     self.pageObjectNum = 30;
     
     self.manager = [PMDataManager dataManager];
@@ -149,6 +151,7 @@ static const NSString *const kErrQueryForDMMessage =
                 [PMReuseFunctions saveDM:self.messageToSend.text searchById:self.convo.objectId];
                 self.messageToSend.text = kEmpt;
                 self.sendBtn.enabled = YES;
+                self.arrayOfDMs = [NSMutableArray new];
                 self.liveQueryClient = [PMReuseFunctions createLiveQueryObj];
                 [self _finishCreatingLiveQuery];
             }

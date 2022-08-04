@@ -12,7 +12,7 @@
 #import "Post.h"
 #import "StringsList.h"
 
-@interface PMCreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
+@interface PMCreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imgOpt;
 @property (weak, nonatomic) IBOutlet UITextField *groupWhere;
 @property (weak, nonatomic) IBOutlet UITextField *groupWhen;
@@ -49,6 +49,15 @@ static const NSString *const kErrPostingImgMessage =
 - (BOOL)_textFieldShouldReturn:(UITextField *)textField {
    [textField resignFirstResponder];
    return true;
+}
+
+- (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if( [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location == NSNotFound ) {
+        return YES;
+    }
+
+    [txtView resignFirstResponder];
+    return NO;
 }
 
 // delegate methods for recieving picker info

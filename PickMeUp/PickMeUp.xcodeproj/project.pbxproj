@@ -323,7 +323,7 @@
 		48ACE4C62874A6D0000EA3B6 /* PickMeUp */ = {
 			isa = PBXGroup;
 			children = (
-				48E2BE7F2899C36300D95EC4 /* ReuseFunctions */,
+				48E2BE7F2899C36300D95EC4 /* ForReuse */,
 				48E2BE542890A0BB00D95EC4 /* Caching */,
 				4873D56C2889B30F00CEC056 /* DataStructure */,
 				4876A9862886284100C175B8 /* Model */,
@@ -336,7 +336,6 @@
 				48ACE4D82874A6D1000EA3B6 /* Info.plist */,
 				48ACE4D92874A6D1000EA3B6 /* main.m */,
 				48ACE50D2874D278000EA3B6 /* keys.plist */,
-				48ACE5032874B188000EA3B6 /* StringsList.h */,
 				48E2BE52288F57DA00D95EC4 /* storeHouse.plist */,
 				48E2BE582890B5E300D95EC4 /* ConversationCache.plist */,
 				48E2BE5A2891DEB700D95EC4 /* DMCache.plist */,
@@ -400,13 +399,14 @@
 			path = Caching;
 			sourceTree = "<group>";
 		};
-		48E2BE7F2899C36300D95EC4 /* ReuseFunctions */ = {
+		48E2BE7F2899C36300D95EC4 /* ForReuse */ = {
 			isa = PBXGroup;
 			children = (
+				48ACE5032874B188000EA3B6 /* StringsList.h */,
 				48E2BE802899C43000D95EC4 /* PMReuseFunctions.h */,
 				48E2BE812899C43000D95EC4 /* PMReuseFunctions.m */,
 			);
-			path = ReuseFunctions;
+			path = ForReuse;
 			sourceTree = "<group>";
 		};
 		9EDDD409CA5C897257DBE9DF /* Pods */ = {
@@ -937,9 +937,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -973,9 +973,9 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
