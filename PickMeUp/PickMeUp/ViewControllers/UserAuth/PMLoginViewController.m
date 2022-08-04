@@ -25,6 +25,7 @@ static const NSString *const kLogginginNeedsAllString = @"Logging in requires al
 static const NSString *const kFailedLogInString = @"User log in failed: %@";
 static const NSString *const kUserLogInSuccesString = @"User logged in successfully";
 static const NSString *const kGoToSignUpSegue = @"goToSignUp";
+static const NSString *const kHudMessageString = @"Logging user in";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,10 +59,9 @@ static const NSString *const kGoToSignUpSegue = @"goToSignUp";
 - (IBAction)didTapLogin:(id)sender {
     self.hudView = [[JHUD alloc]initWithFrame:self.view.bounds];
 
-    self.hudView.messageLabel.text = @"Logging user in";
+    self.hudView.messageLabel.text = kHudMessageString;
     [self.hudView showAtView:self.view hudType:JHUDLoadingTypeCircle];
     [self _loginUser];
-//    [self.hudView hide];
 }
 
 

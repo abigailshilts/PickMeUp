@@ -31,9 +31,7 @@
 
 static const NSString *const kChooseIntensityViewSegue = @"chooseIntensityView";
 static const NSString *const kChooseSportViewSegue = @"chooseSportView";
-static const NSString *const kErrPostingImgString = @"Error Posting Photo";
-static const NSString *const kErrPostingImgMessage =
-    @"There appears to be an error savin this post, check your internet and try again";
+static const int kImgSize = 580;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,28 +77,13 @@ static const NSString *const kErrPostingImgMessage =
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    originalImage = [self _resizeImage:originalImage withSize:CGSizeMake(580,580)];
+    originalImage = [PMReuseFunctions resizeImage:originalImage withSize:CGSizeMake(kImgSize,kImgSize)];
     self.imgToPost = originalImage;
     
     // changes img on view controller to one seleted
     [self.imgOpt setImage:originalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (UIImage *)_resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
 }
 
 - (IBAction)didTapPost:(id)sender {
@@ -113,42 +96,11 @@ static const NSString *const kErrPostingImgMessage =
     toPost.groupWhen = self.groupWhen.text;
     toPost.isEvent = kIsntEventString;
     
-    
     // turns street adress into coordinates
     CLGeocoder *geocoder = [CLGeocoder new];
-    [geocoder geocodeAddressString:self.groupWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            //TODO: add error for invlaid address
-            NSLog(kErrMsgString, [error localizedDescription]);
-            return;
-        }
-        
-        // A location was generated
-        if (placemarks && [placemarks count] > 0) {
-            CLPlacemark *placemark = placemarks[0]; // Our placemark
-            
-            // creates geoPoint (for parse) from CLLocation
-            self.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
-            toPost.curLoc = self.curLoc;
-            toPost.latitude = placemark.location.coordinate.latitude;
-            toPost.longitude = placemark.location.coordinate.longitude;
-            
-            [toPost postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error != nil){
-                    [PMReuseFunctions presentPopUp:kErrPostingImgString message:kErrPostingImgMessage viewController:self];
-                } else {
-                    NSLog(kPostedSuccessString);
-                }
-            }];
-        }
-    }];
-
+    [PMReuseFunctions savePostWithLocation:toPost geoCoder:geocoder address:self.groupWhere.text withImage:self.imgToPost];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
-
-
 
 #pragma mark - Navigation
 

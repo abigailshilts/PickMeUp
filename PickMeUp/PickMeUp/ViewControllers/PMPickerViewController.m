@@ -20,7 +20,8 @@
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", @"any", nil];
-    self.sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball", @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
+    self.sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball",
+                  @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

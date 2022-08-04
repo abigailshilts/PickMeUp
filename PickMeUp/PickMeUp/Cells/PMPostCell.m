@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 
 @implementation PMPostCell
+
 static const NSString *const kEventString = @"Event!!!!";
 
 - (void)awakeFromNib {

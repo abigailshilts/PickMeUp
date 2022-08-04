@@ -27,14 +27,13 @@
     return kPostClassName;
 }
 
-- (void)postUserImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+- (void)postUserImage: (UIImage * _Nullable)image withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     self.image = [self _getPFFileFromImage:image];
     self.author = [PFUser currentUser];
     [self saveInBackgroundWithBlock: completion];
 }
 
 - (PFFileObject *)_getPFFileFromImage: (UIImage * _Nullable)image {
-
     // check if image is not nil
     if (!image) {
         return nil;

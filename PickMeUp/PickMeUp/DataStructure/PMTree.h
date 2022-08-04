@@ -12,8 +12,6 @@
 @interface PMTree: NSObject
 @property (nonatomic, strong) PMNode *rootNode;
 -(PMTree *)init;
-// Ideally traverse would be private but for now for testing leaving as public
--(PMNode *)_traverseToNode:(NSString *)endString withStartNode:(PMNode *)startNode;
 -(void)addConversation:(PMConversation *)toAdd;
 -(NSArray<PMConversation *> *)retrieveSubTree:(NSString *)prefix;
 @end

@@ -8,5 +8,4 @@
 #import "PMDisplayConversationsCell.h"
 
 @implementation PMDisplayConversationsCell
-
 @end
