@@ -1,7 +1,7 @@
 Original App Design Project - README Template
 ===
 
-# APP_NAME_HERE
+# PickMeUp
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -85,8 +85,7 @@ This App should be reasonable to complete by the end of the designated time, the
    * Go to specific DM after clicking a conversation
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![289042721_709221586803849_9052767981505465934_n](https://user-images.githubusercontent.com/58635711/182743208-a8db9193-f662-43a6-b619-3b1f826869b0.jpg)
 
 ## Schema 
 [This section will be completed in Unit 9]
