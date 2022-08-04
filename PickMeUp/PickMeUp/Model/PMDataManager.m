@@ -29,6 +29,11 @@ static const int kPageSize = 30;
     return dataManager;
 }
 
+/**
+ * Saves 30 most recent DMs in a conversation to the plist cache when a conversation is closed (overwrites previously contained ones)
+ * @param toSave total loaded array of DMs in the conversation at time of VC closure
+ * @param idToSave conversation id associated with the DMs being saved so that they can be retrieved in future
+ */
 -(void)saveDMs:(NSArray<PMDirectMessage *> *)toSave conversation:(NSString *)idToSave {
     NSArray<PMDirectMessage *> *toCache;
     if (toSave.count > kPageSize) {
@@ -44,7 +49,12 @@ static const int kPageSize = 30;
     });
 }
 
-// Completion block for following two functions could be called twice in the event that the cached data is not upto date
+/**
+ * Retrieves DMs relevant to current conversation
+ * @param idToSearch the convo id associated with the DMs for that conversation and their key in the plist cache
+ * @param completionBlock uses completion block to first return DMs from plist cache
+ * then is called a second time update with DMs from query if cache isn't up to date
+ */
 -(void)fillDMs:(NSString *)idToSearch withBlock:(void(^)(NSArray<PMDirectMessage *> *))completionBlock {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         self.completionBlock = completionBlock;
@@ -59,6 +69,11 @@ static const int kPageSize = 30;
     });
 }
 
+/**
+ * Retrieves all conversation object the current user is apart of
+ * @param completionBlock called a first time to return contents of conversation cache,
+ * then if cache is not upto date with query call will call again to update with the additional conversation objects
+ */
 -(void)fillConversations:(void(^)(NSArray<PMConversation *> *))completionBlock {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         self.completionBlock = completionBlock;
@@ -73,6 +88,9 @@ static const int kPageSize = 30;
     });
 }
 
+/**
+ * Queries the database for conversations involving the current user
+ */
 -(void)_runGetQuery {
     PFUser *currentUser = PFUser.currentUser;
     // Populates conversation array
@@ -105,6 +123,10 @@ static const int kPageSize = 30;
     }];
 }
 
+/**
+ * Queries the database for most recent DMs in the current conversation
+ * @param idToSearch the conversation id associated with desired DMs
+ */
 -(void)_runGetDMsQuery:(NSString *)idToSearch {
     // Populates DM array
     PFQuery *getQuery = [PFQuery queryWithClassName:kDirectMessageClassName];
@@ -124,6 +146,12 @@ static const int kPageSize = 30;
     }];
 }
 
+/**
+ * Queries the database for additional DMs in conversation after user has scrolled to the bottom of loaded DMs
+ * @param idToSearch the conversation id associated with desired DMs
+ * @param pageCount the number of pages of DMs already queried
+ * @param completionBlock block for returning retrieved DMs
+ */
 -(void)loadMoreDMs:(NSString *)idToSearch pageCount:(NSInteger)pageCount
           withBlock:(void(^)(NSArray<PMDirectMessage *> *))completionBlock {
     // Populates DM array

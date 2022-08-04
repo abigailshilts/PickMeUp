@@ -19,6 +19,7 @@
 
 static const NSString *const kConversationCacheFile = @"ConversationCache.plist";
 static const NSString *const kConversationCache = @"ConversationCache";
+static const NSString *const kCopyPlistErr = @"Couldn't copy conversation plist: %@";
 static const NSString *const kDMCacheFile = @"DMCache.plist";
 static const NSString *const kDMCache = @"DMCache";
 static const NSString *const kDotPlist = @".plist";
@@ -35,11 +36,12 @@ static const NSString *const kConvoIdKey = @"convoId";
     plistPath = [plistPath stringByAppendingString:PFUser.currentUser.objectId];
     plistPath = [plistPath stringByAppendingString:kDotPlist];
 
+    // creates plist if it doesn't already exist
     if ([fileManager fileExistsAtPath:plistPath] == NO) {
         NSString *resourcePath = [[NSBundle mainBundle] pathForResource:kConversationCache ofType:kPlistTitle];
         [fileManager copyItemAtPath:resourcePath toPath:plistPath error:&error];
         if (error != nil){
-            NSLog(@"Couldn't copy conversation plist: %@", error);
+            NSLog(kCopyPlistErr, error);
             return;
         }
     }

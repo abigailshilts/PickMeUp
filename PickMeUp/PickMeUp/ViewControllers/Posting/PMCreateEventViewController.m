@@ -24,6 +24,7 @@
 static const NSString *const kErrPostingImgString = @"Error Posting Photo";
 static const NSString *const kErrPostingImgMessage =
     @"There appears to be an error savin this post, check your internet and try again";
+static const int kImgSize = 580;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +54,7 @@ static const NSString *const kErrPostingImgMessage =
     didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    originalImage = [self _resizeImage:originalImage withSize:CGSizeMake(580,580)];
+    originalImage = [PMReuseFunctions resizeImage:originalImage withSize:CGSizeMake(kImgSize,kImgSize)];
     self.imgToPost = originalImage;
     
     // changes img on view controller to one seleted
@@ -61,19 +62,6 @@ static const NSString *const kErrPostingImgMessage =
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (UIImage *)_resizeImage:(UIImage *)image withSize:(CGSize)size {
-    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
-    
-    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
-    resizeImageView.image = image;
-    
-    UIGraphicsBeginImageContext(size);
-    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return newImage;
-}
 - (IBAction)didTapCreate:(id)sender {
     self.createButton.enabled = NO;
     Post *toCreate = [Post new];
@@ -83,29 +71,7 @@ static const NSString *const kErrPostingImgMessage =
     toCreate.isEvent = kIsEventString;
     
     CLGeocoder *geocoder = [CLGeocoder new];
-    [geocoder geocodeAddressString:self.eventWhere.text completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (error) {
-            NSString *title = [NSString stringWithFormat:@"%@", error];
-            [PMReuseFunctions presentPopUp:title message:kEmpt viewController:self];
-            return;
-        }
-        
-        // A location was generated
-        if (placemarks && [placemarks count] > 0) {
-            CLPlacemark *placemark = placemarks[0]; // Our placemark
-            
-            // creates geoPoint (for parse) from CLLocation
-            toCreate.curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
-            
-            [toCreate postUserImage:self.imgToPost withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error != nil){
-                    [PMReuseFunctions presentPopUp:kErrPostingImgString message:kErrPostingImgMessage viewController:self];
-                } else {
-                    NSLog(kPostedSuccessString);
-                }
-            }];
-        }
-    }];
+    [PMReuseFunctions savePostWithLocation:toCreate geoCoder:geocoder address:self.eventWhere.text withImage:self.imgToPost];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

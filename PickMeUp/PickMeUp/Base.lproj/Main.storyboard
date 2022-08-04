@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzm-Ts-8sr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3464" y="1069"/>
+            <point key="canvasLocation" x="3737" y="566"/>
         </scene>
         <!--showMarkerDetail-->
         <scene sceneID="HEu-Ho-EJI">
@@ -488,11 +488,11 @@
             <objects>
                 <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="Gdd-wR-fzs" customClass="PMConversationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5km-yt-J7M">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="166-Im-0qr">
-                                <rect key="frame" x="1" y="625" width="414" height="161"/>
+                                <rect key="frame" x="1" y="735" width="414" height="161"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="mC0-nu-1vN" kind="embed" id="yYq-cC-LBy"/>
@@ -659,7 +659,7 @@
             <objects>
                 <viewController id="Ami-RP-7gy" customClass="PMDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qoO-t0-b7w">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mh6-os-owr">
@@ -972,7 +972,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select group intensity:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddL-s3-PHq">
-                                <rect key="frame" x="228.5" y="86" width="170.5" height="65"/>
+                                <rect key="frame" x="225" y="86" width="174" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="HDh-g2-oRy"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="127" id="bti-ve-L6E"/>
@@ -982,7 +982,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select sport:" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hx4-w6-Vqk">
-                                <rect key="frame" x="41.5" y="251" width="172" height="38"/>
+                                <rect key="frame" x="38" y="251" width="172" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="A2B-8Q-vIJ"/>
                                     <constraint firstAttribute="width" constant="172" id="a00-kC-138"/>
@@ -998,12 +998,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-xW-WJc">
-                                <rect key="frame" x="16" y="98.5" width="205" height="133"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-xW-WJc">
+                                <rect key="frame" x="5" y="86.5" width="205" height="133"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="WMu-wJ-C9I"/>
+                                    <constraint firstAttribute="width" constant="205" id="bsp-cP-cdC"/>
+                                </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsi-dw-v1b">
-                                <rect key="frame" x="228.5" y="159" width="147" height="84"/>
+                                <rect key="frame" x="225" y="159" width="147" height="84"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="147" id="bwR-72-JHk"/>
                                     <constraint firstAttribute="height" constant="84" id="nVc-ZC-g9H"/>
@@ -1052,6 +1056,7 @@
                             <constraint firstItem="MQ6-Ul-AgB" firstAttribute="top" secondItem="84z-kZ-CSs" secondAttribute="bottom" constant="20" id="IDW-sP-qrG"/>
                             <constraint firstItem="MQ6-Ul-AgB" firstAttribute="leading" secondItem="ByO-Ue-zBN" secondAttribute="leading" constant="30" id="QNS-aK-eAC"/>
                             <constraint firstItem="vsi-dw-v1b" firstAttribute="leading" secondItem="hx4-w6-Vqk" secondAttribute="trailing" constant="15" id="TBP-Y4-a3B"/>
+                            <constraint firstItem="kgz-xW-WJc" firstAttribute="leading" secondItem="ByO-Ue-zBN" secondAttribute="leading" constant="5" id="WML-f8-NmG"/>
                             <constraint firstItem="vsi-dw-v1b" firstAttribute="leading" secondItem="kgz-xW-WJc" secondAttribute="trailing" constant="15" id="Wcc-b2-8wx"/>
                             <constraint firstItem="vsi-dw-v1b" firstAttribute="top" secondItem="ddL-s3-PHq" secondAttribute="bottom" constant="8" id="ksJ-4I-N4v"/>
                             <constraint firstItem="kgz-xW-WJc" firstAttribute="top" secondItem="ByO-Ue-zBN" secondAttribute="top" constant="30" id="mPh-x8-cdq"/>
@@ -1208,7 +1213,7 @@
                     <navigationItem key="navigationItem" id="vNV-yJ-7v5">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="jgP-xs-wXp">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="FXj-au-ne9">
-                                <rect key="frame" x="302" y="12.5" width="92" height="31"/>
+                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="back"/>
@@ -1334,7 +1339,7 @@
             <objects>
                 <viewController id="sMK-2k-WY4" customClass="PMGroupMessageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ij0-be-Khq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7sE-Ug-mCD">
@@ -1596,7 +1601,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SSk-dp-IqW"/>
-        <segue reference="lJA-BO-9dc"/>
+        <segue reference="VEn-j5-E5B"/>
         <segue reference="acN-Rm-RMb"/>
         <segue reference="rs5-Ty-8gG"/>
         <segue reference="tTg-FI-gJr"/>

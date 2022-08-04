@@ -45,6 +45,9 @@ static const NSString *const kErrQueryEventsMessage =
     @"Please check your internet and try again";
 static const NSString *const kXPosString = @"position.x";
 static const NSString *const kBasicString = @"basic";
+static const int kQuerySize = 20;
+static const int kSecondsInDay = -86400;
+static const int kEventRadious = 15;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -124,7 +127,7 @@ static const NSString *const kBasicString = @"basic";
     }
     [getQuery whereKey:kIsEventKey equalTo:kIsntEventString];
     [getQuery orderByDescending:kCurLocKey];
-    getQuery.limit = 20;
+    getQuery.limit = kQuerySize;
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             self.arrayOfPosts = posts;
@@ -136,9 +139,9 @@ static const NSString *const kBasicString = @"basic";
 }
 
 -(void)_runEventQuery {
-    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-86400]; // Seconds in a day
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:kSecondsInDay];
     PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
-    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:15];
+    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:kEventRadious];
     [getQuery whereKey:kCreatedAtKey greaterThanOrEqualTo:yesterday];
     [getQuery whereKey:kIsEventKey greaterThanOrEqualTo:kIsEventString];
     [getQuery findObjectsInBackgroundWithBlock:^(NSArray *events, NSError *error) {

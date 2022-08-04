@@ -22,6 +22,12 @@
     return self;
 }
 
+/**
+ * Internal function for recursivly finding a specific node in the tree
+ * @param endString is the desired prefix for the returned node to contain
+ * @param startNode is the node under whcich the function will search (often times is root node)
+ * @return the node in the tree with a matching prefix to the one provided or node whose prefix is the longest sunstring if no node contains provided prefix
+ */
 -(PMNode *)_traverseToNode:(NSString *)endString withStartNode:(PMNode *)startNode {
     if ([startNode.prefix isEqualToString:endString]) {
         return startNode;
@@ -33,10 +39,14 @@
             return [self _traverseToNode:endString withStartNode:childNode];
         }
     }
-    
     return startNode;
 }
 
+/**
+ * Function called to add a conversation as the payload of a node into the tree
+ * @param toAdd conversation to be added to the tree
+ * @see _traverseToNode and _insertNodes
+ */
 -(void)addConversation:(PMConversation *)toAdd {
     NSString *name;
     
@@ -60,6 +70,15 @@
     return;
 }
 
+/**
+ * Internal method for recursivly adding a node as a child, if the prefix of node to add is more than one char longer that the current node, will make empty ones
+ * until the prefix of the current node matches and is one char shorter than the one to add
+ *  @param toAdd the node being inserted into the tree
+ *  @param username the prefix of the node being added
+ *  @param currNode the existing node with a closest prefix to the one toAdd
+ *  (the one who will either be toAdd's parent or from which empty childeren will begin to be created)
+ *  @see addConversation (the method this one is called from)
+ */
 -(void)_insertNodes:(PMNode *)toAdd username:(NSString *)username currentNode:(PMNode *)currNode {
     
     if ([currNode.prefix length] == [username length]-1) {
@@ -74,6 +93,12 @@
     }
 }
 
+/**
+ * Method for creating an array of all conversations in nodes in the sub tree of a given node
+ * Utilizes a Queue to retrieve list sorted first by length of conversation username then alphabetically within a certain length
+ * @param prefix of the node that is the root of the sub tree to retrieve from
+ * @return an array of conversations whose usernames are prefixed by the given prefix
+ */
 -(NSArray<PMConversation *> *)retrieveSubTree:(NSString *)prefix {
     PMNode *start = [self _traverseToNode:prefix withStartNode:self.rootNode];
     if ([start.prefix length] != [prefix length]) {

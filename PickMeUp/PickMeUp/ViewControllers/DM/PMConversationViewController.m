@@ -43,6 +43,7 @@ static const NSString *const kErrCreateConvoMessage =
 static const NSString *const kErrQueryForDMString = @"Error Retrieving Messages";
 static const NSString *const kErrQueryForDMMessage =
     @"There appears to be an error retreiving this conversation, check your internet and try again";
+static const int kPageSize = 30;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +64,7 @@ static const NSString *const kErrQueryForDMMessage =
     }
     
     self.pageCount = 1;
-    self.pageObjectNum = 30;
+    self.pageObjectNum = kPageSize;
     
     self.manager = [PMDataManager dataManager];
     if (self.convo != nil) {
