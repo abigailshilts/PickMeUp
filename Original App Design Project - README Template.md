@@ -102,12 +102,15 @@ Current:
 [This section will be completed in Unit 9]
 ### Models
 User
+
 * User id
 * Username
 * Password
 * email
 * Array of saved posts
+
 Post
+
 * Img
 * Description
 * Intensity
@@ -115,10 +118,14 @@ Post
 * Location
 * When
 * IsEvent
+
 Conversation
+
 * Sender
 * Receiver
+
 DM
+
 * Convo Id
 * Content
 * Sender
