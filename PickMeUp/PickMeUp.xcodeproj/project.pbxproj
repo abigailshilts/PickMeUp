@@ -38,7 +38,7 @@
 		48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5012874AFA4000EA3B6 /* PMLoginViewController.m */; };
 		48ACE5062874B223000EA3B6 /* PMSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */; };
 		48ACE50E2874D278000EA3B6 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48ACE50D2874D278000EA3B6 /* keys.plist */; };
-		48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */; };
+		48E2BE51288F474D00D95EC4 /* PMSavedPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE50288F474D00D95EC4 /* PMSavedPostsViewController.m */; };
 		48E2BE53288F57DA00D95EC4 /* storeHouse.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48E2BE52288F57DA00D95EC4 /* storeHouse.plist */; };
 		48E2BE562890A0E900D95EC4 /* PMCachingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E2BE552890A0E900D95EC4 /* PMCachingFunctions.m */; };
 		48E2BE592890B5E300D95EC4 /* ConversationCache.plist in Resources */ = {isa = PBXBuildFile; fileRef = 48E2BE582890B5E300D95EC4 /* ConversationCache.plist */; };
@@ -132,8 +132,8 @@
 		48ACE5042874B223000EA3B6 /* PMSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PMSignUpViewController.h; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.h; sourceTree = SOURCE_ROOT; };
 		48ACE5052874B223000EA3B6 /* PMSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PMSignUpViewController.m; path = PickMeUp/viewControllers/UserAuth/PMSignUpViewController.m; sourceTree = SOURCE_ROOT; };
 		48ACE50D2874D278000EA3B6 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
-		48E2BE4F288F474D00D95EC4 /* SavedPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavedPostsViewController.h; sourceTree = "<group>"; };
-		48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavedPostsViewController.m; sourceTree = "<group>"; };
+		48E2BE4F288F474D00D95EC4 /* PMSavedPostsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMSavedPostsViewController.h; sourceTree = "<group>"; };
+		48E2BE50288F474D00D95EC4 /* PMSavedPostsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMSavedPostsViewController.m; sourceTree = "<group>"; };
 		48E2BE52288F57DA00D95EC4 /* storeHouse.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = storeHouse.plist; sourceTree = "<group>"; };
 		48E2BE552890A0E900D95EC4 /* PMCachingFunctions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PMCachingFunctions.m; sourceTree = "<group>"; };
 		48E2BE572890A21500D95EC4 /* PMCachingFunctions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PMCachingFunctions.h; sourceTree = "<group>"; };
@@ -277,8 +277,8 @@
 				4873D55D2888E82700CEC056 /* PMCreatePostViewController.m */,
 				4873D55C2888E82700CEC056 /* PMMyPostsViewController.h */,
 				4873D55B2888E82700CEC056 /* PMMyPostsViewController.m */,
-				48E2BE4F288F474D00D95EC4 /* SavedPostsViewController.h */,
-				48E2BE50288F474D00D95EC4 /* SavedPostsViewController.m */,
+				48E2BE4F288F474D00D95EC4 /* PMSavedPostsViewController.h */,
+				48E2BE50288F474D00D95EC4 /* PMSavedPostsViewController.m */,
 				48E2BE7028987A9500D95EC4 /* PMCreateEventViewController.h */,
 				48E2BE7128987A9500D95EC4 /* PMCreateEventViewController.m */,
 			);
@@ -714,7 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E2BE7528999A1A00D95EC4 /* PMGroupMessageViewController.m in Sources */,
-				48E2BE51288F474D00D95EC4 /* SavedPostsViewController.m in Sources */,
+				48E2BE51288F474D00D95EC4 /* PMSavedPostsViewController.m in Sources */,
 				4873D5732889F77300CEC056 /* PMTree.m in Sources */,
 				48ACE5022874AFA4000EA3B6 /* PMLoginViewController.m in Sources */,
 				487D95B3288099C10026C1E5 /* PMDMCell.m in Sources */,
