@@ -372,11 +372,11 @@
             <objects>
                 <viewController id="TPe-sB-IQd" customClass="PMEmbedTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ifV-vx-can">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="83J-KR-Ba3">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="postCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="214" id="kZf-CL-MMT" customClass="PMPostCell">
@@ -1174,7 +1174,7 @@
         <!--Saved Posts View Controller-->
         <scene sceneID="go3-34-g6R">
             <objects>
-                <viewController id="Rvj-dM-5HH" customClass="SavedPostsViewController" sceneMemberID="viewController">
+                <viewController id="Rvj-dM-5HH" customClass="PMSavedPostsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ne-Og-Pby">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1603,7 +1603,7 @@
         <segue reference="SSk-dp-IqW"/>
         <segue reference="VEn-j5-E5B"/>
         <segue reference="acN-Rm-RMb"/>
-        <segue reference="rs5-Ty-8gG"/>
+        <segue reference="NcN-Ck-I7V"/>
         <segue reference="tTg-FI-gJr"/>
     </inferredMetricsTieBreakers>
     <resources>

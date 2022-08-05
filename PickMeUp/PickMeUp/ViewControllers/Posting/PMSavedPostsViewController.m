@@ -5,14 +5,14 @@
 //  Created by Abigail Shilts on 7/25/22.
 //
 
-#import "SavedPostsViewController.h"
+#import "PMSavedPostsViewController.h"
 #import "PMEmbedTableViewController.h"
 
-@interface SavedPostsViewController () <PMEmbedTableViewControllerDelegate>
+@interface PMSavedPostsViewController () <PMEmbedTableViewControllerDelegate>
 
 @end
 
-@implementation SavedPostsViewController
+@implementation PMSavedPostsViewController
 
 static const NSString *const kSavedPostsKey = @"savedPosts";
 

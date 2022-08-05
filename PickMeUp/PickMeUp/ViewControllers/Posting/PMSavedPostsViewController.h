@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SavedPostsViewController : UIViewController
+@interface PMSavedPostsViewController : UIViewController
 
 @end
 
