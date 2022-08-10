@@ -31,6 +31,7 @@ static const NSString *const kConvoCell = @"convoCell";
     self.convoTree = [PMTree new];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.searchField.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.currentUser = [PFUser currentUser];
     [self.searchField addTarget:self
@@ -45,6 +46,11 @@ static const NSString *const kConvoCell = @"convoCell";
         self.arrayToDisplay = [self.convoTree retrieveSubTree:kEmpt];
         [self.tableView reloadData];
     }];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+   [textField resignFirstResponder];
+   return true;
 }
 
 -(void)_textFieldDidChange {
@@ -64,10 +70,6 @@ static const NSString *const kConvoCell = @"convoCell";
     cell.receiver.text = self.receiver.username;
     
     return cell;
-}
-
-- (IBAction)didTapBack:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

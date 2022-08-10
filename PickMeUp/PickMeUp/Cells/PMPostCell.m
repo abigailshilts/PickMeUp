@@ -17,6 +17,12 @@ static const NSString *const kEventString = @"Event!!!!";
     [super awakeFromNib];
 }
 
+-(void)prepareForReuse {
+    [super prepareForReuse];
+    self.groupTime.hidden = NO;
+    self.groupImg.image = nil;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 }
