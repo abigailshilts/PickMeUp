@@ -13,9 +13,8 @@ README
 ### Description
 Pickup app, groups can post a synopsis about who they are, what sport, where, when, intensity, a short bio then the app has search capabilities to filter into groups that fit someone’s preferences, and can display search results as pins on map. Additionally users can start conversations and DM groups for more information, save posts that they like, and create events that will appear at the top of any search within a 15 mile radious for the span of a day.
 
-Rough walk through for reference purposes:
+Demo: See file called FinalDemo in repo
 
-https://user-images.githubusercontent.com/58635711/182970973-c36b1f1f-d03d-447a-9a09-45b0274056c2.MOV
 
 
 ### App Evaluation
