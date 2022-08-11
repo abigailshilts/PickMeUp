@@ -150,11 +150,16 @@ static const int kPageSize = 30;
                 self.noDMs = NO;
                 self.convo = newConvo;
                 [PMReuseFunctions saveDM:self.messageToSend.text searchById:self.convo.objectId];
-                self.messageToSend.text = kEmpt;
-                self.sendBtn.enabled = YES;
                 self.arrayOfDMs = [NSMutableArray new];
+                PMDirectMessage *firstMessage = [PMDirectMessage new];
+                firstMessage.sender = PFUser.currentUser;
+                firstMessage.content = self.messageToSend.text;
+                [self.arrayOfDMs addObject:firstMessage];
                 self.liveQueryClient = [PMReuseFunctions createLiveQueryObj];
                 [self _finishCreatingLiveQuery];
+                self.messageToSend.text = kEmpt;
+                [self.tableView reloadData];
+                self.sendBtn.enabled = YES;
             }
         }];
     } else {

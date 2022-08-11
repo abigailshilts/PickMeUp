@@ -150,6 +150,7 @@ static const int kEventRadious = 15;
             toSet = [NSMutableArray arrayWithArray:events];
             [toSet addObjectsFromArray:self.arrayOfPosts];
             self.arrayOfPosts = toSet;
+            self.animationImg.hidden = YES;
             [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
         } else {
             [PMReuseFunctions presentPopUp:kErrQueryEventsString message:kErrQueryEventsMessage viewController:self];

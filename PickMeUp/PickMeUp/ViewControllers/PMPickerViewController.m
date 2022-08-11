@@ -19,7 +19,7 @@
     [super viewDidLoad];
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    self.intensity = [NSArray arrayWithObjects: @"low", @"medium", @"high", @"any", nil];
+    self.intensity = [NSArray arrayWithObjects: @"any", @"low", @"medium", @"high", nil];
     self.sport = [NSArray arrayWithObjects: @"Any", @"Soccer", @"Hockey", @"Football", @"Baseball/Softball",
                   @"Frisbee", @"Spikeball", @"Volleyball", @"Other", nil];
 }
@@ -40,7 +40,7 @@
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title = nil;
     if (self.isSport == NO){
-        title = self.intensity[row];
+        title = [self.intensity[row] capitalizedString];
     } else {
         title = self.sport[row];
     }
