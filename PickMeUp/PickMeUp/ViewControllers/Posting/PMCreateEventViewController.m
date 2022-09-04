@@ -71,7 +71,7 @@ static const int kImgSize = 580;
     toCreate.isEvent = kIsEventString;
     
     CLGeocoder *geocoder = [CLGeocoder new];
-    [PMReuseFunctions savePostWithLocation:toCreate geoCoder:geocoder address:self.eventWhere.text withImage:self.imgToPost];
+    [PMReuseFunctions savePostWithLocation:geocoder address:self.eventWhere.text bio:self.eventDescription.text sport:kEmpt intensity:kEmpt groupWhen:self.eventWhen.text isEvent:kIsEventString withImage:self.imgToPost];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

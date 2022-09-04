@@ -14,7 +14,12 @@ target 'PickMeUp' do
   pod 'CCBottomRefreshControl'
   pod 'CBStoreHouseRefreshControl'
   pod 'JHUD'
-  
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'GeoFire/Utils'  
+  pod 'FirebaseStorage'
+
   target 'PickMeUpTests' do
     inherit! :search_paths
     # Pods for testing

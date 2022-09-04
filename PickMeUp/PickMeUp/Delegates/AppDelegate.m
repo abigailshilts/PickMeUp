@@ -9,13 +9,14 @@
 #import "StringsList.h"
 #import "Parse/Parse.h"
 @import GoogleMaps;
+@import FirebaseCore;
+@import FirebaseFirestore;
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSString *path = [[NSBundle mainBundle] pathForResource:kKeysString ofType:kPlistTitle];
@@ -30,6 +31,8 @@
     }];
     [GMSServices provideAPIKey:maps];
     [Parse initializeWithConfiguration:config];
+    [FIRApp configure];
+    FIRFirestore *db = [FIRFirestore firestore];
     return YES;
 }
 

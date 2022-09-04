@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "PMDirectMessage.h"
 #import "PMReuseFunctions.h"
+#import "PickMeUp-Swift.h"
 #import "StringsList.h"
 
 @implementation PMReuseFunctions
@@ -86,14 +87,7 @@ static const NSString *const kErrPostingImgMessage =
     return newImage;
 }
 
-/**
- * Retrieves the Geolocation and coordinates of a given street address, adds them to a post object and does a post request on the object saving it to the database
- *  @param toSave the post that is going to be saved to the database
- *  @param geocoder the geocoder object used for translating street address
- *  @param address the street address to be translated
- */
-+(void)savePostWithLocation:(Post *)toSave geoCoder:(CLGeocoder *)geocoder address:(NSString *)address
-        withImage:(UIImage * _Nullable)image {
++(void)savePostWithLocation:(CLGeocoder *)geocoder address:(NSString *)address bio:(NSString *)bio sport:(NSString *)sport intensity:(NSString *)intensity groupWhen:(NSString *)groupWhen isEvent:(NSString *)isEvent withImage:(UIImage * _Nullable)image {
     [geocoder geocodeAddressString:address completionHandler:^(NSArray *placemarks, NSError *error) {
         if (error) {
             NSString *title = [NSString stringWithFormat:kStrInput, error];
@@ -104,19 +98,9 @@ static const NSString *const kErrPostingImgMessage =
         if (placemarks && [placemarks count] > 0) {
             CLPlacemark *placemark = placemarks[0]; // Our placemark
             
-            // creates geoPoint (for parse) from CLLocation
-            PFGeoPoint *curLoc = [PFGeoPoint geoPointWithLocation:placemark.location];
-            toSave.curLoc = curLoc;
-            toSave.latitude = placemark.location.coordinate.latitude;
-            toSave.longitude = placemark.location.coordinate.longitude;
-            
-            [toSave postUserImage:image withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if (error != nil){
-                    [PMReuseFunctions presentPopUp:kErrPostingImgString message:kErrPostingImgMessage viewController:self];
-                } else {
-                    NSLog(kPostedSuccessString);
-                }
-            }];
+            PMPost *post = [[PMPost alloc] init];
+            [post updateWithBio:bio chosenSport:sport intensity:intensity wheree:address when:groupWhen event:isEvent longi:placemark.location.coordinate.longitude lati:placemark.location.coordinate.latitude];
+            [post savePostWithImagee:image];
         }
     }];
 }

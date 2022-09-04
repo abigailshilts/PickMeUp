@@ -8,6 +8,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "PMCreatePostViewController.h"
 #import "PMPickerViewController.h"
+#import "PickMeUp-Swift.h"
 #import "PMReuseFunctions.h"
 #import "Post.h"
 #import "StringsList.h"
@@ -88,17 +89,9 @@ static const int kImgSize = 580;
 
 - (IBAction)didTapPost:(id)sender {
     self.myButton.enabled = NO;
-    Post *toPost = [Post new];
-    toPost.bio = self.groupBio.text;
-    toPost.sport = self.groupSport;
-    toPost.intensity = self.groupIntensity;
-    toPost.groupWhere = self.groupWhere.text;
-    toPost.groupWhen = self.groupWhen.text;
-    toPost.isEvent = kIsntEventString;
-    
     // turns street adress into coordinates
     CLGeocoder *geocoder = [CLGeocoder new];
-    [PMReuseFunctions savePostWithLocation:toPost geoCoder:geocoder address:self.groupWhere.text withImage:self.imgToPost];
+    [PMReuseFunctions savePostWithLocation:geocoder address:self.groupWhere.text bio:self.groupBio.text sport:self.groupSport intensity:self.groupIntensity groupWhen:self.groupWhen.text isEvent:kIsntEventString withImage:self.imgToPost];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
