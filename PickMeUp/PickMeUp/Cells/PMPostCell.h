@@ -8,6 +8,7 @@
 
 #import "Post.h"
 #import <UIKit/UIKit.h>
+@class PMPost;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +20,7 @@ static const NSString *const kPostCellClassName = @"PMPostCell";
 @property (weak, nonatomic) IBOutlet UILabel *groupSport;
 @property (weak, nonatomic) IBOutlet UILabel *groupLocation;
 @property (weak, nonatomic) IBOutlet UILabel *groupTime;
--(void) setPost:(Post *)post;
+-(void) setPost:(PMPost *)post;
 @end
 
 NS_ASSUME_NONNULL_END

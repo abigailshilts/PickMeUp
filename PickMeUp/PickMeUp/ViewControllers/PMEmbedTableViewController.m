@@ -6,11 +6,13 @@
 //
 
 #import "CBStoreHouseRefreshControl-umbrella.h"
+#import "PickMeUp-Swift.h"
 #import "PMDetailsViewController.h"
 #import "PMEmbedTableViewController.h"
 #import "PMPostCell.h"
 #import "StringsList.h"
-
+@import FirebaseCore;
+@import FirebaseFirestore;
 
 @interface PMEmbedTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -28,27 +30,23 @@ static const NSString *const kStoreHouseFile = @"storeHouse";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.storeHouseRefreshControl = [CBStoreHouseRefreshControl attachToScrollView:self.tableView target:self
-        refreshAction:@selector(refreshTriggered:) plist:kStoreHouseFile color:[UIColor darkGrayColor]
-        lineWidth:1.5 dropHeight:80 scale:1 horizontalRandomness:150 reverseLoadingAnimation:YES
-        internalAnimationFactor:0.5];
-
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.storeHouseRefreshControl scrollViewDidScroll];
+    [self.delegate runQuery:^(NSArray<PMPost *> *posts){
+        self.arrayOfPosts = posts;
+        [self.tableView reloadData];
+    }];
+    [self.tableView reloadData];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    self.arrayOfPosts = [self.delegate refreshData];
-    [self.tableView reloadData];
-    [self.storeHouseRefreshControl finishingLoading];
-    [self.storeHouseRefreshControl scrollViewDidEndDragging];
+    [self.delegate runQuery:^(NSArray<PMPost *> *posts){
+        self.arrayOfPosts = posts;
+        [self.tableView reloadData];
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PMPostCell *cell = [tableView dequeueReusableCellWithIdentifier:kPostCellIdentifier forIndexPath:indexPath];
-    Post *post = self.arrayOfPosts[indexPath.row];
+    PMPost *post = self.arrayOfPosts[indexPath.row];
     [cell setPost:post];
     
     return cell;
@@ -67,7 +65,7 @@ static const NSString *const kStoreHouseFile = @"storeHouse";
         NSIndexPath *senderIndex = [self.tableView indexPathForCell: sender];
         UINavigationController *navigationVC = [segue destinationViewController];
         PMDetailsViewController *displayVC = navigationVC.topViewController;
-        Post *post = self.arrayOfPosts[senderIndex.row];
+        PMPost *post = self.arrayOfPosts[senderIndex.row];
         displayVC.post = post;
         
     }

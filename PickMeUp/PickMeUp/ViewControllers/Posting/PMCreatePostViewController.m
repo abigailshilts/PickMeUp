@@ -12,6 +12,8 @@
 #import "PMReuseFunctions.h"
 #import "Post.h"
 #import "StringsList.h"
+@import FirebaseCore;
+@import FirebaseFirestore;
 
 @interface PMCreatePostViewController () <PickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imgOpt;

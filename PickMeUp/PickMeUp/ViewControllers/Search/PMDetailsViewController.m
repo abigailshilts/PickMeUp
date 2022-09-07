@@ -5,6 +5,7 @@
 //  Created by Abigail Shilts on 7/7/22.
 //
 #import "Parse/Parse.h"
+#import "PickMeUp-Swift.h"
 #import "PMConversationViewController.h"
 #import "PMConversation.h"
 #import "PMDetailsViewController.h"
@@ -12,6 +13,9 @@
 #import "PMReuseFunctions.h"
 #import "StringsList.h"
 #import "UIImageView+AFNetworking.h"
+@import FirebaseCore;
+@import FirebaseStorage;
+@import FirebaseStorageUI;
 
 @interface PMDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *sport;
@@ -47,16 +51,14 @@ static const NSString *const kSavedPostsKey = @"savedPosts";
     }
     
     self.bio.text = self.post.bio;
-    
-    NSString *link = self.post.image.url;
-    NSURL *url = [NSURL URLWithString:link];
-    [self.imgView setImageWithURL:url];
+    UIImage *placeholderImage;
+    [self.imgView sd_setImageWithStorageReference:self.post.storageRef placeholderImage:placeholderImage];
     
 }
 
 - (IBAction)didDoubleTap:(id)sender {
     for (Post *curPost in PFUser.currentUser[kSavedPostsKey]) {
-        if ([curPost.objectId isEqualToString:self.post.objectId]) {
+        if ([curPost.objectId isEqualToString:self.post.ident]) {
             [PFUser.currentUser[kSavedPostsKey] removeObject:curPost];
             [PFUser.currentUser saveInBackground];
             [PMReuseFunctions presentPopUp:kRemovedFromSaved message:kEmpt viewController:self];

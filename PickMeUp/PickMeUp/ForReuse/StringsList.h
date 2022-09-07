@@ -9,6 +9,7 @@
 #define StringsList_h
 
 static const NSString *const kAppIDString = @"appId";
+static const NSString *const kAuthor = @"author";
 static const NSString *const kClientKey = @"clientKey";
 static const NSString *const kCreatedAtKey = @"createdAt";
 static const NSString *const kErrConvoQuerryMessage =
@@ -26,8 +27,10 @@ static const NSString *const kObjectIDKey = @"objectId";
 static const NSString *const kOkString = @"OK";
 static const NSString *const kPlistTitle = @"plist";
 static const NSString *const kPostedSuccessString = @"posted photo!";
+static const NSString *const kPosts = @"posts";
 static const NSString *const kServerLink = @"https://parseapi.back4app.com";
 static const NSString *const kStrInput = @"%@";
 static const NSString *const kUpAnyString = @"Any";
+static const NSString *const kUser = @"User";
 
 #endif /* StringsList_h */

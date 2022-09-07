@@ -4,10 +4,13 @@
 //
 //  Created by Abigail Shilts on 7/7/22.
 //
-
+#import "PickMeUp-Swift.h"
 #import "PMPostCell.h"
 #import "Post.h"
 #import "UIImageView+AFNetworking.h"
+@import FirebaseCore;
+@import FirebaseStorage;
+@import FirebaseStorageUI;
 
 @implementation PMPostCell
 
@@ -27,8 +30,7 @@ static const NSString *const kEventString = @"Event!!!!";
     [super setSelected:selected animated:animated];
 }
 
--(void) setPost:(Post *)post {
-    [post fetchIfNeeded];
+-(void) setPost:(PMPost *)post {
     if ([post.isEvent isEqualToString:kIsntEventString]) {
         self.groupIntensity.text = post.intensity;
         self.groupSport.text = post.sport;
@@ -40,9 +42,8 @@ static const NSString *const kEventString = @"Event!!!!";
         self.groupLocation.text = post.groupWhere;
         self.groupTime.hidden = YES;
     }
-    NSString *link = post.image.url;
-    NSURL *url = [NSURL URLWithString:link];
-    [self.groupImg setImageWithURL:url];
+    UIImage *placeholderImage;
+    [self.groupImg sd_setImageWithStorageReference:post.storageRef placeholderImage:placeholderImage];
 }
 
 

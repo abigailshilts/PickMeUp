@@ -5,15 +5,19 @@
 //  Created by Abigail Shilts on 7/5/22.
 //
 #import "Parse/Parse.h"
+#import "PickMeUp-Swift.h"
 #import "PMEmbedTableViewController.h"
 #import "PMMyPostsViewController.h"
 #import "PMPostCell.h"
 #import "Post.h"
-#import "StringsList.h";
+#import "StringsList.h"
+@import FirebaseCore;
+@import FirebaseFirestore;
+@import FirebaseStorage;
 
 @interface PMMyPostsViewController () <PMEmbedTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
+@property (strong, nonatomic) NSMutableArray<PMPost *> *arrayOfPosts;
 @property (strong, nonatomic) UIRefreshControl*refreshControl;
 @end
 
@@ -23,13 +27,9 @@ static const NSString *const kGoToMakePostSegue = @"goToMakePost";
 static const NSString *const kGetMyPostsSegue = @"getMyPosts";
 static const NSString *const kGoToSavedSegue = @"goToSaved";
 static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
--(NSArray<Post *> *)refreshData {
-    [self _runQuery];
-    return self.arrayOfPosts;
 }
 
 - (IBAction)didTapSaved:(id)sender {
@@ -40,10 +40,26 @@ static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
     [self performSegueWithIdentifier:kGoToMakeEvent sender:nil];
 }
 
--(void)_runQuery {
-    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
-    [getQuery whereKey:kAuthorKey equalTo:PFUser.currentUser];
-    self.arrayOfPosts = [getQuery findObjects];
+-(void)runQuery:(void(^)(NSArray<PMPost *> *))completionBlock {
+    [[[[FIRFirestore firestore] collectionWithPath:kPosts] queryWhereField:kAuthor isEqualTo:PFUser.currentUser.objectId]
+        getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error getting documents: %@", error);
+        } else {
+            NSMutableArray<PMPost *> *arr = [NSMutableArray new];
+            for (FIRDocumentSnapshot *document in snapshot.documents) {
+                NSLog(@"%@ => %@", document.documentID, document.data);
+                self.arrayOfPosts = [NSMutableArray new];
+                PMPost *toAdd = [PMPost makePostWithDoc:document];
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"objectId" equalTo:document.data[@"author"]];
+                NSArray *users = [query findObjects];
+                [toAdd addAuthWithUse:users[0]];
+                [arr addObject:toAdd];
+            }
+            completionBlock(arr);
+          }
+    }];
 }
 
 - (IBAction)didTapMakePost:(id)sender {
@@ -52,7 +68,6 @@ static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    [self _runQuery];
     if ([segue.identifier isEqualToString:kGetMyPostsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;

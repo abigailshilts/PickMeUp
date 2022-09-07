@@ -687,6 +687,9 @@ PODS:
   - FirebaseStorageInternal (9.4.0):
     - FirebaseCore (~> 9.0)
     - GTMSessionFetcher/Core (< 3.0, >= 1.7)
+  - FirebaseStorageUI (12.2.0):
+    - FirebaseStorage (< 10.0, >= 8.0)
+    - SDWebImage (~> 5.6)
   - GeoFire/Utils (4.3.0)
   - Google-Maps-iOS-Utils (4.1.0):
     - Google-Maps-iOS-Utils/Clustering (= 4.1.0)
@@ -829,6 +832,9 @@ PODS:
     - Parse (~> 1.19.0)
     - Starscream (~> 4.0.4)
   - PromisesObjC (2.1.1)
+  - SDWebImage (5.13.2):
+    - SDWebImage/Core (= 5.13.2)
+  - SDWebImage/Core (5.13.2)
   - Starscream (4.0.4)
 
 DEPENDENCIES:
@@ -839,6 +845,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
   - FirebaseStorage
+  - FirebaseStorageUI
   - GeoFire/Utils
   - Google-Maps-iOS-Utils
   - GoogleMaps
@@ -867,6 +874,7 @@ SPEC REPOS:
     - FirebaseInstallations
     - FirebaseStorage
     - FirebaseStorageInternal
+    - FirebaseStorageUI
     - GeoFire
     - Google-Maps-iOS-Utils
     - GoogleAppMeasurement
@@ -883,6 +891,7 @@ SPEC REPOS:
     - Parse
     - ParseLiveQuery
     - PromisesObjC
+    - SDWebImage
     - Starscream
 
 SPEC CHECKSUMS:
@@ -905,6 +914,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 41f811b530c41dd90973d0174381cdb3fcb5e839
   FirebaseStorage: a806d9f9eededf6fb1d906e79221b83ada1dbb4f
   FirebaseStorageInternal: 425c7dc7de44d9b7e07a9f8d6515bab0f1266b87
+  FirebaseStorageUI: 952bb91b93ae0ee00d0033af011c918606c35d37
   GeoFire: c34927b5c81ab614f611c79aa8d074cfa9780f07
   Google-Maps-iOS-Utils: 3343332b18dfd5be8f1f44edd7d481ace3da4d9a
   GoogleAppMeasurement: 6ee231473fbd75c11221dfce489894334024eead
@@ -921,8 +931,9 @@ SPEC CHECKSUMS:
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   ParseLiveQuery: 7bc437c3b986880ffe5f241a9921e37f45df0677
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: 09ba87285befdc4e589a2e7f28b1439382bf8357
+PODFILE CHECKSUM: b6287b0bc3b3bfed5bafeebe60a25420eb228ed4
 
 COCOAPODS: 1.11.3
