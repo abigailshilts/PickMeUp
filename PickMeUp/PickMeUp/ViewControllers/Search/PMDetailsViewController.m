@@ -54,6 +54,12 @@ static const NSString *const kSavedPostsKey = @"savedPosts";
     UIImage *placeholderImage;
     [self.imgView sd_setImageWithStorageReference:self.post.storageRef placeholderImage:placeholderImage];
     
+    if (self.post.author == nil) {
+        PFQuery *query = [PFUser query];
+        [query whereKey:@"objectId" equalTo:self.post.authID];
+        NSArray *users = [query findObjects];
+        self.post.author = users[0];
+    }
 }
 
 - (IBAction)didDoubleTap:(id)sender {

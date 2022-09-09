@@ -19,6 +19,7 @@ import FirebaseStorage
     var groupWhere: NSString
     var groupWhen: NSString
     var isEvent: NSString
+    var authID: NSString
     var longitude: Double
     var latitude: Double
     var author: PFUser
@@ -33,6 +34,7 @@ import FirebaseStorage
         self.groupWhere = ""
         self.groupWhen = ""
         self.isEvent = ""
+        self.authID = ""
         self.longitude = 0.0
         self.latitude = 0.0
         self.author = PFUser.current()!
@@ -111,6 +113,7 @@ import FirebaseStorage
         toReturn.groupWhere = doc.get("groupWhere") as! NSString
         toReturn.intensity = doc.get("intensity") as! NSString
         toReturn.isEvent = doc.get("isEvent") as! NSString
+        toReturn.authID = doc.get("author") as! NSString
         toReturn.longitude = doc.get("longitude") as! Double
         toReturn.latitude = doc.get("latitude") as! Double
         toReturn.storageRef = Storage.storage().reference(withPath: doc.get("img") as! String)
@@ -119,5 +122,56 @@ import FirebaseStorage
     
     @objc func addAuth(use:PFUser) {
         self.author = use
+    }
+
+    @objc static func getPosts(selectedSport:NSString, selectedIntensity:NSString, loc:CLLocation, dist:NSString, finished: @escaping (NSArray) -> Void){
+        let db = Firestore.firestore()
+        let center = CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude:loc.coordinate.longitude)
+        let radiusInM = 1609.34 * (dist as NSString).doubleValue
+        let queryBounds = GFUtils.queryBounds(forLocation: center,
+                                              withRadius: radiusInM)
+        let queries = queryBounds.map { bound -> Query in
+            return db.collection("posts")
+                .order(by: "geohash")
+                .start(at: [bound.startValue])
+                .end(at: [bound.endValue])
+        }
+        var matchingDocs = [QueryDocumentSnapshot]()
+        
+        func getDocumentsCompletion(snapshot: QuerySnapshot?, error: Error?) -> () {
+            guard let documents = snapshot?.documents else {
+                print("Unable to fetch snapshot data. \(String(describing: error))")
+                return
+            }
+
+            for document in documents {
+                let lat = document.data()["latitude"] as? Double ?? 0
+                let lng = document.data()["longitude"] as? Double ?? 0
+                let coordinates = CLLocation(latitude: lat, longitude: lng)
+                let centerPoint = CLLocation(latitude: center.latitude, longitude: center.longitude)
+
+                // We have to filter out a few false positives due to GeoHash accuracy, but
+                // most will match
+                let distance = GFUtils.distance(from: centerPoint, to: coordinates)
+                if distance <= radiusInM {
+                    matchingDocs.append(document)
+                }
+            }
+            
+            if qCount == queries.count {
+                var arr = NSMutableArray()
+                for doc in matchingDocs {
+                    if (selectedSport == doc.data()["sport"] as! NSObject || selectedSport == "Any") && (selectedIntensity == doc.data()["intensity"] as! NSObject || selectedIntensity == "any") {
+                        arr.add(self.makePost(doc: doc))
+                    }
+                }
+                finished(arr)
+            }
+        }
+        var qCount = 0
+        for query in queries {
+            qCount += 1
+            query.getDocuments(completion: getDocumentsCompletion)
+        }
     }
 }

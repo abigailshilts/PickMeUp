@@ -20,6 +20,7 @@ target 'PickMeUp' do
   pod 'GeoFire/Utils'  
   pod 'FirebaseStorage'
   pod 'FirebaseStorageUI'
+  pod 'GeoFire', '~> 4.0'
 
   target 'PickMeUpTests' do
     inherit! :search_paths

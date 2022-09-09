@@ -9,6 +9,7 @@
 #import "PickMeUp-Swift.h"
 #import "PMDetailsViewController.h"
 #import "PMEmbedTableViewController.h"
+#import "PMSearchViewController.h"
 #import "PMPostCell.h"
 #import "StringsList.h"
 @import FirebaseCore;
@@ -24,24 +25,40 @@
 static const NSString *const kGoToDetailsSegue = @"goToDetails";
 static const NSString *const kPostCellIdentifier = @"postCell";
 static const NSString *const kStoreHouseFile = @"storeHouse";
+static const NSString *const kYesString = @"yes";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    [self.delegate runQuery:^(NSArray<PMPost *> *posts){
-        self.arrayOfPosts = posts;
-        [self.tableView reloadData];
-    }];
-    [self.tableView reloadData];
+    if ([self.isMy isEqualToString:kYesString]) {
+        [self.delegate runQuery:^(NSArray<PMPost *> *posts){
+            self.arrayOfPosts = posts;
+            [self.tableView reloadData];
+        }];
+    }
+    else {
+        [PMPost getPostsWithSelectedSport:self.sport selectedIntensity:self.intensity loc:self.loc dist:self.dist finished:^(NSArray *arr) {
+            self.arrayOfPosts = arr;
+            [self.tableView reloadData];
+        }];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    [self.delegate runQuery:^(NSArray<PMPost *> *posts){
-        self.arrayOfPosts = posts;
-        [self.tableView reloadData];
-    }];
+    if ([self.isMy isEqualToString:kYesString]) {
+        [self.delegate runQuery:^(NSArray<PMPost *> *posts){
+            self.arrayOfPosts = posts;
+            [self.tableView reloadData];
+        }];
+    }
+    else {
+        [PMPost getPostsWithSelectedSport:self.sport selectedIntensity:self.intensity loc:self.loc dist:self.dist finished:^(NSArray *arr) {
+            self.arrayOfPosts = arr;
+            [self.tableView reloadData];
+        }];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

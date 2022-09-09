@@ -6,13 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PMSearchViewController.h"
 #import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PMResultsViewController : UIViewController
 @property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
-@property (strong, nonatomic) UIViewController *toSet;
+@property (strong, nonatomic) PMSearchViewController *toSet;
+@property (strong, nonatomic) NSString *sport;
+@property (strong, nonatomic) NSString *intensity;
+@property (strong, nonatomic) NSString *dist;
+@property (strong, nonatomic) CLLocation *loc;
 @property int distance;
 @property (strong, nonatomic) CLLocation *pointToSet;
 @end

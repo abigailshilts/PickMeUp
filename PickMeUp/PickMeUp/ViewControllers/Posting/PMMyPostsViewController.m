@@ -27,6 +27,7 @@ static const NSString *const kGoToMakePostSegue = @"goToMakePost";
 static const NSString *const kGetMyPostsSegue = @"getMyPosts";
 static const NSString *const kGoToSavedSegue = @"goToSaved";
 static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
+static const NSString *const kYesString = @"yes";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +72,7 @@ static const NSString *const kGoToMakeEvent = @"goToMakeEvent";
     if ([segue.identifier isEqualToString:kGetMyPostsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
+        childViewController.isMy = kYesString;
         childViewController.delegate = self;
     }
 }

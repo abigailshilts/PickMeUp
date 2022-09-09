@@ -7,11 +7,12 @@
 #import "Post.h"
 #import <CoreLocation/CoreLocation.h>
 #import <UIKit/UIKit.h>
+@class PMPost;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PMMapViewController : UIViewController
-@property (strong, nonatomic) NSArray<Post *> *arrayOfPosts;
+@property (strong, nonatomic) NSArray<PMPost *> *arrayOfPosts;
 @property int distance;
 @property (strong, nonatomic) CLLocation *pointToSet;
 @end

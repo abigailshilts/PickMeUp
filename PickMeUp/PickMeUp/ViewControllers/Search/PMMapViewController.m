@@ -4,6 +4,7 @@
 //
 //  Created by Abigail Shilts on 7/13/22.
 //
+#import "PickMeUp-Swift.h"
 #import "PMDetailsViewController.h"
 #import "PMMapViewController.h"
 #import "StringsList.h"
@@ -34,7 +35,7 @@ static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
     [super viewDidLoad];
     //creates markers
     NSMutableArray <GMSMarker *> *markers;
-    for (Post *post in self.arrayOfPosts){
+    for (PMPost *post in self.arrayOfPosts){
         CLLocationCoordinate2D markerCoor = CLLocationCoordinate2DMake(post.latitude, post.longitude);
         GMSMarker *marker = [GMSMarker markerWithPosition:markerCoor];
         marker.map = _mapView;
@@ -61,7 +62,7 @@ static const NSString *const kShowMarkerSegue = @"showMarkerDetail";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UINavigationController *navigationVC = [segue destinationViewController];
     PMDetailsViewController *displayVC = navigationVC.topViewController;
-    Post *post = self.tappedPost;
+    PMPost *post = self.tappedPost;
     displayVC.post = post;
 }
 

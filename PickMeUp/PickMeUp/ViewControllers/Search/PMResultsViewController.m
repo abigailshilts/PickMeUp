@@ -14,6 +14,7 @@
 #import "StringsList.h"
 
 @interface PMResultsViewController ()
+@property (nonatomic, weak) PMEmbedTableViewController *tableViewC;
 @end
 
 @implementation PMResultsViewController
@@ -39,7 +40,13 @@ static const NSString *const kGetResultsSegue = @"getResults";
     if ([segue.identifier isEqualToString:kGetResultsSegue]) {
         PMEmbedTableViewController *childViewController = (PMEmbedTableViewController *) [segue destinationViewController];
         childViewController.arrayOfPosts = self.arrayOfPosts;
+        childViewController.intensity = self.intensity;
+        childViewController.sport= self.sport;
+        childViewController.dist = self.dist;
+        childViewController.loc = self.loc;
+        childViewController.isMy = @"no";
         childViewController.delegate = self.toSet;
+        self.tableViewC = childViewController;
     }
     
     if ([segue.identifier isEqualToString:kGoToMapSegue]) {
@@ -47,7 +54,7 @@ static const NSString *const kGetResultsSegue = @"getResults";
         PMMapViewController *mapVC = navigationVC.topViewController;
         mapVC.distance = self.distance;
         mapVC.pointToSet = self.pointToSet;
-        mapVC.arrayOfPosts = self.arrayOfPosts;
+        mapVC.arrayOfPosts = self.tableViewC.arrayOfPosts;
     }
 }
 

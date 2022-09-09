@@ -7,6 +7,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MapKit/MapKit.h"
 #import "Parse/Parse.h"
+#import "PickMeUp-Swift.h"
+#import "PMEmbedTableViewController.h"
 #import "PMPickerViewController.h"
 #import "PMResultsViewController.h"
 #import "PMReuseFunctions.h"
@@ -14,8 +16,11 @@
 #import "Post.h"
 #import "SceneDelegate.h"
 #import "StringsList.h"
+@import FirebaseCore;
+@import FirebaseFirestore;
+@import FirebaseStorage;
 
-@interface PMSearchViewController () <CLLocationManagerDelegate>
+@interface PMSearchViewController () <CLLocationManagerDelegate, PMEmbedTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *distanceChoice;
 @property (weak, nonatomic) IBOutlet UIView *sportContainer;
 @property (strong, nonatomic) IBOutlet UIImageView *animationImg;
@@ -109,32 +114,36 @@ static const int kEventRadious = 15;
     animation.toValue = @455;
     animation.duration = 1;
     [self.animationImg.layer addAnimation:animation forKey:kBasicString];
-    [self _runQuery];
+//    [self _runQuery];
+    [self performSegueWithIdentifier:kGoToFeedSegue sender:nil];
 }
 
-- (void)_runQuery {
-    self.curLoc = [PFGeoPoint geoPointWithLocation:self.pointToSet];
-    
-    PFQuery *getQuery = [PFQuery queryWithClassName:kPostClassName];
-    
-    // builds query
-    [getQuery whereKey:kCurLocKey nearGeoPoint:self.curLoc withinMiles:[self.distance intValue]];
-    if (![self.groupSport isEqualToString:kUpAnyString]){
-        [getQuery whereKey:kSportKey equalTo:self.groupSport];
+- (void)runQuery:(nonnull void (^)(NSArray<PMPost *> * _Nonnull))completionBlock {
+    FIRQuery *query = [[[FIRFirestore firestore] collectionWithPath:@"isEvent"] queryWhereField:@"sport" isEqualTo:kIsntEventString];
+    if (self.groupSport != kUpAnyString){
+        query = [query queryWhereField:@"sport" isEqualTo:self.groupSport];
     }
-    if (![self.groupIntensity isEqualToString:kLowAnyKey]){
-        [getQuery whereKey:kIntensityKey equalTo:self.groupIntensity];
+    if (self.groupIntensity != kLowAnyKey){
+        query = [query queryWhereField:@"intensity" isEqualTo:self.groupIntensity];
     }
-    [getQuery whereKey:kIsEventKey equalTo:kIsntEventString];
-    [getQuery orderByDescending:kCurLocKey];
-    getQuery.limit = kQuerySize;
-    [getQuery findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-        if (posts != nil) {
-            self.arrayOfPosts = posts;
-            [self _runEventQuery];
+
+    [query getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error getting documents: %@", error);
         } else {
-            [PMReuseFunctions presentPopUp:kErrQueryPostsString message:kErrQueryPostsMessage viewController:self];
-        }
+            NSMutableArray<PMPost *> *arr = [NSMutableArray new];
+            for (FIRDocumentSnapshot *document in snapshot.documents) {
+                NSLog(@"%@ => %@", document.documentID, document.data);
+                self.arrayOfPosts = [NSMutableArray new];
+                PMPost *toAdd = [PMPost makePostWithDoc:document];
+                PFQuery *query = [PFUser query];
+                [query whereKey:@"objectId" equalTo:document.data[@"author"]];
+                NSArray *users = [query findObjects];
+                [toAdd addAuthWithUse:users[0]];
+                [arr addObject:toAdd];
+            }
+            completionBlock(arr);
+          }
     }];
 }
 
@@ -165,11 +174,15 @@ static const int kEventRadious = 15;
     if ([segue.identifier isEqualToString:kGoToFeedSegue]){
         UINavigationController *navigationVC = [segue destinationViewController];
         PMResultsViewController *tableVC = navigationVC.topViewController;
-        tableVC.arrayOfPosts = self.arrayOfPosts;
+        //tableVC.arrayOfPosts = self.arrayOfPosts;
         tableVC.distance = [self.distance intValue];
         tableVC.pointToSet = self.pointToSet;
         tableVC.toSet = self;
-        NSLog(kStrInput, self.distance);
+        tableVC.intensity = self.groupIntensity;
+        tableVC.sport= self.groupSport;
+        tableVC.dist = self.distanceChoice.text;
+        tableVC.loc = self.pointToSet;
+        //NSLog(kStrInput, self.distance);
     }
     
     if ([segue.identifier isEqualToString:kSportViewSegue]) {
@@ -184,6 +197,5 @@ static const int kEventRadious = 15;
         childViewController.delegate = self;
     }
 }
-
 
 @end

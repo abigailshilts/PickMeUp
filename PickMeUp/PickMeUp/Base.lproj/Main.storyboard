@@ -1079,7 +1079,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="84z-kZ-CSs">
-                                <rect key="frame" x="40" y="297" width="172" height="90"/>
+                                <rect key="frame" x="40" y="297" width="165" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="172" id="LBJ-5l-0or"/>
                                     <constraint firstAttribute="height" constant="90" id="OzZ-mA-g4Q"/>
@@ -1089,7 +1089,7 @@
                                 </connections>
                             </containerView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3v3-ld-gj1">
-                                <rect key="frame" x="227" y="346" width="170" height="34"/>
+                                <rect key="frame" x="220" y="346" width="170" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="F4h-d8-Dqx"/>
                                     <constraint firstAttribute="height" constant="34" id="HCm-Pp-7IS"/>
@@ -1098,7 +1098,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sN-wJ-LGO">
-                                <rect key="frame" x="227" y="297" width="163" height="34"/>
+                                <rect key="frame" x="220" y="297" width="170" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="170" id="8OD-XD-ZTD"/>
                                     <constraint firstAttribute="height" constant="34" id="gKC-z8-4lH"/>
