@@ -53,6 +53,34 @@ import FirebaseStorage
         self.latitude = lati
     }
     
+    @objc static func saveImage(imagee: UIImage, userID: NSString, completion: @escaping (NSURL) -> Void){
+        let storageRef = Storage.storage().reference()
+        let imageData = imagee.jpegData(compressionQuality: 0.8)
+        guard imageData != nil else {
+            return
+        }
+        let fileName = "user/\(userID).jpg"
+        let fileRef = storageRef.child(fileName)
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpg"
+        fileRef.putData(imageData!, metadata:metaData){
+            metaData, error in
+            if error != nil {
+                print(error)
+            }
+            fileRef.downloadURL { (url, error) in
+                if error != nil {
+                    print(error)
+                }
+                guard let downloadURL = url else {
+                  // Uh-oh, an error occurred!
+                  return
+                }
+                completion(downloadURL as NSURL)
+              }
+        }
+    }
+    
     @objc func savePost(imagee: UIImage){
         // stores image
         guard imagee != nil else {

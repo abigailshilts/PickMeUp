@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PMPost;
 
 NS_ASSUME_NONNULL_BEGIN
 

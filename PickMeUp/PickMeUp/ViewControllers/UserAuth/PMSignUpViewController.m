@@ -6,14 +6,18 @@
 //
 
 #import "Parse/Parse.h"
+#import "PickMeUp-Swift.h"
 #import "PMReuseFunctions.h"
 #import "PMSignUpViewController.h"
 #import "StringsList.h"
+@import FirebaseCore;
+@import FirebaseFirestore;
+@import FirebaseAuth;
+@import FirebaseStorage;
 
-@interface PMSignUpViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *insertedEmail;
+@interface PMSignUpViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *insertedUsername;
-@property (weak, nonatomic) IBOutlet UITextField *insertedPassword;
+@property (weak, nonatomic) IBOutlet UIImageView *profPhoto;
 
 @end
 
@@ -24,35 +28,59 @@ static const NSString *const kSignUpToSearchSegue = @"signUpToSearch";
 static const NSString *const kUserRegSuccessString = @"User registered successfully";
 static const NSString *const kRegisteringErrString = @"Error registering user";
 static const NSString *const kRegisteringErrMessage = @"User likely already exists";
+static const int kImgSize = 580;
 
-- (void)_registerUser {
-    // Pop up alert to ensure user enters all fields
-    if ([self.insertedUsername.text isEqual:kEmpt] || [self.insertedPassword.text isEqual:kEmpt]
-        || [self.insertedEmail.text isEqual:kEmpt]){
-        [PMReuseFunctions presentPopUp:kMissingFieldsString message:kSigningupRequiresAllString viewController:self];
-        return;
-    }
-    PFUser *newUser = [PFUser user];
-    newUser.username = self.insertedUsername.text;
-    newUser.email = self.insertedEmail.text;
-    newUser.password = self.insertedPassword.text;
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // gesture so tapping img photo pulls up library
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self.profPhoto addGestureRecognizer:tapRecognizer];
     
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            [PMReuseFunctions presentPopUp:kRegisteringErrString message:kRegisteringErrMessage viewController:self];
-        } else {
-            NSLog(kUserRegSuccessString);
-            [self performSegueWithIdentifier:kSignUpToSearchSegue sender:nil];
-        }
-    }];
+    self.insertedUsername.delegate = self;
 }
+
+- (BOOL)_textFieldShouldReturn:(UITextField *)textField {
+   [textField resignFirstResponder];
+   return true;
+}
+
+// pulls up library when img is tapped
+- (void)tapAction:(UITapGestureRecognizer *)tap {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    originalImage = [PMReuseFunctions resizeImage:originalImage withSize:CGSizeMake(kImgSize,kImgSize)];
+    
+    // changes img on view controller to one seleted
+    [self.profPhoto setImage:originalImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (IBAction)didTapCancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)didTapSignUp:(id)sender {
-    [self _registerUser];
+- (IBAction)didTapGo:(id)sender {
+    [PMPost saveImageWithImagee:self.profPhoto.image userID:[FIRAuth auth].currentUser.uid completion:^(NSURL *dURL) {
+        FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
+        changeRequest.displayName = self.insertedUsername.text;
+        changeRequest.photoURL = dURL;
+        [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
+            if (error != nil) {
+                NSLog(@"%@", error);
+            }
+        }];
+    }];
+    [self performSegueWithIdentifier:kSignUpToSearchSegue sender:nil];
 }
+
 
 @end

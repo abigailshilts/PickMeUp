@@ -16,6 +16,7 @@
 #import "Post.h"
 #import "SceneDelegate.h"
 #import "StringsList.h"
+@import FirebaseAuth;
 @import FirebaseCore;
 @import FirebaseFirestore;
 @import FirebaseStorage;
@@ -64,6 +65,7 @@ static const int kEventRadious = 15;
     [self.locationManager startUpdatingLocation];
     self.distanceChoice.delegate = self;
     self.animationImg.hidden = YES;
+    NSLog([FIRAuth auth].currentUser.displayName);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -77,17 +79,19 @@ static const int kEventRadious = 15;
 
 - (IBAction)didTapLogout:(id)sender {
     // Sends to login screen
-    SceneDelegate *mySceneDelegate = (SceneDelegate * )
-        UIApplication.sharedApplication.connectedScenes.allObjects.firstObject.delegate;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainString bundle:nil];
-    UIViewController *loginViewController =
-        [storyboard instantiateViewControllerWithIdentifier:kLogViewControllerClassName];
-    mySceneDelegate.window.rootViewController = loginViewController;
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        if (error != nil){
-            [PMReuseFunctions presentPopUp:kErrLogOutString message:kErrLogOutMessage viewController:self];
-        }
-    }];
+//    SceneDelegate *mySceneDelegate = (SceneDelegate * )
+//        UIApplication.sharedApplication.connectedScenes.allObjects.firstObject.delegate;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:kMainString bundle:nil];
+//    UIViewController *loginViewController =
+//        [storyboard instantiateViewControllerWithIdentifier:kLogViewControllerClassName];
+//    mySceneDelegate.window.rootViewController = loginViewController;
+    NSError *signOutError;
+    BOOL status = [[FIRAuth auth] signOut:&signOutError];
+    if (!status) {
+      NSLog(@"Error signing out: %@", signOutError);
+      return;
+    }
+    [self performSegueWithIdentifier:@"signOut" sender:nil];
 }
 
 // delegate methods for recieving pickerview user input

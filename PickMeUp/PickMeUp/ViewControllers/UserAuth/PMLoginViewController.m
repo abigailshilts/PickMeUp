@@ -10,10 +10,13 @@
 #import "PMLoginViewController.h"
 #import "PMReuseFunctions.h"
 #import "StringsList.h"
+@import FirebaseCore;
+@import FirebaseFirestore;
+@import FirebaseAuth;
 
 
 @interface PMLoginViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *insertedUsername;
+@property (weak, nonatomic) IBOutlet UITextField *insertedEmail;
 @property (weak, nonatomic) IBOutlet UITextField *insertedPassword;
 @property (strong, nonatomic) JHUD *hudView;
 @end
@@ -31,37 +34,28 @@ static const NSString *const kHudMessageString = @"Logging user in";
     [super viewDidLoad];
 }
 
-- (void)_loginUser {
-    // Pop up alert to ensure user enters all fields
-    if ([self.insertedUsername.text isEqual:kEmpt] || [self.insertedPassword.text isEqual:kEmpt]){
-        [PMReuseFunctions presentPopUp:kMissingFieldsString message:kLogginginNeedsAllString viewController:self];
-        return;
-    }
-    
-    NSString *username = self.insertedUsername.text;
-    NSString *password = self.insertedPassword.text;
-    
-    [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            NSLog(kFailedLogInString, error.localizedDescription);
-        } else {
-            NSLog(kUserLogInSuccesString);
-            [self performSegueWithIdentifier:kLoginToSearchSegue sender:nil];
-        }
-        [self.hudView hide];
-    }];
-}
-
 - (IBAction)didTapSignUp:(id)sender {
+    [[FIRAuth auth] createUserWithEmail:self.insertedEmail.text
+                               password:self.insertedPassword.text
+                             completion:^(FIRAuthDataResult * _Nullable authResult,
+                                          NSError * _Nullable error) {
+//TODO: add error handling
+    }];
     [self performSegueWithIdentifier:kGoToSignUpSegue sender:nil];
 }
 
+
 - (IBAction)didTapLogin:(id)sender {
+    [[FIRAuth auth] signInWithEmail:self.insertedEmail.text
+                           password:self.insertedPassword.text
+                         completion:^(FIRAuthDataResult * _Nullable authResult,
+                                      NSError * _Nullable error) {
+        [self performSegueWithIdentifier:kLoginToSearchSegue sender:nil];
+    }];
     self.hudView = [[JHUD alloc]initWithFrame:self.view.bounds];
 
     self.hudView.messageLabel.text = kHudMessageString;
     [self.hudView showAtView:self.view hudType:JHUDLoadingTypeCircle];
-    [self _loginUser];
 }
 
 
